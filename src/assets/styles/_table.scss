@@ -1,16 +1,16 @@
 @import './colors';
 
 $color-pure-white: map-get($main-colors, pure-white);
-$simplicity-light-blue: map-get($main-colors, simplicity-light-blue);
-$simplicity-medium-blue: map-get($main-colors, simplicity-medium-blue);
-$simplicity-dark-blue: map-get($main-colors, simplicity-dark-blue);
+$transveho-light-blue: map-get($main-colors, transveho-light-blue);
+$transveho-medium-blue: map-get($main-colors, transveho-medium-blue);
+$transveho-dark-blue: map-get($main-colors, transveho-dark-blue);
 
 .table-wrapper {
   background-color: $color-pure-white;
 }
 
 .details-header {
-  color: $simplicity-dark-blue;
+  color: $transveho-dark-blue;
   font-weight: 500;
 }
 
@@ -29,7 +29,7 @@ tr.element-row:not(.example-expanded-row):active {
 th.mat-header-cell {
   text-align: center;
   border-bottom-width: 3px;
-  border-bottom-color: $simplicity-medium-blue;
+  border-bottom-color: $transveho-medium-blue;
 }
 
 tr.detail-row {
@@ -42,7 +42,7 @@ tr.element-row-expanded {
 }
 
 .blue-border {
-  border-color: $simplicity-light-blue;
+  border-color: $transveho-light-blue;
   border-bottom-width: 2px;
 }
 

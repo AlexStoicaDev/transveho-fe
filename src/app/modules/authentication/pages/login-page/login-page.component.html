@@ -1,0 +1,64 @@
+<div class="container-xl transveho-login">
+  <mat-card class="transveho-login__card">
+    <img
+      mat-card-image
+      class="transveho-login__gradient"
+      src="assets/images/gradient.svg"
+      alt="gradient"
+    />
+    <mat-card-header class="pt-lg-5 pl-1 mt-lg-5 ml-4">
+      <mat-card-title class="transveho-login__header-title"
+        >LOGIN</mat-card-title
+      >
+    </mat-card-header>
+    <mat-card-content class="ml-5 mr-5 pt-2">
+      <form [formGroup]="loginFormGroup" class="pb-3" (ngSubmit)="onSubmit()">
+        <div class="container-fluid position-relative pb-4">
+          <div class="row">
+            <label for="email" class="transveho-login__label pb-2 w-100"
+              >EMAIL</label
+            >
+            <input
+              id="email"
+              formControlName="email"
+              type="email"
+              class="transveho-login__input"
+              placeholder="numeletau@mail.com"
+            />
+          </div>
+          <div class="row pt-4">
+            <label for="password" class="transveho-login__label pb-2 w-100"
+              >PAROLA</label
+            >
+            <input
+              id="password"
+              formControlName="password"
+              type="password"
+              autocomplete="on"
+              class="transveho-login__input transveho-login__password"
+              placeholder="*************"
+            />
+          </div>
+          <div
+            class="row justify-content-end transveho-login__forgot-password"
+          >
+            <a href="#" class="transveho-login__forgot-password__text"
+              >Ati uitat parola?</a
+            >
+          </div>
+        </div>
+        <button
+          type="submit"
+          class="transveho-login__button text-center border-0"
+        >
+          LOGIN
+        </button>
+      </form>
+      <img
+        class="transveho-login__logo w-25"
+        src="assets/images/logo.svg"
+        alt="logo"
+      />
+    </mat-card-content>
+  </mat-card>
+</div>

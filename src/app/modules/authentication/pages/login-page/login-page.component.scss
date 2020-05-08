@@ -1,0 +1,132 @@
+@import '../../../../../assets/styles/bootstrap-grid';
+@import '../../../../../assets/styles/mixins';
+@import '../../../../../assets/styles/fonts';
+@import '../../../../../assets/styles/colors';
+
+$color-pure-black: map-get($main-colors, pure-black);
+$color-pure-white: map-get($main-colors, pure-white);
+$color-light-gray: map-get($main-colors, light-gray);
+
+.transveho-login {
+  @include media-breakpoint-down(md) {
+    padding: 0;
+  }
+
+  justify-content: center;
+  color: $color-pure-black;
+
+  &__card {
+    @include media-breakpoint-down(md) {
+      max-width: 100%;
+      margin: 0;
+    }
+
+    max-width: 70%;
+    margin: 10% auto;
+    border-radius: 2px;
+  }
+
+  &__gradient {
+    @include media-breakpoint-up(lg) {
+      position: absolute;
+      width: 100%;
+      z-index: 0;
+    }
+  }
+
+  &__header-title {
+    font-size: $font-lg;
+  }
+
+  &__label {
+    font-size: $font-sm;
+  }
+
+  &__input {
+    @include media-breakpoint-down(md) {
+      width: 100%;
+    }
+
+    border: none;
+    border-bottom: 2px solid $color-pure-black;
+    width: 50%;
+    font-weight: $light;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      font-weight: $light;
+      color: $color-light-gray;
+    }
+  }
+
+  &__password {
+    &::placeholder {
+      letter-spacing: 5px;
+    }
+  }
+
+  &__forgot-password {
+    @include media-breakpoint-down(md) {
+      width: 100%;
+    }
+
+    width: 50%;
+
+    &__text {
+      margin-right: -15px;
+      color: $color-light-gray;
+      font-size: $font-xs;
+      font-weight: $light;
+    }
+  }
+
+  &__button {
+    @include media-breakpoint-down(md) {
+      width: 100%;
+    }
+
+    font-size: $font-xs;
+    width: 140px;
+    height: 35px;
+    color: $color-pure-white;
+    background-size: 300% 100%;
+    border-radius: 50px;
+    moz-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+    background-image: linear-gradient(
+      to right,
+      #359ce7,
+      #2a1564,
+      #2a1564,
+      #359ce7
+    );
+
+    &:hover {
+      background-position: 100% 0;
+      moz-transition: all 0.4s ease-in-out;
+      -o-transition: all 0.4s ease-in-out;
+      -webkit-transition: all 0.4s ease-in-out;
+      transition: all 0.4s ease-in-out;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__logo {
+    @include media-breakpoint-up(lg) {
+      position: absolute;
+      right: 5px;
+      bottom: 5px;
+      margin: 0;
+    }
+    width: 25%;
+    margin: auto auto;
+  }
+}

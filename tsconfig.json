@@ -3,13 +3,13 @@
   "compilerOptions": {
     "baseUrl": "src",
     "paths": {
-      "@simplicity-core": [
+      "@transveho-core": [
         "app/core/public-api"
       ],
-      "@simplicity-shared":[
+      "@transveho-shared":[
         "app/shared/public-api"
       ],
-      "@simplicity-styles":[
+      "@transveho-styles":[
         "app/assets/styles"
       ]
     },

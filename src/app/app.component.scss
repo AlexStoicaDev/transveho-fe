@@ -1,0 +1,24 @@
+@import '../assets/styles/bootstrap-grid';
+@import '../assets/styles/colors';
+
+$color-lighter-gray: map-get($main-colors, lighter-gray);
+$color-pure-white: map-get($main-colors, pure-white);
+
+body {
+  background-color: $color-lighter-gray;
+}
+
+.mat-card:not([class*='mat-elevation-z']) {
+  box-shadow: none;
+}
+
+.mat-checkbox-frame {
+  border-radius: 6px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+}

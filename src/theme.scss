@@ -1,0 +1,42 @@
+@import '~@angular/material/theming';
+
+$md-transveho-accent-palette: (
+  50: #eef7fc,
+  100: #d5ecf8,
+  200: #b9e0f3,
+  300: #9cd3ee,
+  400: #87c9eb,
+  500: #72c0e7,
+  600: #6abae4,
+  700: #5fb2e0,
+  800: #55aadd,
+  900: #429cd7,
+  A100: #ffffff,
+  A200: #f6fbff,
+  A400: #c3e6ff,
+  A700: #a9dcff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #000000,
+    900: #000000,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000
+  )
+);
+
+@include mat-core();
+
+$my-app-primary: mat-palette($mat-blue-grey);
+$my-app-accent: mat-palette($md-transveho-accent-palette, 500, 900, A100);
+$my-app-warn: mat-palette($mat-deep-orange);
+$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
+@include angular-material-theme($my-app-theme);
