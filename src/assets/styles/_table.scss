@@ -1,0 +1,51 @@
+@import './colors';
+
+$color-pure-white: map-get($main-colors, pure-white);
+$simplicity-light-blue: map-get($main-colors, simplicity-light-blue);
+$simplicity-medium-blue: map-get($main-colors, simplicity-medium-blue);
+$simplicity-dark-blue: map-get($main-colors, simplicity-dark-blue);
+
+.table-wrapper {
+  background-color: $color-pure-white;
+}
+
+.details-header {
+  color: $simplicity-dark-blue;
+  font-weight: 500;
+}
+
+tr.element-row:not(.example-expanded-row):hover {
+  background: whitesmoke;
+}
+
+.element-row td {
+  text-align: center;
+}
+
+tr.element-row:not(.example-expanded-row):active {
+  background: #efefef;
+}
+
+th.mat-header-cell {
+  text-align: center;
+  border-bottom-width: 3px;
+  border-bottom-color: $simplicity-medium-blue;
+}
+
+tr.detail-row {
+  height: 0;
+  background-color: #fbfbfb;
+}
+
+tr.element-row-expanded {
+  background-color: whitesmoke;
+}
+
+.blue-border {
+  border-color: $simplicity-light-blue;
+  border-bottom-width: 2px;
+}
+
+.no-border {
+  border-style: none;
+}

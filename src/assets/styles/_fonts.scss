@@ -1,0 +1,31 @@
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/../fonts/Montserrat/Bold/Montserrat-Bold.woff2') format('woff2'),
+    url('/../fonts/Montserrat/Bold/Montserrat-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Arial';
+  src: url('/../fonts/Arial/Regular/ArialMT.woff2') format('woff2'),
+    url('/../fonts/Arial/Regular/ArialMT.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+$font-montserrat: 'Montserrat';
+$font-arial: 'Arial';
+
+// font-weight
+$thin: 100;
+$light: 300;
+$regular: 400;
+$bold: 700;
+
+// Font size
+$font-xs: 12px;
+$font-sm: 14px;
+$primary-fs: 16px;
+$font-md: 18px;
+$font-lg: 30px;

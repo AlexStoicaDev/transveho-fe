@@ -1,0 +1,11 @@
+@import '_fonts';
+
+@mixin font-type-montserrat($font-weight: $bold) {
+  font-family: $font-montserrat;
+  font-weight: $font-weight;
+}
+
+@mixin font-type-arial($font-weight: $regular) {
+  font-family: $font-arial;
+  font-weight: $font-weight;
+}

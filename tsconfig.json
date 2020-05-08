@@ -1,7 +1,18 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": "src",
+    "paths": {
+      "@simplicity-core": [
+        "app/core/public-api"
+      ],
+      "@simplicity-shared":[
+        "app/shared/public-api"
+      ],
+      "@simplicity-styles":[
+        "app/assets/styles"
+      ]
+    },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
