@@ -4,7 +4,7 @@ export class UserInfo {
     private _tokenType: string,
     private _username: string,
     private _email: string,
-    private _role: string[],
+    private _role: string[]
   ) {}
 
   get token() {

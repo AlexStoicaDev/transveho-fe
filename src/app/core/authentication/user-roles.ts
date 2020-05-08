@@ -1,3 +1,5 @@
 export enum UserRoles {
-  ADMIN, DISPATCHER, DRIVER
+  ADMIN,
+  DISPATCHER,
+  DRIVER
 }

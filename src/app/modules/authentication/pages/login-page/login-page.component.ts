@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
-import {first} from 'rxjs/operators';
-import {AuthenticationService} from "@transveho-core";
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { first } from 'rxjs/operators';
+import { AuthenticationService } from '@transveho-core';
 
 @Component({
   selector: 'login-page',
@@ -16,7 +16,7 @@ export class LoginPageComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-   private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService
   ) {
     // if (this.authenticationService.currentUser) {
     //   this.router.navigate(['/']);
@@ -39,9 +39,8 @@ export class LoginPageComponent implements OnInit {
       .logIn(formControls.username.value, formControls.password.value)
       .pipe(first())
       .subscribe(userData => {
-        debugger
         this.authenticationService.handleAuthentication(userData);
-       // this.router.navigate(['/home']);
+        this.router.navigate(['/auth/home']);
       });
   }
 }
