@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-// import { AuthenticationService } from '../../../../core/authentication.service';
-import { first } from 'rxjs/operators';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {first} from 'rxjs/operators';
+import {AuthenticationService} from "@transveho-core";
 
 @Component({
   selector: 'login-page',
@@ -16,7 +16,7 @@ export class LoginPageComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-  //  private authenticationService: AuthenticationService
+   private authenticationService: AuthenticationService
   ) {
     // if (this.authenticationService.currentUser) {
     //   this.router.navigate(['/']);
@@ -25,22 +25,23 @@ export class LoginPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginFormGroup = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
+      username: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
 
   onSubmit(): void {
-    // if (this.loginFormGroup.invalid) {
-    //   return;
-    // }
-    // const formControls = this.loginFormGroup.controls;
-    // this.authenticationService
-    //   .logIn(formControls.email.value, formControls.password.value)
-    //   .pipe(first())
-    //   .subscribe(userData => {
-    //     this.authenticationService.handleAuthentication(userData);
-    //     this.router.navigate(['/home']);
-    //   });
+    if (this.loginFormGroup.invalid) {
+      return;
+    }
+    const formControls = this.loginFormGroup.controls;
+    this.authenticationService
+      .logIn(formControls.username.value, formControls.password.value)
+      .pipe(first())
+      .subscribe(userData => {
+        debugger
+        this.authenticationService.handleAuthentication(userData);
+       // this.router.navigate(['/home']);
+      });
   }
 }

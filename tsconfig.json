@@ -4,10 +4,10 @@
     "baseUrl": "src",
     "paths": {
       "@transveho-core": [
-        "app/core/public-api"
+        "app/core/index"
       ],
       "@transveho-shared":[
-        "app/shared/public-api"
+        "app/shared/index"
       ],
       "@transveho-styles":[
         "app/assets/styles"
