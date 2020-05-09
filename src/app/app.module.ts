@@ -8,15 +8,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarsComponent } from './modules/cars/cars.component';
 import { PassengersComponent } from './modules/passengers/passengers.component';
-import { PersonalComponent } from './modules/personal/personal.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    CarsComponent,
-    PassengersComponent,
-    PersonalComponent
-  ],
+  declarations: [AppComponent, CarsComponent, PassengersComponent],
   imports: [
     AppRoutingModule,
     BrowserAnimationsModule,

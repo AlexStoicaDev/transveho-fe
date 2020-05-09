@@ -18,8 +18,10 @@ const routes: Routes = [
   },
   {
     path: 'personal',
-    component: PersonalComponent,
     pathMatch: 'full',
+    loadChildren: () =>
+      import('./modules/personal/personal.module').then(m => m.PersonalModule),
+    data: { requiresLogin: true },
     canActivate: [AuthenticationGuard, DispatcherGuard]
   },
   {
