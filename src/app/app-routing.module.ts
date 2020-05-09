@@ -1,10 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TestHomeComponent } from './modules/authentication/pages/test-home/test-home.component';
 import { AuthenticationGuard, DispatcherGuard } from '@transveho-core';
-import { TestAdminComponent } from './modules/authentication/pages/test-admin/test-admin.component';
-import { TestDispatcherComponent } from './modules/authentication/pages/test-dispatcher/test-dispatcher.component';
-import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { PersonalComponent } from './modules/personal/personal.component';
 import { PassengersComponent } from './modules/passengers/passengers.component';
 import { CarsComponent } from './modules/cars/cars.component';
@@ -12,8 +8,12 @@ import { CarsComponent } from './modules/cars/cars.component';
 const routes: Routes = [
   {
     path: '',
-    component: DashboardComponent,
     pathMatch: 'full',
+    loadChildren: () =>
+      import('./modules/dashboard/dashboard.module').then(
+        m => m.DashboardModule
+      ),
+    data: { requiresLogin: true },
     canActivate: [AuthenticationGuard, DispatcherGuard]
   },
   {

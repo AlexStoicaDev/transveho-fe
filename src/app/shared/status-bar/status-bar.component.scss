@@ -1,0 +1,22 @@
+@import '../../../assets/styles/colors';
+
+$color-pure-white: map-get($main-colors, pure-white);
+$color-light-mustard: map-get($main-colors, light-mustard);
+$color-dark-red: map-get($main-colors, dark-red);
+$color-light-green: map-get($main-colors, light-green);
+
+.status {
+  color: $color-pure-white;
+}
+
+.status-canceled {
+  background-color: $color-dark-red;
+}
+
+.status-pending {
+  background-color: $color-light-mustard;
+}
+
+.status-done {
+  background-color: $color-light-green;
+}

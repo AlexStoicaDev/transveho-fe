@@ -1,0 +1,13 @@
+<div
+  class="status text-center rounded-pill mx-auto"
+  [ngClass]="{
+    'status-canceled': ['fost angajat', 'anulat'].indexOf(status) !== -1,
+    'status-pending':
+      ['concediu', 'concediu medical', 'zi libera', 'in desfasurare'].indexOf(
+        status
+      ) !== -1,
+    'status-done': ['disponibil', 'finalizat'].indexOf(status) !== -1
+  }"
+>
+  {{ status }}
+</div>

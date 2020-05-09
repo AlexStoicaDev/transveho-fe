@@ -1,0 +1,20 @@
+@import '../../../assets/styles/colors';
+
+$color-pure-white: map-get($main-colors, pure-white);
+$color-light-mustard: map-get($main-colors, light-mustard);
+$color-dark-mustard: map-get($main-colors, dark-mustard);
+
+.edit {
+  background-color: $color-dark-mustard;
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-light-mustard;
+  }
+
+  &__icon {
+    color: $color-pure-white;
+  }
+}

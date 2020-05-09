@@ -8,7 +8,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarsComponent } from './modules/cars/cars.component';
 import { PassengersComponent } from './modules/passengers/passengers.component';
-import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { PersonalComponent } from './modules/personal/personal.component';
 
 @NgModule({
@@ -16,7 +15,6 @@ import { PersonalComponent } from './modules/personal/personal.component';
     AppComponent,
     CarsComponent,
     PassengersComponent,
-    DashboardComponent,
     PersonalComponent
   ],
   imports: [

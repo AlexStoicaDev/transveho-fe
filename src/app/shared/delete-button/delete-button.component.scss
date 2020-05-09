@@ -1,0 +1,20 @@
+@import '../../../assets/styles/colors';
+
+$color-pure-white: map-get($main-colors, pure-white);
+$color-light-red: map-get($main-colors, light-red);
+$color-dark-red: map-get($main-colors, dark-red);
+
+.delete {
+  background-color: $color-dark-red;
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-light-red;
+  }
+
+  &__icon {
+    color: $color-pure-white;
+  }
+}

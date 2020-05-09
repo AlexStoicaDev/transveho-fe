@@ -1,0 +1,25 @@
+@import '../../../assets/styles/colors';
+
+$transveho-light-blue: map-get($main-colors, transveho-light-blue);
+
+.paginator-button-wrapper {
+  cursor: pointer;
+  color: $transveho-light-blue;
+}
+
+.paginator-arrow {
+  border: 2px solid #787878;
+  color: #787878;
+
+  &:hover {
+    border: 2px solid $transveho-light-blue;
+    color: $transveho-light-blue;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+.paginator-left-arrow {
+  transform: rotate(180deg);
+}
