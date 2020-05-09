@@ -29,8 +29,13 @@ export class AdminGuard implements CanActivate {
     const userHasAdminRole: boolean = this.authenticationService.userHasRole(
       'ADMIN'
     );
+    //TODO replace with something like in the app-component.ts, user adds things in local storage
     if (!userHasAdminRole) {
-      this.router.navigate(['/auth/home']);
+      if (this.authenticationService.userIsAuthenticated()) {
+        this.router.navigate(['/dashboard']);
+      } else {
+        this.router.navigate(['/auth']);
+      }
     }
     return userHasAdminRole;
   }

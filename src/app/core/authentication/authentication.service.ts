@@ -55,10 +55,12 @@ export class AuthenticationService {
     //     }
     //   })
     // )
-    return !!JSON.parse(localStorage.getItem('userInfo')).token;
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    return !!userInfo && userInfo.token;
   }
 
   public userHasRole(role: string): boolean {
-    return JSON.parse(localStorage.getItem('userInfo')).roles[0] === role;
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    return !!userInfo && userInfo.roles.indexOf(role) !== -1;
   }
 }

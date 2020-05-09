@@ -26,11 +26,16 @@ export class DispatcherGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    const userHasDispatcherRole = this.authenticationService.userHasRole(
-      'DISPATCHER'
-    );
+    const userHasDispatcherRole =
+      this.authenticationService.userHasRole('DISPATCHER') ||
+      this.authenticationService.userHasRole('ADMIN');
+
     if (!userHasDispatcherRole) {
-      this.router.navigate(['/auth/home']);
+      if (this.authenticationService.userIsAuthenticated()) {
+        this.router.navigate(['']);
+      } else {
+        this.router.navigate(['/auth']);
+      }
     }
     return userHasDispatcherRole;
   }

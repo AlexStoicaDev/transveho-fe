@@ -1,0 +1,42 @@
+@import '../../../assets/styles/bootstrap-grid';
+@import '../../../assets/styles/mixins';
+@import '../../../assets/styles/fonts';
+@import '../../../assets/styles/colors';
+
+.navigation-style {
+  margin-left: 10rem;
+  margin-right: 10rem;
+  padding-bottom: 0rem !important;
+
+  a {
+    padding-bottom: 0rem !important;
+    display: grid;
+  }
+
+  .is-active {
+    display: block !important;
+  }
+
+  &__navbarNavigation {
+    padding-top: 1.875rem;
+  }
+
+  &__no-border {
+    outline-width: 0;
+  }
+
+  .rotateFull {
+    transform: rotate(180deg);
+    vertical-align: bottom !important;
+    margin-left: 50%;
+    display: none;
+  }
+
+  @include media-breakpoint-down(md) {
+    margin-left: 0rem;
+    margin-right: 0rem;
+    .is-active {
+      display: none !important;
+    }
+  }
+}

@@ -6,9 +6,19 @@ import { AuthenticationPagesModule } from './modules/authentication/authenticati
 import { SharedModule } from './shared/shared.module';
 import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CarsComponent } from './modules/cars/cars.component';
+import { PassengersComponent } from './modules/passengers/passengers.component';
+import { DashboardComponent } from './modules/dashboard/dashboard.component';
+import { PersonalComponent } from './modules/personal/personal.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    CarsComponent,
+    PassengersComponent,
+    DashboardComponent,
+    PersonalComponent
+  ],
   imports: [
     AppRoutingModule,
     BrowserAnimationsModule,

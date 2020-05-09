@@ -40,7 +40,7 @@ export class LoginPageComponent implements OnInit {
       .pipe(first())
       .subscribe(userData => {
         this.authenticationService.handleAuthentication(userData);
-        this.router.navigate(['/auth/home']);
+        this.router.navigate(['/']);
       });
   }
 }
