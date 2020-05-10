@@ -3,22 +3,57 @@
 @import '../../../assets/styles/fonts';
 @import '../../../assets/styles/colors';
 
+$transveho-light-blue: map-get($main-colors, transveho-light-blue);
+$transveho-medium-blue: map-get($main-colors, transveho-medium-blue);
+$transveho-dark-blue: map-get($main-colors, transveho-dark-blue);
+
 .navigation-style {
-  margin-left: 10rem;
-  margin-right: 10rem;
-  padding-bottom: 0rem !important;
+  padding-left: 10rem;
+  padding-right: 10rem;
+  padding-bottom: 0;
 
   a {
     padding-bottom: 0rem !important;
     display: grid;
   }
 
+  &__link {
+    color: $transveho-light-blue;
+    font-weight: 600;
+
+    background: linear-gradient(
+      to right,
+      $transveho-dark-blue,
+      $transveho-dark-blue 50%,
+      $transveho-medium-blue 50%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 100%;
+    background-position: 100%;
+    transition: background-position 275ms ease;
+
+    &:hover {
+      background-position: 0 100%;
+    }
+    &:active {
+      color: $transveho-dark-blue;
+    }
+  }
   .is-active {
     display: block !important;
   }
 
+  &__active {
+    background-position: 0 100%;
+
+    //&:hover{
+    //  background-position: 0 100%;
+    //}
+  }
+
   &__navbarNavigation {
-    padding-top: 1.875rem;
+    padding-top: 0.5rem;
   }
 
   &__no-border {
@@ -28,8 +63,8 @@
   .rotateFull {
     transform: rotate(180deg);
     vertical-align: bottom !important;
-    margin-left: 50%;
     display: none;
+    margin: 6px auto -3px;
   }
 
   @include media-breakpoint-down(md) {
@@ -39,4 +74,19 @@
       display: none !important;
     }
   }
+}
+
+.second-nav {
+  height: 50px;
+  background-color: #0072c3;
+}
+
+.navigation-bar {
+  top: 0;
+  z-index: 1;
+}
+
+.secondary-link {
+  padding-top: 0;
+  color: white;
 }

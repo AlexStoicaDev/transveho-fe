@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthenticationGuard, DispatcherGuard } from '@transveho-core';
-import { PersonalComponent } from './modules/personal/personal.component';
 import { PassengersComponent } from './modules/passengers/passengers.component';
 import { CarsComponent } from './modules/cars/cars.component';
+import { AuthenticationGuard, DispatcherGuard } from '@transveho-core';
 
 const routes: Routes = [
   {
@@ -13,15 +12,12 @@ const routes: Routes = [
       import('./modules/dashboard/dashboard.module').then(
         m => m.DashboardModule
       ),
-    data: { requiresLogin: true },
     canActivate: [AuthenticationGuard, DispatcherGuard]
   },
   {
     path: 'personal',
-    pathMatch: 'full',
     loadChildren: () =>
       import('./modules/personal/personal.module').then(m => m.PersonalModule),
-    data: { requiresLogin: true },
     canActivate: [AuthenticationGuard, DispatcherGuard]
   },
   {

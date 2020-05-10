@@ -8,8 +8,12 @@ body {
   background-color: $color-lighter-gray;
 }
 
-.mat-card:not([class*='mat-elevation-z']) {
-  box-shadow: none;
+//.mat-card:not([class*='mat-elevation-z']) {
+//  box-shadow: none;
+//}
+
+.navigation-bar-padding {
+  padding-top: 200px;
 }
 
 .mat-checkbox-frame {
