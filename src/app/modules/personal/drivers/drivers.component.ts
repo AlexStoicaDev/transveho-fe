@@ -8,19 +8,19 @@ import {
 } from '@angular/core';
 import { PaginatorComponent } from '@transveho-shared';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
-import { PersonalService } from './service/personal.service';
 import { of, Subscription } from 'rxjs';
 import { SelectionModel } from '@angular/cdk/collections';
 import { PersonalEntriesPage } from '@transveho-core';
 import { PersonalEntry } from '@transveho-core';
 import { columnsToDisplay } from './columns-to-display';
+import { DriversService } from './service/drivers.service';
 
 @Component({
   selector: 'personal',
-  templateUrl: './personal.component.html',
-  styleUrls: ['./personal.component.scss']
+  templateUrl: './drivers.component.html',
+  styleUrls: ['./drivers.component.scss']
 })
-export class PersonalComponent implements OnDestroy, AfterViewChecked {
+export class DriversComponent implements OnDestroy, AfterViewChecked {
   @ViewChild(PaginatorComponent) paginatorComponent: PaginatorComponent;
 
   pageIndex: number = 0;
@@ -31,7 +31,7 @@ export class PersonalComponent implements OnDestroy, AfterViewChecked {
   selection = new SelectionModel<PersonalEntry>(true, []);
 
   constructor(
-    private dispatcherService: PersonalService,
+    private dispatcherService: DriversService,
     private cdRef: ChangeDetectorRef
   ) {}
 

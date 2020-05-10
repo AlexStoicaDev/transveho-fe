@@ -7,7 +7,7 @@ import { PersonalEntriesPage } from '@transveho-core';
 @Injectable({
   providedIn: 'root'
 })
-export class PersonalService {
+export class DriversService {
   constructor(private _httpClient: HttpClient) {}
 
   public loadPaginatedEntries(page: number): Observable<PersonalEntriesPage> {
