@@ -1,25 +1,33 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { UserInfo } from './user-info';
-import { map, take, tap } from 'rxjs/operators';
-import { Router } from '@angular/router';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {UserInfo} from './user-info';
+import {tap} from 'rxjs/operators';
+import {Router} from '@angular/router';
 
-const AUTH_API = 'http://localhost:8080/transveho/auth/';
-
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AuthenticationService {
-  currentUser = new BehaviorSubject<UserInfo>(null);
+  private currentUserSubject : BehaviorSubject<UserInfo>;
+  public currentUser: Observable<UserInfo>;
 
-  constructor(private router: Router, private httpClient: HttpClient) {}
+  constructor(private router: Router, private httpClient: HttpClient) {
+    this.currentUserSubject = new BehaviorSubject<UserInfo>(JSON.parse(localStorage.getItem('userInfo')));
+    this.currentUser = this.currentUserSubject.asObservable();
+  }
+
+  public get currentUserValue():UserInfo{
+    return this.currentUserSubject.value;
+  }
 
   public logIn(username: string, password: string): Observable<UserInfo> {
-    return this.httpClient.post<UserInfo>(AUTH_API + 'login', {
+    return this.httpClient.post<UserInfo>( 'auth/login', {
       password: password,
       username: username
-    });
+    }).pipe(tap(userInfo=>{
+      localStorage.setItem('userInfo', JSON.stringify(userInfo));
+      this.currentUserSubject.next(userInfo);
+      return userInfo;
+    }));
   }
 
   public register(
@@ -28,35 +36,21 @@ export class AuthenticationService {
     email: string,
     role: string
   ) {
-    return this.httpClient.post<UserInfo>(AUTH_API + 'register', {
+    return this.httpClient.post<UserInfo>( 'auth/register', {
       password: password,
       username: username
     });
   }
 
-  public handleAuthentication(userInfo: UserInfo) {
-    this.currentUser.next(userInfo);
-    localStorage.setItem('userInfo', JSON.stringify(userInfo));
-  }
-
   public logout() {
-    this.currentUser.next(null);
+    this.currentUserSubject.next(null);
     localStorage.removeItem('userInfo');
     this.router.navigate(['/auth/login']);
   }
 
   //TODO improve, what if user manually ads a random token
-  public userIsAuthenticated(): boolean {
-    // return this.currentUser.pipe(
-    //   map(user => !!user),
-    //   tap(userIsAuthenticated => {
-    //     if (!userIsAuthenticated) {
-    //       this.router.navigate(['/auth/login']);
-    //     }
-    //   })
-    // )
-    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-    return !!userInfo && userInfo.token;
+  public isUserAuthenticated(): boolean {
+    return !!this.currentUserValue && !!this.currentUserValue.token;
   }
 
   public userHasRole(role: string): boolean {

@@ -1,13 +1,7 @@
-import {
-  HttpEvent,
-  HttpHandler,
-  HttpInterceptor,
-  HttpRequest
-} from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Injectable } from '@angular/core';
-import { AuthenticationService } from '../authentication/authentication.service';
-import { exhaustMap, take } from 'rxjs/operators';
+import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {Injectable} from '@angular/core';
+import {AuthenticationService} from '../authentication/authentication.service';
 
 const AUTH_API = 'http://localhost:8080/transveho/';
 
@@ -21,29 +15,22 @@ export class HttpProxyInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     const url: string = request.url;
 
-    if (url.includes('auth')) {
-      return next.handle(request);
+
+    let currentUser = this.authenticationService.currentUserValue;
+    if (currentUser && currentUser.token) {
+      request = request.clone({
+        url: AUTH_API + url,
+        setHeaders: {
+          Authorization: `Bearer ${currentUser.token}`,
+          ContentType: 'application/json'
+        }
+      });
+    }else{
+      request = request.clone({
+        url: AUTH_API + url,
+      });
     }
+    return next.handle(request);
 
-    let newRequest: HttpRequest<any>;
-    let params = {};
-    const body = request.body;
-
-    const data = new URLSearchParams();
-    data.set('body', JSON.stringify(body));
-
-    return this.authenticationService.currentUser.pipe(
-      take(1),
-      exhaustMap(user => {
-        newRequest = request.clone({
-          url: AUTH_API + url,
-          setParams: params,
-          setHeaders: {
-            Authorization: user.tokenType + ' ' + user.token
-          }
-        });
-        return next.handle(newRequest);
-      })
-    );
   }
 }
