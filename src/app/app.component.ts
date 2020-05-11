@@ -1,7 +1,6 @@
-import { Component, ViewEncapsulation } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { AuthenticationService } from '@transveho-core';
-import { map } from 'rxjs/operators';
+import {Component, ViewEncapsulation} from '@angular/core';
+import {Subscription} from 'rxjs';
+import {AuthenticationService} from '@transveho-core';
 
 @Component({
   selector: 'app-root',
@@ -10,14 +9,12 @@ import { map } from 'rxjs/operators';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
-  isAuthenticated = false;
+  isUserAuthenticated: boolean;
   private userSubscription: Subscription;
 
   constructor(private authenticationService: AuthenticationService) {
-    this.userSubscription = this.authenticationService.currentUser
-      .pipe(map(user => !!user))
-      .subscribe(isAuthenticated => {
-        this.isAuthenticated = isAuthenticated;
-      });
+    this.userSubscription = this.authenticationService.currentUser.subscribe(currentUser => {
+      this.isUserAuthenticated = !!currentUser
+    });
   }
 }

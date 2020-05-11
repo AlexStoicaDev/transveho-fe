@@ -18,9 +18,6 @@ export class LoginPageComponent implements OnInit {
     private router: Router,
     private authenticationService: AuthenticationService
   ) {
-    // if (this.authenticationService.currentUser) {
-    //   this.router.navigate(['/']);
-    // }
   }
 
   ngOnInit(): void {
@@ -38,9 +35,10 @@ export class LoginPageComponent implements OnInit {
     this.authenticationService
       .logIn(formControls.username.value, formControls.password.value)
       .pipe(first())
-      .subscribe(userData => {
-        this.authenticationService.handleAuthentication(userData);
+      .subscribe(_userData => {
         this.router.navigate(['/']);
+      },error=>{
+        console.log(error);
       });
   }
 }

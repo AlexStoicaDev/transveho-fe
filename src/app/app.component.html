@@ -1,10 +1,7 @@
-<!--<div *ngIf="isAuthenticated">-->
-<!--  <top-nav></top-nav>-->
-<!--</div>-->
-<div>
+<div *ngIf="isUserAuthenticated">
   <top-nav></top-nav>
 </div>
 <router-outlet></router-outlet>
-<div *ngIf="isAuthenticated">
+<div *ngIf="isUserAuthenticated">
   <footer></footer>
 </div>
