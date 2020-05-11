@@ -1,9 +1,13 @@
 export enum PersonalStatus {
-  available = 'disponibil',
-  onPaidLeave = 'concediu',
-  medicalLeave = 'concediu medical',
-  dayOf = 'zi libera',
-  unavailable = 'fost angajat'
+  Available, DayOff, Holiday, Medical, Former
+}
+
+export enum SpokenLanguages{
+  RO, EN, FR, DE, IT, ES
+}
+
+export enum PersonalRole{
+  ADMIN, DISPATCHER, DRIVER
 }
 
 export interface PersonalEntriesPage {

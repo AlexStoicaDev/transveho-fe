@@ -11,7 +11,7 @@ export const ELEMENT_DATA_1: PersonalEntry[] = [
     phoneNumber: '1234567890123',
     driversLicenceCategory: 'A, B',
     knownForeignLanguages: 'engleza, germana',
-    status: PersonalStatus.available
+    status: PersonalStatus.Available
   },
   {
     surname: 'Maria',
@@ -23,7 +23,7 @@ export const ELEMENT_DATA_1: PersonalEntry[] = [
     phoneNumber: '1234567890123',
     driversLicenceCategory: 'A, B',
     knownForeignLanguages: 'engleza, germana',
-    status: PersonalStatus.available
+    status: PersonalStatus.Available
   },
   {
     surname: 'Maria',
@@ -35,7 +35,7 @@ export const ELEMENT_DATA_1: PersonalEntry[] = [
     phoneNumber: '1234567890123',
     driversLicenceCategory: 'A, B',
     knownForeignLanguages: 'engleza, germana',
-    status: PersonalStatus.unavailable
+    status: PersonalStatus.DayOff
   },
   {
     surname: 'Maria',
@@ -47,7 +47,7 @@ export const ELEMENT_DATA_1: PersonalEntry[] = [
     phoneNumber: '1234567890123',
     driversLicenceCategory: 'A, B',
     knownForeignLanguages: 'engleza, germana',
-    status: PersonalStatus.onPaidLeave
+    status: PersonalStatus.Holiday
   },
   {
     surname: 'Maria',
@@ -59,7 +59,7 @@ export const ELEMENT_DATA_1: PersonalEntry[] = [
     phoneNumber: '1234567890123',
     driversLicenceCategory: 'A, B',
     knownForeignLanguages: 'engleza, germana',
-    status: PersonalStatus.medicalLeave
+    status: PersonalStatus.Medical
   },
   {
     surname: 'Maria',
@@ -71,7 +71,7 @@ export const ELEMENT_DATA_1: PersonalEntry[] = [
     phoneNumber: '1234567890123',
     driversLicenceCategory: 'A, B',
     knownForeignLanguages: 'engleza, germana',
-    status: PersonalStatus.onPaidLeave
+    status: PersonalStatus.Holiday
   },
   {
     surname: 'Maria',
@@ -83,7 +83,7 @@ export const ELEMENT_DATA_1: PersonalEntry[] = [
     phoneNumber: '1234567890123',
     driversLicenceCategory: 'A, B',
     knownForeignLanguages: 'engleza, germana',
-    status: PersonalStatus.available
+    status: PersonalStatus.Available
   },
   {
     surname: 'Maria',
@@ -95,7 +95,7 @@ export const ELEMENT_DATA_1: PersonalEntry[] = [
     phoneNumber: '1234567890123',
     driversLicenceCategory: 'A, B',
     knownForeignLanguages: 'engleza, germana',
-    status: PersonalStatus.available
+    status: PersonalStatus.Available
   },
   {
     surname: 'Maria',
@@ -107,7 +107,7 @@ export const ELEMENT_DATA_1: PersonalEntry[] = [
     phoneNumber: '1234567890123',
     driversLicenceCategory: 'A, B',
     knownForeignLanguages: 'engleza, germana',
-    status: PersonalStatus.dayOf
+    status: PersonalStatus.DayOff
   },
   {
     surname: 'Maria',
@@ -119,7 +119,7 @@ export const ELEMENT_DATA_1: PersonalEntry[] = [
     phoneNumber: '1234567890123',
     driversLicenceCategory: 'A, B',
     knownForeignLanguages: 'engleza, germana',
-    status: PersonalStatus.unavailable
+    status: PersonalStatus.DayOff
   }
 ];
 
@@ -134,7 +134,7 @@ export const ELEMENT_DATA_2: PersonalEntry[] = [
     phoneNumber: '1234567890123',
     driversLicenceCategory: 'A, B',
     knownForeignLanguages: 'engleza, germana',
-    status: PersonalStatus.available
+    status: PersonalStatus.Available
   },
   {
     surname: 'Maria',
@@ -146,7 +146,7 @@ export const ELEMENT_DATA_2: PersonalEntry[] = [
     phoneNumber: '1234567890123',
     driversLicenceCategory: 'A, B',
     knownForeignLanguages: 'engleza, germana',
-    status: PersonalStatus.medicalLeave
+    status: PersonalStatus.Medical
   },
   {
     surname: 'Maria',
@@ -158,7 +158,7 @@ export const ELEMENT_DATA_2: PersonalEntry[] = [
     phoneNumber: '1234567890123',
     driversLicenceCategory: 'A, B',
     knownForeignLanguages: 'engleza, germana',
-    status: PersonalStatus.unavailable
+    status: PersonalStatus.DayOff
   },
   {
     surname: 'Maria',
@@ -170,7 +170,7 @@ export const ELEMENT_DATA_2: PersonalEntry[] = [
     phoneNumber: '1234567890123',
     driversLicenceCategory: 'A, B',
     knownForeignLanguages: 'engleza, germana',
-    status: PersonalStatus.onPaidLeave
+    status: PersonalStatus.Holiday
   },
   {
     surname: 'Maria',
@@ -182,7 +182,7 @@ export const ELEMENT_DATA_2: PersonalEntry[] = [
     phoneNumber: '1234567890123',
     driversLicenceCategory: 'A, B',
     knownForeignLanguages: 'engleza, germana',
-    status: PersonalStatus.available
+    status: PersonalStatus.Available
   },
   {
     surname: 'Maria',
@@ -194,7 +194,7 @@ export const ELEMENT_DATA_2: PersonalEntry[] = [
     phoneNumber: '1234567890123',
     driversLicenceCategory: 'A, B',
     knownForeignLanguages: 'engleza, germana',
-    status: PersonalStatus.onPaidLeave
+    status: PersonalStatus.Holiday
   },
   {
     surname: 'Maria',
@@ -206,7 +206,7 @@ export const ELEMENT_DATA_2: PersonalEntry[] = [
     phoneNumber: '1234567890123',
     driversLicenceCategory: 'A, B',
     knownForeignLanguages: 'engleza, germana',
-    status: PersonalStatus.available
+    status: PersonalStatus.Available
   },
   {
     surname: 'Maria',
@@ -218,7 +218,7 @@ export const ELEMENT_DATA_2: PersonalEntry[] = [
     phoneNumber: '1234567890123',
     driversLicenceCategory: 'A, B',
     knownForeignLanguages: 'engleza, germana',
-    status: PersonalStatus.available
+    status: PersonalStatus.Available
   },
   {
     surname: 'Maria',
@@ -230,7 +230,7 @@ export const ELEMENT_DATA_2: PersonalEntry[] = [
     phoneNumber: '1234567890123',
     driversLicenceCategory: 'A, B',
     knownForeignLanguages: 'engleza, germana',
-    status: PersonalStatus.available
+    status: PersonalStatus.Available
   },
   {
     surname: 'Maria',
@@ -242,6 +242,6 @@ export const ELEMENT_DATA_2: PersonalEntry[] = [
     phoneNumber: '1234567890123',
     driversLicenceCategory: 'A, B',
     knownForeignLanguages: 'engleza, germana',
-    status: PersonalStatus.unavailable
+    status: PersonalStatus.DayOff
   }
 ];

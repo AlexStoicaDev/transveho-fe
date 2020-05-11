@@ -1,14 +1,12 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { ELEMENT_DATA_1, ELEMENT_DATA_2 } from './mock-data';
-import { PersonalEntriesPage } from '@transveho-core';
+import {Injectable} from '@angular/core';
+import {Observable, of} from 'rxjs';
+import {ELEMENT_DATA_1, ELEMENT_DATA_2} from './mock-data';
+import {Driver, OccDriversService, PersonalEntriesPage} from '@transveho-core';
+import {map} from "rxjs/operators";
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class DriversService {
-  constructor(private _httpClient: HttpClient) {}
+  constructor(private readonly occDriversService: OccDriversService) {}
 
   public loadPaginatedEntries(page: number): Observable<PersonalEntriesPage> {
     let result: Observable<PersonalEntriesPage>;
@@ -18,5 +16,13 @@ export class DriversService {
       result = of({ dispatcherEntries: ELEMENT_DATA_2, pageNumber: 1 });
     }
     return result;
+  }
+
+  public loadAllDrivers():Observable<Driver[]>{
+    return this.occDriversService.getAllDrivers().pipe(map(response=>{
+      console.log(response);
+      debugger
+      return response;
+    }));
   }
 }

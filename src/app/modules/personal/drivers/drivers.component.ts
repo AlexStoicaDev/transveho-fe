@@ -1,59 +1,53 @@
-import {
-  AfterViewChecked,
-  ChangeDetectorRef,
-  Component,
-  OnDestroy,
-  OnInit,
-  ViewChild
-} from '@angular/core';
-import { PaginatorComponent } from '@transveho-shared';
-import { catchError, map, startWith, switchMap } from 'rxjs/operators';
-import { of, Subscription } from 'rxjs';
-import { SelectionModel } from '@angular/cdk/collections';
-import { PersonalEntriesPage } from '@transveho-core';
-import { PersonalEntry } from '@transveho-core';
-import { columnsToDisplay } from './columns-to-display';
-import { DriversService } from './service/drivers.service';
+import {AfterViewInit, ChangeDetectorRef, Component, OnDestroy, ViewChild} from '@angular/core';
+import {PaginatorComponent} from '@transveho-shared';
+import {catchError, startWith, switchMap} from 'rxjs/operators';
+import {of, Subscription} from 'rxjs';
+import {SelectionModel} from '@angular/cdk/collections';
+import {Driver} from '@transveho-core';
+import {columnsToDisplay} from './columns-to-display';
+import {DriversService} from './service/drivers.service';
 
 @Component({
   selector: 'personal',
   templateUrl: './drivers.component.html',
   styleUrls: ['./drivers.component.scss']
 })
-export class DriversComponent implements OnDestroy, AfterViewChecked {
+export class DriversComponent implements OnDestroy, AfterViewInit {
   @ViewChild(PaginatorComponent) paginatorComponent: PaginatorComponent;
 
   pageIndex: number = 0;
-  dataSource: PersonalEntry[];
+  dataSource: Driver[];
   columnsToDisplay = columnsToDisplay;
   headerColumns = columnsToDisplay.map(column => column.elementPropertyName);
   dispatcherServiceSubscription: Subscription;
-  selection = new SelectionModel<PersonalEntry>(true, []);
+  selection = new SelectionModel<Driver>(true, []);
 
   constructor(
-    private dispatcherService: DriversService,
+    private driversService: DriversService,
     private cdRef: ChangeDetectorRef
   ) {}
 
-  ngAfterViewChecked() {
+  ngAfterViewInit() {
     this.dispatcherServiceSubscription = this.paginatorComponent.matPaginator.page
       .pipe(
         startWith({}),
-        switchMap(() => {
-          return this.dispatcherService.loadPaginatedEntries(
-            this.paginatorComponent.matPaginator.pageIndex
-          );
+        switchMap(() => {this.pageIndex =1;
+       return  this.driversService.loadAllDrivers();
+          // return this.driversService.loadPaginatedEntries(
+          //   this.paginatorComponent.matPaginator.pageIndex
+          // );
         }),
-        map((page: PersonalEntriesPage) => {
-          this.pageIndex = page.pageNumber;
-          return page.dispatcherEntries;
-        }),
+        // map((page: PersonalEntriesPage) => {
+        //   this.pageIndex = page.pageNumber;
+        //   return page.dispatcherEntries;
+        // }),
         catchError(() => {
           return of([]);
         })
       )
-      .subscribe(dispatcherEntries => (this.dataSource = dispatcherEntries));
-    this.cdRef.detectChanges();
+      .subscribe(dispatcherEntries => {
+        this.dataSource = dispatcherEntries}
+        );
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
@@ -71,7 +65,7 @@ export class DriversComponent implements OnDestroy, AfterViewChecked {
   }
 
   /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: PersonalEntry): string {
+  checkboxLabel(row?: Driver): string {
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
