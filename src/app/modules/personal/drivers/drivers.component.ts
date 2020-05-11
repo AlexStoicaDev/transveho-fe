@@ -12,6 +12,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { Driver } from '@transveho-core';
 import { columnsToDisplay } from './columns-to-display';
 import { DriversService } from './service/drivers.service';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'personal',
@@ -22,16 +23,14 @@ export class DriversComponent implements OnDestroy, AfterViewInit {
   @ViewChild(PaginatorComponent) paginatorComponent: PaginatorComponent;
 
   pageIndex: number = 0;
-  dataSource: Driver[];
+  dataSource = new MatTableDataSource<Driver>([]);
   columnsToDisplay = columnsToDisplay;
   headerColumns = columnsToDisplay.map(column => column.elementPropertyName);
   loadAllDriversSubscription: Subscription;
   selection = new SelectionModel<Driver>(true, []);
+  perFormActionsOnDriver: Driver = null;
 
-  constructor(
-    private driversService: DriversService,
-    private cdRef: ChangeDetectorRef
-  ) {}
+  constructor(private driversService: DriversService) {}
 
   ngAfterViewInit() {
     this.loadAllDriversSubscription = this.paginatorComponent.matPaginator.page
@@ -46,14 +45,14 @@ export class DriversComponent implements OnDestroy, AfterViewInit {
         })
       )
       .subscribe(driversArray => {
-        this.dataSource = driversArray;
+        this.dataSource.data = driversArray;
       });
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
     const numSelected = this.selection.selected.length;
-    const numRows = this.dataSource.length;
+    const numRows = this.dataSource.data.length;
     return numSelected === numRows;
   }
 
@@ -61,7 +60,7 @@ export class DriversComponent implements OnDestroy, AfterViewInit {
   masterToggle() {
     this.isAllSelected()
       ? this.selection.clear()
-      : this.dataSource.forEach(row => this.selection.select(row));
+      : this.dataSource.data.forEach(row => this.selection.select(row));
   }
 
   /** The label for the checkbox on the passed row */
@@ -70,18 +69,34 @@ export class DriversComponent implements OnDestroy, AfterViewInit {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${
-      this.dataSource.indexOf(row) + 1
+      this.dataSource.data.indexOf(row) + 1
     }`;
+  }
+
+  openActionPopup(clickEvent, element: Driver) {
+    clickEvent.stopPropagation();
+    this.perFormActionsOnDriver = element;
+  }
+
+  //TODO add modal for confirmation
+  deleteDriver() {
+    const elementIndex: number = this.dataSource.data.indexOf(
+      this.perFormActionsOnDriver
+    );
+    if (elementIndex > -1) {
+      this.driversService
+        .deleteDriver(this.perFormActionsOnDriver.username)
+        .subscribe(() => {
+          this.dataSource.data = this.dataSource.data
+            .slice(0, elementIndex)
+            .concat(this.dataSource.data.slice(elementIndex + 1));
+        });
+    }
   }
 
   ngOnDestroy(): void {
     if (this.loadAllDriversSubscription) {
       this.loadAllDriversSubscription.unsubscribe();
     }
-    this.cdRef.detach();
-  }
-
-  openActionPopup(clickEvent) {
-    clickEvent.stopPropagation();
   }
 }

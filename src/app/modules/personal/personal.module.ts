@@ -13,10 +13,12 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { SharedModule } from '@transveho-shared';
 import { OccDriversModule } from '@transveho-core';
 import { DriversService } from './drivers/service/drivers.service';
+import { OccUsersModule } from '../../core/occ/services/users/occ-users.module';
 
 @NgModule({
   declarations: [routedComponents],
   imports: [
+    OccUsersModule,
     OccDriversModule,
     PersonalRoutingModule,
     MatTableModule,

@@ -8,6 +8,7 @@ import { DeleteButtonComponent } from './delete-button/delete-button.component';
 import { PaginatorComponent } from './paginator/paginator.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { CommonModule } from '@angular/common';
+import { DeleteModalComponent } from './delete-modal/delete-modal.component';
 
 @NgModule({
   imports: [RouterModule, CommonModule, MatPaginatorModule],
@@ -17,7 +18,8 @@ import { CommonModule } from '@angular/common';
     PaginatorComponent,
     StatusBarComponent,
     EditButtonComponent,
-    DeleteButtonComponent
+    DeleteButtonComponent,
+    DeleteModalComponent
   ],
   exports: [
     FooterComponent,
@@ -25,7 +27,8 @@ import { CommonModule } from '@angular/common';
     PaginatorComponent,
     StatusBarComponent,
     EditButtonComponent,
-    DeleteButtonComponent
+    DeleteButtonComponent,
+    DeleteModalComponent
   ]
 })
 export class SharedModule {}
