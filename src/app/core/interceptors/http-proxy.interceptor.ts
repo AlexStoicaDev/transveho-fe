@@ -1,7 +1,12 @@
-import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {Injectable} from '@angular/core';
-import {AuthenticationService} from '../authentication/authentication.service';
+import {
+  HttpEvent,
+  HttpHandler,
+  HttpInterceptor,
+  HttpRequest
+} from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { AuthenticationService } from '../authentication/authentication.service';
 
 const AUTH_API = 'http://localhost:8080/transveho/';
 
@@ -15,7 +20,6 @@ export class HttpProxyInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     const url: string = request.url;
 
-
     let currentUser = this.authenticationService.currentUserValue;
     if (currentUser && currentUser.token) {
       request = request.clone({
@@ -25,12 +29,11 @@ export class HttpProxyInterceptor implements HttpInterceptor {
           ContentType: 'application/json'
         }
       });
-    }else{
+    } else {
       request = request.clone({
-        url: AUTH_API + url,
+        url: AUTH_API + url
       });
     }
     return next.handle(request);
-
   }
 }

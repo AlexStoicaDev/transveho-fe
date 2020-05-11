@@ -1,6 +1,6 @@
-import {Component, ViewEncapsulation} from '@angular/core';
-import {Subscription} from 'rxjs';
-import {AuthenticationService} from '@transveho-core';
+import { Component, ViewEncapsulation } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { AuthenticationService } from '@transveho-core';
 
 @Component({
   selector: 'app-root',
@@ -13,8 +13,10 @@ export class AppComponent {
   private userSubscription: Subscription;
 
   constructor(private authenticationService: AuthenticationService) {
-    this.userSubscription = this.authenticationService.currentUser.subscribe(currentUser => {
-      this.isUserAuthenticated = !!currentUser
-    });
+    this.userSubscription = this.authenticationService.currentUser.subscribe(
+      currentUser => {
+        this.isUserAuthenticated = !!currentUser;
+      }
+    );
   }
 }

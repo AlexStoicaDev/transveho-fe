@@ -1,33 +1,39 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {BehaviorSubject, Observable} from 'rxjs';
-import {UserInfo} from './user-info';
-import {tap} from 'rxjs/operators';
-import {Router} from '@angular/router';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { UserInfo } from './user-info';
+import { tap } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthenticationService {
-  private currentUserSubject : BehaviorSubject<UserInfo>;
+  private currentUserSubject: BehaviorSubject<UserInfo>;
   public currentUser: Observable<UserInfo>;
 
   constructor(private router: Router, private httpClient: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<UserInfo>(JSON.parse(localStorage.getItem('userInfo')));
+    this.currentUserSubject = new BehaviorSubject<UserInfo>(
+      JSON.parse(localStorage.getItem('userInfo'))
+    );
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
-  public get currentUserValue():UserInfo{
+  public get currentUserValue(): UserInfo {
     return this.currentUserSubject.value;
   }
 
   public logIn(username: string, password: string): Observable<UserInfo> {
-    return this.httpClient.post<UserInfo>( 'auth/login', {
-      password: password,
-      username: username
-    }).pipe(tap(userInfo=>{
-      localStorage.setItem('userInfo', JSON.stringify(userInfo));
-      this.currentUserSubject.next(userInfo);
-      return userInfo;
-    }));
+    return this.httpClient
+      .post<UserInfo>('auth/login', {
+        password: password,
+        username: username
+      })
+      .pipe(
+        tap(userInfo => {
+          localStorage.setItem('userInfo', JSON.stringify(userInfo));
+          this.currentUserSubject.next(userInfo);
+          return userInfo;
+        })
+      );
   }
 
   public register(
@@ -36,7 +42,7 @@ export class AuthenticationService {
     email: string,
     role: string
   ) {
-    return this.httpClient.post<UserInfo>( 'auth/register', {
+    return this.httpClient.post<UserInfo>('auth/register', {
       password: password,
       username: username
     });

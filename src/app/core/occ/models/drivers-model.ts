@@ -1,4 +1,8 @@
-import {PersonalRole, PersonalStatus, SpokenLanguages} from "./personal-model";
+import {
+  PersonalRole,
+  PersonalStatus,
+  SpokenLanguages
+} from './personal-model';
 
 export enum DrivingLicenseCategory {
   B,
@@ -20,41 +24,41 @@ export interface Driver {
   /**
    * @member {number} [id]
    */
-  id: number,
+  id: number;
   /**
    * @member {string} [username]
    */
-  username: string,
+  username: string;
   /**
    * @member {string} [email]
    */
-  email: string,
+  email: string;
   /**
    * @member {PersonalRole} [role]
    */
-  role: PersonalRole,
+  role: PersonalRole;
   /**
    * @member {DrivingLicenseCategory} [drivingLicenseCategory]
    */
-  drivingLicenseCategory: DrivingLicenseCategory,
+  drivingLicenseCategory: DrivingLicenseCategory;
   /**
    * @member {SpokenLanguages} [spokenLanguage]
    */
-  spokenLanguage: SpokenLanguages,
+  spokenLanguage: SpokenLanguages;
   /**
    * @member {string} [lastName]
    */
-  lastName: string,
-  /**
-   * @member {string} [phoneNumber]
-   */
-  phoneNumber: string,
+  lastName: string;
   /**
    * @member {string} [firstName]
    */
-  firstName: string,
+  firstName: string;
+  /**
+   * @member {string} [phoneNumber]
+   */
+  phoneNumber: string;
   /**
    * @member {PersonalStatus} [userStatus]
    */
-  userStatus: PersonalStatus
+  userStatus: PersonalStatus;
 }

@@ -1,11 +1,17 @@
-import {AfterViewInit, ChangeDetectorRef, Component, OnDestroy, ViewChild} from '@angular/core';
-import {PaginatorComponent} from '@transveho-shared';
-import {catchError, startWith, switchMap} from 'rxjs/operators';
-import {of, Subscription} from 'rxjs';
-import {SelectionModel} from '@angular/cdk/collections';
-import {Driver} from '@transveho-core';
-import {columnsToDisplay} from './columns-to-display';
-import {DriversService} from './service/drivers.service';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  OnDestroy,
+  ViewChild
+} from '@angular/core';
+import { PaginatorComponent } from '@transveho-shared';
+import { catchError, startWith, switchMap } from 'rxjs/operators';
+import { of, Subscription } from 'rxjs';
+import { SelectionModel } from '@angular/cdk/collections';
+import { Driver } from '@transveho-core';
+import { columnsToDisplay } from './columns-to-display';
+import { DriversService } from './service/drivers.service';
 
 @Component({
   selector: 'personal',
@@ -19,7 +25,7 @@ export class DriversComponent implements OnDestroy, AfterViewInit {
   dataSource: Driver[];
   columnsToDisplay = columnsToDisplay;
   headerColumns = columnsToDisplay.map(column => column.elementPropertyName);
-  dispatcherServiceSubscription: Subscription;
+  loadAllDriversSubscription: Subscription;
   selection = new SelectionModel<Driver>(true, []);
 
   constructor(
@@ -28,26 +34,20 @@ export class DriversComponent implements OnDestroy, AfterViewInit {
   ) {}
 
   ngAfterViewInit() {
-    this.dispatcherServiceSubscription = this.paginatorComponent.matPaginator.page
+    this.loadAllDriversSubscription = this.paginatorComponent.matPaginator.page
       .pipe(
         startWith({}),
-        switchMap(() => {this.pageIndex =1;
-       return  this.driversService.loadAllDrivers();
-          // return this.driversService.loadPaginatedEntries(
-          //   this.paginatorComponent.matPaginator.pageIndex
-          // );
+        switchMap(() => {
+          this.pageIndex = 1;
+          return this.driversService.loadAllDrivers();
         }),
-        // map((page: PersonalEntriesPage) => {
-        //   this.pageIndex = page.pageNumber;
-        //   return page.dispatcherEntries;
-        // }),
         catchError(() => {
           return of([]);
         })
       )
-      .subscribe(dispatcherEntries => {
-        this.dataSource = dispatcherEntries}
-        );
+      .subscribe(driversArray => {
+        this.dataSource = driversArray;
+      });
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
@@ -75,8 +75,8 @@ export class DriversComponent implements OnDestroy, AfterViewInit {
   }
 
   ngOnDestroy(): void {
-    if (this.dispatcherServiceSubscription) {
-      this.dispatcherServiceSubscription.unsubscribe();
+    if (this.loadAllDriversSubscription) {
+      this.loadAllDriversSubscription.unsubscribe();
     }
     this.cdRef.detach();
   }

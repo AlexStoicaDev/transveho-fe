@@ -9,14 +9,14 @@ const routes: Routes = [
     path: 'passengers',
     component: PassengersComponent,
     pathMatch: 'full',
-    canActivate: [ DispatcherGuard,AuthenticationGuard]
+    canActivate: [DispatcherGuard, AuthenticationGuard]
   },
   {
     path: 'cars',
     component: CarsComponent,
     pathMatch: 'full',
-    canActivate: [ DispatcherGuard,AuthenticationGuard]
-  },
+    canActivate: [DispatcherGuard, AuthenticationGuard]
+  }
 ];
 
 @NgModule({

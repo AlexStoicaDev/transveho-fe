@@ -7,6 +7,11 @@ $color-light-green: map-get($main-colors, light-green);
 
 .status {
   color: $color-pure-white;
+
+  &__text {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }
 
 .status-canceled {

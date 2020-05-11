@@ -1,20 +1,18 @@
 export const columnsToDisplay = [
   { elementPropertyName: 'select', romanianTranslation: 'select' },
-  { elementPropertyName: 'surname', romanianTranslation: 'NUME' },
-  { elementPropertyName: 'name', romanianTranslation: 'PRENUME' },
+  { elementPropertyName: 'username', romanianTranslation: 'USERNAME' },
+  { elementPropertyName: 'firstName', romanianTranslation: 'PRENUME' },
+  { elementPropertyName: 'lastName', romanianTranslation: 'NUME' },
   { elementPropertyName: 'email', romanianTranslation: 'EMAIL' },
-  { elementPropertyName: 'address', romanianTranslation: 'ADRESA' },
-  { elementPropertyName: 'cnp', romanianTranslation: 'CNP' },
-  { elementPropertyName: 'series', romanianTranslation: 'SERIE' },
-  { elementPropertyName: 'phoneNumber', romanianTranslation: 'TELEFON' },
   {
-    elementPropertyName: 'driversLicenceCategory',
+    elementPropertyName: 'drivingLicenseCategory',
     romanianTranslation: 'CAT PERMIS'
   },
   {
-    elementPropertyName: 'knownForeignLanguages',
-    romanianTranslation: 'LIMBI STRAINE'
+    elementPropertyName: 'spokenLanguage',
+    romanianTranslation: 'LIMBI VORBITE'
   },
-  { elementPropertyName: 'status', romanianTranslation: 'status' },
-  { elementPropertyName: 'actions', romanianTranslation: 'actions' }
+  { elementPropertyName: 'phoneNumber', romanianTranslation: 'TELEFON' },
+  { elementPropertyName: 'userStatus', romanianTranslation: 'STATUS' },
+  { elementPropertyName: 'actions', romanianTranslation: 'ACTIONS' }
 ];

@@ -1,13 +1,14 @@
 <div
   class="status text-center rounded-pill mx-auto"
   [ngClass]="{
-    'status-canceled': ['fost angajat', 'anulat'].indexOf(status) !== -1,
-    'status-pending':
-      ['concediu', 'concediu medical', 'zi libera', 'in desfasurare'].indexOf(
-        status
-      ) !== -1,
-    'status-done': ['disponibil', 'finalizat'].indexOf(status) !== -1
+    'status-canceled': ['Former'].indexOf(status) !== -1,
+    'status-pending': ['DayOff', 'Holiday', 'Medical'].indexOf(status) !== -1,
+    'status-done': ['Available'].indexOf(status) !== -1
   }"
 >
-  {{ status }}
+  <p class="status__text" *ngIf="status === 'Former'">fost angajat</p>
+  <p class="status__text" *ngIf="status === 'DayOff'">zi libera</p>
+  <p class="status__text" *ngIf="status === 'Holiday'">concediu</p>
+  <p class="status__text" *ngIf="status === 'Medical'">medical</p>
+  <p class="status__text" *ngIf="status === 'Available'">disponibil</p>
 </div>
