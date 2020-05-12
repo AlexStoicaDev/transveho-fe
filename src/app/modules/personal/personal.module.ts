@@ -9,11 +9,11 @@ import { CommonModule } from '@angular/common';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MdePopoverModule } from '@material-extended/mde';
 import { MatCardModule } from '@angular/material/card';
-import { MatDialogModule } from '@angular/material/dialog';
 import { SharedModule } from '@transveho-shared';
 import { OccDriversModule } from '@transveho-core';
 import { DriversService } from './drivers/service/drivers.service';
 import { OccUsersModule } from '../../core/occ/services/users/occ-users.module';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [routedComponents],
@@ -27,7 +27,7 @@ import { OccUsersModule } from '../../core/occ/services/users/occ-users.module';
     MatCheckboxModule,
     MdePopoverModule,
     MatCardModule,
-    MatDialogModule,
+    MatSnackBarModule,
     SharedModule
   ],
   providers: [DriversService]

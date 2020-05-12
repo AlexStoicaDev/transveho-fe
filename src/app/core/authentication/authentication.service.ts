@@ -5,6 +5,7 @@ import { UserInfo } from './user-info';
 import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
+//TODO remove token and logout user when 401 code comes from be
 @Injectable()
 export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<UserInfo>;

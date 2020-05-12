@@ -1,33 +1,30 @@
-<div
-  class="modal fade"
-  id="exampleModal"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">
-          Close
-        </button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
+<div class="text-center">
+  <div
+    class="text-center cross-sign-container d-flex align-items-center rounded-circle mb-2"
+  >
+    <span class="material-icons cross-sign-container__icon">
+      clear
+    </span>
+  </div>
+  <h1 mat-dialog-title>Esti sigur ca vrei sa stergi acest {{ data.name }}?</h1>
+  <div mat-dialog-content>
+    <p>aceasta actiune este permanenta</p>
+  </div>
+  <div mat-dialog-actions>
+    <button
+      mat-button
+      class="modal-button modal-button-cancel"
+      (click)="onCancelClick()"
+    >
+      Anuleaza
+    </button>
+    <button
+      mat-flat-button
+      color="warn"
+      class="modal-button"
+      (click)="onDeleteClick()"
+    >
+      Sterge
+    </button>
   </div>
 </div>

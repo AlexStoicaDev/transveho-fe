@@ -33,10 +33,43 @@ $md-transveho-accent-palette: (
   )
 );
 
+$md-transveho-warn-palette: (
+  50 : #fae2e1,
+  100 : #f3b6b5,
+  200 : #eb8684,
+  300 : #e35653,
+  400 : #dd312e,
+  500 : #d70d09,
+  600 : #d30b08,
+  700 : #cd0906,
+  800 : #c70705,
+  900 : #be0302,
+  A100 : #ffe6e6,
+  A200 : #ffb3b3,
+  A400 : #ff8080,
+  A700 : #ff6767,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #ffffff,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
 @include mat-core();
 
-$my-app-primary: mat-palette($mat-blue-grey);
+$my-app-primary: mat-palette($md-transveho-accent-palette);
 $my-app-accent: mat-palette($md-transveho-accent-palette, 500, 900, A100);
-$my-app-warn: mat-palette($mat-deep-orange);
+$my-app-warn: mat-palette($md-transveho-warn-palette);
 $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
 @include angular-material-theme($my-app-theme);

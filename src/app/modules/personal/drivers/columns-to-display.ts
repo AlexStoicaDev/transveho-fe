@@ -3,7 +3,7 @@ export const columnsToDisplay = [
   { elementPropertyName: 'username', romanianTranslation: 'USERNAME' },
   { elementPropertyName: 'firstName', romanianTranslation: 'PRENUME' },
   { elementPropertyName: 'lastName', romanianTranslation: 'NUME' },
-  { elementPropertyName: 'email', romanianTranslation: 'EMAIL' },
+  { elementPropertyName: 'phoneNumber', romanianTranslation: 'TELEFON' },
   {
     elementPropertyName: 'drivingLicenseCategory',
     romanianTranslation: 'CAT PERMIS'
@@ -12,7 +12,7 @@ export const columnsToDisplay = [
     elementPropertyName: 'spokenLanguage',
     romanianTranslation: 'LIMBI VORBITE'
   },
-  { elementPropertyName: 'phoneNumber', romanianTranslation: 'TELEFON' },
+  { elementPropertyName: 'email', romanianTranslation: 'EMAIL' },
   { elementPropertyName: 'userStatus', romanianTranslation: 'STATUS' },
   { elementPropertyName: 'actions', romanianTranslation: 'ACTIONS' }
 ];

@@ -1,0 +1,27 @@
+@import '../../../assets/styles/colors';
+
+$color-pure-white: map-get($main-colors, pure-white);
+$color-light-red: map-get($main-colors, light-red);
+$color-dark-red: map-get($main-colors, dark-red);
+
+.cross-sign-container {
+  border: 1.5px solid $color-dark-red;
+  height: 50px;
+  width: 50px;
+  margin: 0 auto;
+
+  &__icon {
+    margin: 0 auto;
+    color: $color-dark-red;
+  }
+}
+
+.modal-button {
+  &:focus {
+    outline: none;
+  }
+}
+
+.modal-button-cancel {
+  margin-left: 10px;
+}
