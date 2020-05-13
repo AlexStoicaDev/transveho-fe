@@ -1,0 +1,7 @@
+@import '../../../assets/styles/colors';
+
+$color-dark-red: map-get($main-colors, dark-red);
+
+.user-status-former-option {
+  color: $color-dark-red;
+}

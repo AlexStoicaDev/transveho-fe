@@ -15,6 +15,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { EditUserModalComponent } from './edit-user-modal/edit-user-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { CreateUserModalComponent } from './create-user-modal/create-user-modal.component';
+import { UserFormComponent } from './user-form/user-form.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   imports: [
@@ -26,7 +29,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatButtonModule,
     FormsModule,
     MatFormFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectModule
   ],
   declarations: [
     FooterComponent,
@@ -36,7 +40,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     EditButtonComponent,
     DeleteButtonComponent,
     DeleteModalComponent,
-    EditUserModalComponent
+    EditUserModalComponent,
+    CreateUserModalComponent,
+    UserFormComponent
   ],
   exports: [
     FooterComponent,

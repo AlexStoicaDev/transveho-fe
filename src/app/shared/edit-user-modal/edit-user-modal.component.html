@@ -1,39 +1,14 @@
-<div class="p-4">
+<div class="px-4">
   <h1 mat-dialog-title>Buna</h1>
-  <div mat-dialog-content>
+  <div>
     <p>
       Vrei sa editezi userul
       <span class="username">{{ data.user.username }}</span> ?
     </p>
-
-    <form [formGroup]="editFormGroup" class="py-3" (ngSubmit)="onSubmit()">
-      <mat-form-field class="w-100">
-        <mat-label>username</mat-label>
-        <input matInput id="username" formControlName="username" />
-      </mat-form-field>
-      <mat-form-field class="w-100">
-        <mat-label>email</mat-label>
-        <input
-          matInput
-          id="email"
-          formControlName="email"
-          value="{{ data.user.email }}"
-        />
-      </mat-form-field>
-      <mat-form-field class="w-100">
-        <mat-label>nume</mat-label>
-        <input matInput id="lastName" formControlName="lastName" />
-      </mat-form-field>
-      <mat-form-field class="w-100">
-        <mat-label>prenume</mat-label>
-        <input matInput id="firstName" formControlName="firstName" />
-      </mat-form-field>
-      <mat-form-field class="w-100">
-        <mat-label>numar de telefon</mat-label>
-        <input matInput id="phoneNumber" formControlName="phoneNumber" />
-      </mat-form-field>
-      <button class="d-none" type="submit" #hiddenSubmitButton></button>
-    </form>
+    <user-form
+      [user]="this.data?.user"
+      (onSubmitOutput)="onEnterSubmit($event)"
+    ></user-form>
   </div>
   <div mat-dialog-actions class="row">
     <button class="col w-75 modal-button" mat-button (click)="onCancelClick()">
@@ -42,8 +17,8 @@
     <button
       class="col w-75 modal-button edit-button"
       mat-flat-button
-      [disabled]="editFormGroup.invalid"
-      (click)="onSubmit()"
+      [disabled]="!isUserFormValid()"
+      (click)="onEditButtonClick()"
     >
       Editeaza
     </button>

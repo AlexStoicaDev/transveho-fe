@@ -1,0 +1,59 @@
+<form [formGroup]="userFormGroup" class="py-3" (ngSubmit)="onSubmit()">
+  <mat-form-field class="w-100">
+    <mat-label>username</mat-label>
+    <input matInput id="username" formControlName="username" />
+  </mat-form-field>
+  <mat-form-field class="w-100">
+    <mat-label>email</mat-label>
+    <input matInput id="email" formControlName="email" />
+  </mat-form-field>
+  <mat-form-field class="w-100">
+    <mat-label>nume</mat-label>
+    <input matInput id="lastName" formControlName="lastName" />
+  </mat-form-field>
+  <mat-form-field class="w-100">
+    <mat-label>prenume</mat-label>
+    <input matInput id="firstName" formControlName="firstName" />
+  </mat-form-field>
+  <mat-form-field class="w-100">
+    <mat-label>numar de telefon</mat-label>
+    <input matInput id="phoneNumber" formControlName="phoneNumber" />
+  </mat-form-field>
+  <mat-form-field class="w-100">
+    <mat-label>categorie permis</mat-label>
+    <mat-select
+      id="driverLicenceCategory"
+      formControlName="driverLicenseCategory"
+    >
+      <mat-option
+        *ngFor="let driverLicenceCategory of drivingLicenseCategories"
+        [value]="driverLicenceCategory"
+      >
+        {{ driverLicenceCategory }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="w-100">
+    <mat-label>limbi vorbite</mat-label>
+    <mat-select id="spokenLanguages" formControlName="spokenLanguages">
+      <mat-option
+        *ngFor="let spokenLanguage of spokenLanguages"
+        [value]="spokenLanguage"
+      >
+        {{ spokenLanguage }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="w-100">
+    <mat-label>status</mat-label>
+    <mat-select id="userStatus" formControlName="userStatus">
+      <mat-option value="Available">disponibil</mat-option>
+      <mat-option value="DayOff">zi libera</mat-option>
+      <mat-option value="Holiday">concediu</mat-option>
+      <mat-option value="Medical">medical</mat-option>
+      <mat-option class="user-status-former-option" value="Former"
+        >fost angajat</mat-option
+      >
+    </mat-select>
+  </mat-form-field>
+</form>
