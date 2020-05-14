@@ -6,13 +6,13 @@ import {
 } from '@transveho-shared';
 import { catchError, startWith, switchMap } from 'rxjs/operators';
 import { of, Subscription } from 'rxjs';
-import { SelectionModel } from '@angular/cdk/collections';
 import { Personal } from '@transveho-core';
 import { columnsToDisplay } from './columns-to-display';
 import { DriversService } from './service/drivers.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { CreateUserModalComponent } from '../../../shared/create-user-modal/create-user-modal.component';
 
 @Component({
   selector: 'personal',
@@ -27,8 +27,7 @@ export class DriversComponent implements OnDestroy, AfterViewInit {
   columnsToDisplay = columnsToDisplay;
   headerColumns = columnsToDisplay.map(column => column.elementPropertyName);
   loadAllDriversSubscription: Subscription;
-  selection = new SelectionModel<Personal>(true, []);
-  perFormActionsOnDriver: Personal = null;
+  performActionsOnDriver: Personal = null;
 
   constructor(
     private driversService: DriversService,
@@ -53,40 +52,47 @@ export class DriversComponent implements OnDestroy, AfterViewInit {
       });
   }
 
-  /** Whether the number of selected elements matches the total number of rows. */
-  isAllSelected() {
-    const numSelected = this.selection.selected.length;
-    const numRows = this.dataSource.data.length;
-    return numSelected === numRows;
-  }
-
-  /** Selects all rows if they are not all selected; otherwise clear selection. */
-  masterToggle() {
-    this.isAllSelected()
-      ? this.selection.clear()
-      : this.dataSource.data.forEach(row => this.selection.select(row));
-  }
-
-  /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: Personal): string {
-    if (!row) {
-      return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
-    }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${
-      this.dataSource.data.indexOf(row) + 1
-    }`;
-  }
-
   openActionPopup(clickEvent, element: Personal) {
     clickEvent.stopPropagation();
-    this.perFormActionsOnDriver = element;
+    this.performActionsOnDriver = element;
   }
 
   private getElementIndexInDatasource() {
-    return this.dataSource.data.indexOf(this.perFormActionsOnDriver);
+    return this.dataSource.data.indexOf(this.performActionsOnDriver);
   }
 
-  deleteDriver() {
+  openCreateDriverModal() {
+    if (!this.dialog.getDialogById('createUserModal')) {
+      const dialogRef = this.dialog.open(CreateUserModalComponent, {
+        id: 'createUserModal',
+        width: '500px',
+        data: { userType: 'driver' }
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        if (result?.action === 'create') {
+          this.createDriver(result.newUser);
+        }
+      });
+    }
+  }
+
+  createDriver(newDriver: Personal) {
+    this.driversService.createDriver(newDriver).subscribe(newDriver => {
+      this.addDriverAtBeggingOfDataSource(newDriver);
+      this.openSnackBar(
+        `Soferul cu username-ul: ${newDriver.username} a fost creat!`
+      );
+    });
+  }
+
+  addDriverAtBeggingOfDataSource(driver: Personal) {
+    let newDatSource = this.dataSource.data;
+    newDatSource.unshift(driver);
+    this.dataSource.data = newDatSource;
+  }
+
+  openDeleteDriverModal() {
     const elementIndex: number = this.getElementIndexInDatasource();
     if (elementIndex > -1) {
       const dialogRef = this.dialog.open(DeleteModalComponent, {
@@ -96,53 +102,63 @@ export class DriversComponent implements OnDestroy, AfterViewInit {
 
       dialogRef.afterClosed().subscribe(result => {
         if (result === 'delete') {
-          const username = this.perFormActionsOnDriver.username;
-
-          this.driversService
-            .deleteDriver(this.perFormActionsOnDriver.username)
-            .subscribe(() => {
-              this.dataSource.data = this.dataSource.data
-                .slice(0, elementIndex)
-                .concat(this.dataSource.data.slice(elementIndex + 1));
-              this.openSnackBar(
-                `Soferul cu username-ul: ${username} a fost sters!`
-              );
-            });
+          this.deleteDriver();
         }
       });
     }
   }
 
-  updateDriver() {
+  deleteDriver() {
+    const username = this.performActionsOnDriver.username;
+    this.driversService.deleteDriver(username).subscribe(() => {
+      this.removeDriverFromDataSource();
+      this.openSnackBar(`Soferul cu username-ul: ${username} a fost sters!`);
+    });
+  }
+
+  removeDriverFromDataSource() {
+    const elementIndex: number = this.getElementIndexInDatasource();
+    this.dataSource.data = this.dataSource.data
+      .slice(0, elementIndex)
+      .concat(this.dataSource.data.slice(elementIndex + 1));
+  }
+
+  openUpdateDriverModal() {
     const elementIndex: number = this.getElementIndexInDatasource();
     if (elementIndex > -1) {
       const dialogRef = this.dialog.open(EditUserModalComponent, {
         width: '500px',
-        data: { userType: 'driver', user: this.perFormActionsOnDriver }
+        data: { userType: 'driver', user: this.performActionsOnDriver }
       });
 
       dialogRef.afterClosed().subscribe(result => {
-        if (result.action === 'update') {
-          this.driversService
-            .updateDriver(
-              this.perFormActionsOnDriver.id,
-              this.perFormActionsOnDriver.username,
-              result.editedUser
-            )
-            .subscribe(updatedUser => {
-              this.dataSource.data = this.dataSource.data
-                .slice(0, elementIndex)
-                .concat([
-                  updatedUser,
-                  ...this.dataSource.data.slice(elementIndex + 1)
-                ]);
-              this.openSnackBar(
-                `Soferul cu username-ul: ${updatedUser.username} a fost editat!`
-              );
-            });
+        if (result?.action === 'update') {
+          this.updateDriver(result.editedUser);
         }
       });
     }
+  }
+
+  updateDriver(editedDriver: Personal) {
+    this.driversService
+      .updateDriver(
+        this.performActionsOnDriver.id,
+        this.performActionsOnDriver.username,
+        editedDriver
+      )
+      .subscribe(updatedDriver => {
+        this.updateDriverFromDataSource(updatedDriver);
+        this.openSnackBar(
+          `Soferul cu username-ul: ${updatedDriver.username} a fost editat!`
+        );
+      });
+  }
+
+  updateDriverFromDataSource(updatedDriver: Personal) {
+    const elementIndex: number = this.getElementIndexInDatasource();
+    this.dataSource.data = this.dataSource.data
+      .slice(0, elementIndex)
+      .concat([updatedDriver, ...this.dataSource.data.slice(elementIndex + 1)]);
   }
 
   openSnackBar(message: string) {

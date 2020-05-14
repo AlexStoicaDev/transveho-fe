@@ -1,4 +1,17 @@
 <div class="container-fluid pl-5 pr-5">
+  <div class="table-actions-container w-100 d-flex">
+    <button
+      class="table-actions-container__button"
+      (click)="openCreateDriverModal()"
+    >
+      <span class="table-actions-container__button__circle">
+        <span class="material-icons table-actions-container__button__icon plus"
+          >add</span
+        >
+      </span>
+      <span class="table-actions-container__button__text">Adauga</span>
+    </button>
+  </div>
   <div
     *ngIf="dataSource.data"
     class="table-wrapper rounded mat-elevation-z8 p-3 pl-5 pr-5"
@@ -9,31 +22,10 @@
       multiTemplateDataRows
       class="w-100"
     >
-      <ng-container matColumnDef="select">
-        <th mat-header-cell *matHeaderCellDef>
-          <mat-checkbox
-            (change)="$event ? masterToggle() : null"
-            [checked]="selection.hasValue() && isAllSelected()"
-            [indeterminate]="selection.hasValue() && !isAllSelected()"
-            [aria-label]="checkboxLabel()"
-          >
-          </mat-checkbox>
-        </th>
-        <td mat-cell *matCellDef="let row">
-          <mat-checkbox
-            (click)="$event.stopPropagation()"
-            (change)="$event ? selection.toggle(row) : null"
-            [checked]="selection.isSelected(row)"
-            [aria-label]="checkboxLabel(row)"
-          >
-          </mat-checkbox>
-        </td>
-      </ng-container>
-
       <ng-container
         matColumnDef="{{ column.elementPropertyName }}"
         *ngFor="
-          let column of columnsToDisplay | slice: 1:columnsToDisplay.length - 2
+          let column of columnsToDisplay | slice: 0:columnsToDisplay.length - 5
         "
       >
         <th mat-header-cell *matHeaderCellDef>
@@ -43,8 +35,32 @@
           {{ element[column.elementPropertyName] }}
         </td>
       </ng-container>
+      <ng-container matColumnDef="spokenLanguage">
+        <th mat-header-cell class="text-center" *matHeaderCellDef>
+          LIMBI VORBITE
+        </th>
+        <td mat-cell class="text-center" *matCellDef="let element">
+          {{ element.spokenLanguage }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="drivingLicenseCategory">
+        <th mat-header-cell class="text-center" *matHeaderCellDef>
+          CAT PERMIS
+        </th>
+        <td mat-cell class="text-center" *matCellDef="let element">
+          {{ element.drivingLicenseCategory }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>EMAIL</th>
+        <td mat-cell class="email-td" *matCellDef="let element">
+          {{ element.email }}
+        </td>
+      </ng-container>
+
       <ng-container matColumnDef="userStatus">
-        <th mat-header-cell *matHeaderCellDef>STATUS</th>
+        <th mat-header-cell class="text-center" *matHeaderCellDef>STATUS</th>
         <td mat-cell *matCellDef="let element">
           <status-bar class="w-75" [status]="element.userStatus"></status-bar>
         </td>
@@ -52,7 +68,7 @@
 
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef></th>
-        <td mat-cell *matCellDef="let element">
+        <td mat-cell class="text-center" *matCellDef="let element">
           <div
             class="actions-container rounded-pill mr-1"
             (click)="openActionPopup($event, element)"
@@ -79,8 +95,8 @@
         <mat-card>
           <mat-card-content>
             <div class="row justify-content-end pr-1 pl-1">
-              <edit-button (click)="updateDriver()"></edit-button>
-              <delete-button (click)="deleteDriver()"></delete-button>
+              <edit-button (click)="openUpdateDriverModal()"></edit-button>
+              <delete-button (click)="openDeleteDriverModal()"></delete-button>
             </div>
           </mat-card-content>
         </mat-card>
@@ -91,7 +107,6 @@
         mat-row
         class="element-row"
         *matRowDef="let row; columns: headerColumns"
-        (click)="selection.toggle(row)"
       ></tr>
     </table>
   </div>

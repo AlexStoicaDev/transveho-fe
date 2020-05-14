@@ -16,9 +16,9 @@ export enum SpokenLanguages {
 }
 
 export enum PersonalRole {
-  ADMIN,
-  DISPATCHER,
-  DRIVER
+  ADMIN = 'ADMIN',
+  DISPATCHER = 'DISPATCHER',
+  DRIVER = 'DRIVER'
 }
 
 export enum DrivingLicenseCategory {

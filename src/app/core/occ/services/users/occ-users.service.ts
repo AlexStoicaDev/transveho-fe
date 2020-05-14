@@ -37,4 +37,13 @@ export class OccUsersService {
       })
       .pipe(catchError((error: any) => throwError(error)));
   }
+
+  public createUser(userRole: string, user: Personal): Observable<any> {
+    let params = new HttpParams().append('userRole', userRole);
+    return this.http
+      .post<Personal>(USERS_ENDPOINT, user, {
+        params: params
+      })
+      .pipe(catchError((error: any) => throwError(error)));
+  }
 }

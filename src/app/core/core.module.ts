@@ -6,7 +6,7 @@ import { AuthenticationGuard } from './guards/authentication.guard';
 import { AuthenticationService } from './authentication';
 import { HttpProxyInterceptor } from './interceptors/http-proxy.interceptor';
 
-//TODO create a module for authentication, interceptors,guards
+//TODO create a module for authentication, interceptors,guards etc
 
 @NgModule({
   declarations: [],

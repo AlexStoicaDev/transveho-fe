@@ -1,4 +1,10 @@
-import {AfterViewInit, ChangeDetectorRef, Component, Inject, ViewChild} from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  Inject,
+  ViewChild
+} from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DeleteModalComponent } from '..';
 import { Personal } from '@transveho-core';
@@ -14,13 +20,13 @@ export interface EditUserModalData {
   templateUrl: './edit-user-modal.component.html',
   styleUrls: ['./edit-user-modal.component.scss']
 })
-export class EditUserModalComponent implements AfterViewInit{
+export class EditUserModalComponent implements AfterViewInit {
   @ViewChild(UserFormComponent) userFormComponent: UserFormComponent;
 
   constructor(
     public dialogRef: MatDialogRef<DeleteModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: EditUserModalData,
-    private cdRef:ChangeDetectorRef
+    private cdRef: ChangeDetectorRef
   ) {}
 
   ngAfterViewInit(): void {
@@ -50,5 +56,4 @@ export class EditUserModalComponent implements AfterViewInit{
       });
     }
   }
-
 }

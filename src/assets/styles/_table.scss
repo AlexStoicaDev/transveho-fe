@@ -4,6 +4,7 @@ $color-pure-white: map-get($main-colors, pure-white);
 $transveho-light-blue: map-get($main-colors, transveho-light-blue);
 $transveho-medium-blue: map-get($main-colors, transveho-medium-blue);
 $transveho-dark-blue: map-get($main-colors, transveho-dark-blue);
+$color-lighter-gray: map-get($main-colors, lighter-gray);
 
 .table-wrapper {
   background-color: $color-pure-white;
@@ -18,16 +19,11 @@ tr.element-row:not(.example-expanded-row):hover {
   background: whitesmoke;
 }
 
-.element-row td {
-  text-align: center;
-}
-
 tr.element-row:not(.example-expanded-row):active {
   background: #efefef;
 }
 
 th.mat-header-cell {
-  text-align: center;
   border-bottom-width: 3px;
   border-bottom-color: $transveho-medium-blue;
 }
@@ -46,6 +42,92 @@ tr.element-row-expanded {
   border-bottom-width: 2px;
 }
 
+tr.element-row:last-of-type td {
+  border-bottom: 0;
+}
+
+.email-td {
+  width: 11%;
+}
+
 .no-border {
   border-style: none;
+}
+
+.table-actions-container {
+  padding-left: 80px;
+  padding-bottom: 20px;
+
+  &__button {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    background: transparent;
+    padding: 0;
+    font-size: inherit;
+    font-family: inherit;
+    width: 10rem;
+    height: auto;
+
+    &:hover &__circle {
+      width: 100%;
+    }
+
+    &:hover &__icon {
+      -webkit-transform: translate(1rem, 0);
+      transform: translate(1rem, 0);
+    }
+
+    &:hover &__text {
+      color: $color-pure-white;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    &__circle {
+      transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+      position: relative;
+      display: block;
+      margin: 0;
+      width: 3rem;
+      height: 3rem;
+      background: $transveho-medium-blue;
+      border-radius: 1.625rem;
+    }
+
+    &__icon {
+      transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+      position: absolute;
+      top: 13px;
+      bottom: 0;
+      left: 12px;
+      margin: auto;
+      color: $color-pure-white;
+      width: 1.125rem;
+      background: none;
+    }
+
+    &__text {
+      transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0.75rem 0;
+      margin: 0 0 0 1.4rem;
+      color: $color-lighter-gray;
+      font-weight: 700;
+      line-height: 1.6;
+      text-align: center;
+      text-transform: uppercase;
+    }
+  }
 }

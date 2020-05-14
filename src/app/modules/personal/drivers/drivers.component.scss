@@ -2,6 +2,10 @@
 @import 'src/assets/styles/table';
 
 $transveho-light-blue: map-get($main-colors, transveho-light-blue);
+$transveho-medium-blue: map-get($main-colors, transveho-medium-blue);
+$transveho-dark-blue: map-get($main-colors, transveho-dark-blue);
+$pure-white: map-get($main-colors, pure-white);
+$color-lighter-gray: map-get($main-colors, lighter-gray);
 
 th.mat-header-cell:last-of-type,
 td.mat-cell:last-of-type,
@@ -19,4 +23,8 @@ td.mat-footer-cell:last-of-type {
     width: 8px;
     border: 2px solid $transveho-light-blue;
   }
+}
+
+.email-td {
+  width: 11%;
 }
