@@ -1,123 +1,66 @@
-<div class="position-fixed w-100 navigation-bar">
-  <nav class="navbar navbar-expand-lg bg-white navigation-style">
-    <!--    <a class="navbar-brand" href="#">-->
-    <!--      <img src="assets/images/logo.svg" width="100" height="70" alt=""/>-->
-    <!--    </a>-->
-    <button
-      class="navbar-toggler navigation-style__no-border"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-      (click)="showHeader()"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div
-      class="collapse navbar-collapse"
-      [ngClass]="showMenu ? 'show' : ''"
-      id="navbarNav"
-    >
-      <ul class="navbar-nav navigation-style__navbar Navigation">
-        <li class="nav-item" (click)="setSelectedPage('dashboard')">
-          <a
-            class="nav-link navigation-style__link"
-            routerLink=""
-            routerLinkActive="active"
-            [routerLinkActive]="['navigation-style__active']"
-            [routerLinkActiveOptions]="{ exact: true }"
-          >
-            DASHBOARD
-            <img
-              class="rotateFull"
-              src="assets/images/triangle.svg"
-              [routerLinkActive]="['is-active']"
-              [routerLinkActiveOptions]="{ exact: true }"
-            />
-          </a>
-        </li>
-        <li class="nav-item" (click)="setSelectedPage('personal')">
-          <a
-            class="nav-link navigation-style__link"
-            routerLink="/personal"
-            routerLinkActive="active"
-            [routerLinkActive]="['navigation-style__active']"
-          >
-            PERSONAL
-            <img
-              class="rotateFull"
-              src="assets/images/triangle.svg"
-              [routerLinkActive]="['is-active']"
-            />
-          </a>
-        </li>
-        <li class="nav-item" (click)="setSelectedPage('passengers')">
-          <a
-            class="nav-link navigation-style__link"
-            routerLink="/passengers"
-            routerLinkActive="active"
-            [routerLinkActive]="['navigation-style__active']"
-            [routerLinkActiveOptions]="{ exact: true }"
-          >
-            PASAGERI
-            <img
-              class="rotateFull"
-              src="assets/images/triangle.svg"
-              [routerLinkActive]="['is-active']"
-              [routerLinkActiveOptions]="{ exact: true }"
-            />
-          </a>
-        </li>
-        <li class="nav-item" (click)="setSelectedPage('cars')">
-          <a
-            class="nav-link navigation-style__link"
-            routerLink="/cars"
-            routerLinkActive="active"
-            [routerLinkActive]="['navigation-style__active']"
-            [routerLinkActiveOptions]="{ exact: true }"
-          >
-            MASINI
-            <img
-              class="rotateFull"
-              src="assets/images/triangle.svg"
-              [routerLinkActive]="['is-active']"
-              [routerLinkActiveOptions]="{ exact: true }"
-            />
-          </a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+<nav class="navbar navbar-expand-lg navbar-mainbg mb-5 px-5">
+  <a class="navbar-brand navbar-logo" href="#">Simplicity</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <i class="fas fa-bars text-white"></i>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <div class="hori-selector">
+        <div class="left"></div>
+        <div class="right"></div>
+      </div>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="">
+          <span class="material-icons my-icon">
+            dashboard
+          </span>
 
-  <div class="second-nav mb-5 navbar navbar-expand-lg navigation-style">
-    <div class="collapse navbar-collapse">
-      <ul
-        *ngIf="selectedPage === 'personal'"
-        class="navbar-nav navigation-style__navbar Navigation"
-      >
-        <li class="nav-item">
-          <a
-            class="nav-link secondary-link"
-            routerLink="/personal"
-            routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }"
-          >
-            Dispeceri
-          </a>
-        </li>
-        <li class="nav-item secondary-item">
-          <a
-            class="nav-link secondary-link"
-            routerLink="/personal/drivers"
-            routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }"
-          >
-            Soferi
-          </a>
-        </li>
-      </ul>
-    </div>
+          Dashboard</a
+        >
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/personal/drivers">
+          <span class="material-icons my-icon">
+            supervised_user_circle </span
+          >Dispeceri</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/personal/drivers"
+          ><span class="material-icons my-icon">
+            transfer_within_a_station </span
+          >Soferi</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/passengers"
+          ><span class="material-icons my-icon">
+            accessibility_new </span
+          >Pasageri</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/cars"
+          ><span class="material-icons my-icon">
+            directions_car </span
+          >Masini</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/qwerty"
+          ><span class="material-icons my-icon">
+            directions </span
+          >Rute</a
+        >
+      </li>
+    </ul>
   </div>
-</div>
+</nav>

@@ -1,5 +1,7 @@
 import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 
+//TODO refactor component logic template and style
+
 @Component({
   selector: 'top-nav',
   templateUrl: './top-nav.component.html',
@@ -10,7 +12,7 @@ export class TopNavComponent implements OnInit, OnDestroy {
   selectedPage = '';
 
   constructor(private renderer: Renderer2) {
-    this.renderer.addClass(document.body, 'navigation-bar-padding');
+    //this.renderer.addClass(document.body, 'navigation-bar-padding');
   }
 
   ngOnInit(): void {}
@@ -27,5 +29,5 @@ export class TopNavComponent implements OnInit, OnDestroy {
     this.selectedPage = selectedPage;
   }
 
-  //TODO refactor component logic template and style
+  createDriver() {}
 }

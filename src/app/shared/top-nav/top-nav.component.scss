@@ -6,87 +6,143 @@
 $transveho-light-blue: map-get($main-colors, transveho-light-blue);
 $transveho-medium-blue: map-get($main-colors, transveho-medium-blue);
 $transveho-dark-blue: map-get($main-colors, transveho-dark-blue);
+$pure-white: map-get($main-colors, pure-white);
+$color-lighter-gray: map-get($main-colors, lighter-gray);
 
-.navigation-style {
-  padding-left: 10rem;
-  padding-right: 10rem;
-  padding-bottom: 0;
-
-  a {
-    padding-bottom: 0rem !important;
-    display: grid;
-  }
-
-  &__link {
-    color: $transveho-light-blue;
-    font-weight: 600;
-
-    background: linear-gradient(
-      to right,
-      $transveho-dark-blue,
-      $transveho-dark-blue 50%,
-      $transveho-medium-blue 50%
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 200% 100%;
-    background-position: 100%;
-    transition: background-position 275ms ease;
-
-    &:hover {
-      background-position: 0 100%;
-    }
-    &:active {
-      color: $transveho-dark-blue;
-    }
-  }
-  .is-active {
-    display: block !important;
-  }
-
-  &__active {
-    background-position: 0 100%;
-
-    //&:hover{
-    //  background-position: 0 100%;
-    //}
-  }
-
-  &__navbarNavigation {
-    padding-top: 0.5rem;
-  }
-
-  &__no-border {
-    outline-width: 0;
-  }
-
-  .rotateFull {
-    transform: rotate(180deg);
-    vertical-align: bottom !important;
-    display: none;
-    margin: 6px auto -3px;
-  }
-
-  @include media-breakpoint-down(md) {
-    margin-left: 0rem;
-    margin-right: 0rem;
-    .is-active {
-      display: none !important;
-    }
-  }
+/*----------multi-level-accordian-menu------------*/
+.navbar-logo {
+  //padding: 15px;
+  color: #fff;
+}
+.navbar-mainbg {
+  background-color: $transveho-medium-blue;
+  padding: 0px;
+}
+#navbarSupportedContent {
+  overflow: hidden;
+  position: relative;
+}
+#navbarSupportedContent ul {
+  padding: 0px;
+  margin: 0px;
+}
+#navbarSupportedContent ul li a span {
+  margin-right: 8px;
+}
+#navbarSupportedContent li {
+  list-style-type: none;
+  float: left;
 }
 
-.second-nav {
+.my-icon {
+  font-size: 17px;
+}
+
+#navbarSupportedContent ul li a {
+  font-weight: 500;
+  color: $pure-white;
+  text-decoration: none;
+  font-size: 18px;
+  display: block;
+  padding: 20px 20px;
+  transition-duration: 0.6s;
+  transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  position: relative;
+}
+#navbarSupportedContent > ul > li.active > a {
+  color: $transveho-medium-blue;
+  background-color: transparent;
+  transition: all 0.7s;
+}
+#navbarSupportedContent a:not(:only-child):after {
+  content: '\f105';
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  font-size: 14px;
+  font-family: 'Font Awesome 5 Free';
+  display: inline-block;
+  padding-right: 3px;
+  vertical-align: middle;
+  font-weight: 900;
+  transition: 0.5s;
+}
+#navbarSupportedContent .active > a:not(:only-child):after {
+  transform: rotate(90deg);
+}
+.hori-selector {
+  display: inline-block;
+  position: absolute;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  transition-duration: 0.6s;
+  transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  background-color: $color-lighter-gray;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  margin-top: 10px;
+}
+.hori-selector .right,
+.hori-selector .left {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background-color: $color-lighter-gray;
+  bottom: 10px;
+}
+.hori-selector .right {
+  right: -25px;
+}
+.hori-selector .left {
+  left: -25px;
+}
+.hori-selector .right:before,
+.hori-selector .left:before {
+  content: '';
+  position: absolute;
+  width: 50px;
   height: 50px;
-  background-color: #0072c3;
+  border-radius: 50%;
+  background-color: $transveho-medium-blue;
+}
+.hori-selector .right:before {
+  bottom: 0;
+  right: -25px;
+}
+.hori-selector .left:before {
+  bottom: 0;
+  left: -25px;
 }
 
-.navigation-bar {
-  top: 0;
-  z-index: 1;
-}
-
-.secondary-link {
-  padding-top: 0;
-  color: white;
+@media (max-width: 991px) {
+  #navbarSupportedContent ul li a {
+    padding: 12px 30px;
+  }
+  .hori-selector {
+    margin-top: 0px;
+    margin-left: 10px;
+    border-radius: 0;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+  }
+  .hori-selector .left,
+  .hori-selector .right {
+    right: 10px;
+  }
+  .hori-selector .left {
+    top: -25px;
+    left: auto;
+  }
+  .hori-selector .right {
+    bottom: -25px;
+  }
+  .hori-selector .left:before {
+    left: -25px;
+    top: -25px;
+  }
+  .hori-selector .right:before {
+    bottom: -25px;
+    left: -25px;
+  }
 }
