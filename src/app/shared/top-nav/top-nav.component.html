@@ -1,4 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-mainbg mb-5 px-5">
+<nav
+  class="navbar navbar-expand-lg navbar-mainbg mb-5 px-5"
+  (window:resize)="onResize($event)"
+>
   <a class="navbar-brand navbar-logo" href="#">Simplicity</a>
   <button
     class="navbar-toggler"
@@ -17,8 +20,14 @@
         <div class="left"></div>
         <div class="right"></div>
       </div>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="">
+      <li
+        class="nav-item"
+        routerLinkActive="active"
+        routerLink=""
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="setSelectorDivPosition()"
+      >
+        <a class="nav-link">
           <span class="material-icons my-icon">
             dashboard
           </span>
@@ -26,39 +35,63 @@
           Dashboard</a
         >
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="/personal/drivers">
-          <span class="material-icons my-icon">
-            supervised_user_circle </span
+      <li
+        class="nav-item"
+        routerLinkActive="active"
+        routerLink="/personal/dispatchers"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="setSelectorDivPosition()"
+      >
+        <a class="nav-link">
+          <span class="material-icons my-icon"> supervised_user_circle </span
           >Dispeceri</a
         >
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/personal/drivers"
+      <li
+        class="nav-item"
+        routerLinkActive="active"
+        routerLink="/personal/drivers"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="setSelectorDivPosition()"
+      >
+        <a class="nav-link"
           ><span class="material-icons my-icon">
             transfer_within_a_station </span
           >Soferi</a
         >
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/passengers"
-          ><span class="material-icons my-icon">
-            accessibility_new </span
+      <li
+        class="nav-item"
+        routerLinkActive="active"
+        routerLink="/passengers"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="setSelectorDivPosition()"
+      >
+        <a class="nav-link"
+          ><span class="material-icons my-icon"> accessibility_new </span
           >Pasageri</a
         >
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/cars"
-          ><span class="material-icons my-icon">
-            directions_car </span
-          >Masini</a
+      <li
+        class="nav-item"
+        routerLinkActive="active"
+        routerLink="/cars"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="setSelectorDivPosition()"
+      >
+        <a class="nav-link"
+          ><span class="material-icons my-icon"> directions_car </span>Masini</a
         >
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/qwerty"
-          ><span class="material-icons my-icon">
-            directions </span
-          >Rute</a
+      <li
+        class="nav-item"
+        routerLinkActive="active"
+        routerLink="/qwerty"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="setSelectorDivPosition()"
+      >
+        <a class="nav-link"
+          ><span class="material-icons my-icon"> directions </span>Rute</a
         >
       </li>
     </ul>
