@@ -146,3 +146,7 @@ $color-lighter-gray: map-get($main-colors, lighter-gray);
     left: -25px;
   }
 }
+
+.cursor-pointer {
+  cursor: pointer;
+}
