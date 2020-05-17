@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { OccDriversService, Personal, PersonalRole } from '@transveho-core';
-import { OccUsersService } from '../../../../core/occ/services/users/occ-users.service';
+import { OccDriversService, OccUsersService, Personal } from '@transveho-core';
 
 @Injectable()
 export class DriversService {
@@ -27,6 +26,6 @@ export class DriversService {
   }
 
   public createDriver(driver: Personal): Observable<any> {
-    return this.occUsersService.createUser(PersonalRole.DRIVER, driver);
+    return this.occUsersService.createUser(driver);
   }
 }

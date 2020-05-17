@@ -5,6 +5,7 @@
       Vrei sa adaugi un nou sofer?
     </p>
     <user-form
+      [userRole]="this.data?.userRole"
       [user]="emptyUser"
       (onSubmitOutput)="onEnterSubmit($event)"
     ></user-form>

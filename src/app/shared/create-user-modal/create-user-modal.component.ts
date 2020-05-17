@@ -8,10 +8,10 @@ import {
 import { UserFormComponent } from '../user-form/user-form.component';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DeleteModalComponent } from '@transveho-shared';
-import { Personal } from '@transveho-core';
+import { Personal, PersonalRole } from '@transveho-core';
 
 export interface CreateUserModalData {
-  userType: string;
+  userRole: PersonalRole;
 }
 
 @Component({

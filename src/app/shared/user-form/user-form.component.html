@@ -19,31 +19,33 @@
     <mat-label>numar de telefon</mat-label>
     <input matInput id="phoneNumber" formControlName="phoneNumber" />
   </mat-form-field>
-  <mat-form-field class="w-100">
-    <mat-label>categorie permis</mat-label>
-    <mat-select
-      id="driverLicenceCategory"
-      formControlName="driverLicenseCategory"
-    >
-      <mat-option
-        *ngFor="let driverLicenceCategory of drivingLicenseCategories"
-        [value]="driverLicenceCategory"
+  <ng-container *ngIf="userRole === PersonalRole.DRIVER">
+    <mat-form-field class="w-100">
+      <mat-label>categorie permis</mat-label>
+      <mat-select
+        id="driverLicenceCategory"
+        formControlName="driverLicenseCategory"
       >
-        {{ driverLicenceCategory }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field class="w-100">
-    <mat-label>limbi vorbite</mat-label>
-    <mat-select id="spokenLanguages" formControlName="spokenLanguages">
-      <mat-option
-        *ngFor="let spokenLanguage of spokenLanguages"
-        [value]="spokenLanguage"
-      >
-        {{ spokenLanguage }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+        <mat-option
+          *ngFor="let driverLicenceCategory of drivingLicenseCategories"
+          [value]="driverLicenceCategory"
+        >
+          {{ driverLicenceCategory }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="w-100">
+      <mat-label>limbi vorbite</mat-label>
+      <mat-select id="spokenLanguages" formControlName="spokenLanguages">
+        <mat-option
+          *ngFor="let spokenLanguage of spokenLanguages"
+          [value]="spokenLanguage"
+        >
+          {{ spokenLanguage }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </ng-container>
   <mat-form-field class="w-100">
     <mat-label>status</mat-label>
     <mat-select id="userStatus" formControlName="userStatus">

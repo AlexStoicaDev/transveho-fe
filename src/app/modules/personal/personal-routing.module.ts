@@ -9,7 +9,7 @@ const routes: Routes = [
     path: 'personal',
     canActivate: [DispatcherGuard, AuthenticationGuard],
     children: [
-      { path: '', component: DispatchersComponent },
+      { path: 'dispatchers', component: DispatchersComponent },
       { path: 'drivers', component: DriversComponent }
     ]
   }

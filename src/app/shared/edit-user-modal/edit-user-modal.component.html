@@ -6,6 +6,7 @@
       <span class="username">{{ data.user.username }}</span> ?
     </p>
     <user-form
+      [userRole]="this.data?.user?.role"
       [user]="this.data?.user"
       (onSubmitOutput)="onEnterSubmit($event)"
     ></user-form>

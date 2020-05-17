@@ -10,16 +10,22 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MdePopoverModule } from '@material-extended/mde';
 import { MatCardModule } from '@angular/material/card';
 import { SharedModule } from '@transveho-shared';
-import { OccDriversModule } from '@transveho-core';
+import {
+  OccDispatchersModule,
+  OccDriversModule,
+  OccUsersModule
+} from '@transveho-core';
 import { DriversService } from './drivers/service/drivers.service';
-import { OccUsersModule } from '../../core/occ/services/users/occ-users.module';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { PersonalService } from './service/personal.service';
+import { DispatchersService } from './dispatchers/service/dispatchers.service';
 
 @NgModule({
   declarations: [routedComponents],
   imports: [
     OccUsersModule,
     OccDriversModule,
+    OccDispatchersModule,
     PersonalRoutingModule,
     MatTableModule,
     MatToolbarModule,
@@ -30,6 +36,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatSnackBarModule,
     SharedModule
   ],
-  providers: [DriversService]
+  providers: [DriversService, DispatchersService, PersonalService]
 })
 export class PersonalModule {}

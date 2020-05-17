@@ -11,7 +11,6 @@ import { Personal } from '@transveho-core';
 import { UserFormComponent } from '../user-form/user-form.component';
 
 export interface EditUserModalData {
-  userType: string;
   user: Personal;
 }
 

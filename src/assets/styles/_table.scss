@@ -45,13 +45,28 @@ tr.element-row-expanded {
 tr.element-row:last-of-type td {
   border-bottom: 0;
 }
+//TODO create common scss file for personal pages and a common scss file for al common styles
 
-.email-td {
-  width: 11%;
+th.mat-header-cell:last-of-type,
+td.mat-cell:last-of-type,
+td.mat-footer-cell:last-of-type {
+  padding-right: 0;
 }
 
 .no-border {
   border-style: none;
+}
+
+.actions-container {
+  &:hover {
+    background-color: #ebebeb;
+  }
+
+  &__dot {
+    height: 8px;
+    width: 8px;
+    border: 2px solid $transveho-light-blue;
+  }
 }
 
 .table-actions-container {

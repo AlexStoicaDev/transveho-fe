@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {
   DrivingLicenseCategory,
   Personal,
+  PersonalRole,
   PersonalStatus,
   SpokenLanguages
 } from '@transveho-core';
@@ -15,10 +16,13 @@ import {
 export class UserFormComponent implements OnInit {
   @Input()
   user: Personal;
+  @Input()
+  userRole: PersonalRole;
   userFormGroup: FormGroup;
   drivingLicenseCategories: Array<string> = [];
   spokenLanguages: Array<string> = [];
   personalStatuses: Array<string> = [];
+  PersonalRole = PersonalRole;
 
   @Output() onSubmitOutput: EventEmitter<any> = new EventEmitter<any>();
 
@@ -53,7 +57,26 @@ export class UserFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userFormGroup = this.formBuilder.group({
+    this.userFormGroup = this.formBuilder.group(this.getControlsConfig());
+    debugger;
+  }
+
+  getControlsConfig() {
+    let personalControlsConfig = this.getPersonalControlsConfig();
+    if (this.userRole === PersonalRole.DRIVER) {
+      personalControlsConfig = {
+        ...personalControlsConfig,
+        ...this.getDriverExtraControlsConfig()
+      };
+    }
+    return {
+      ...personalControlsConfig,
+      userStatus: [this.user.userStatus, [Validators.required]]
+    };
+  }
+
+  getPersonalControlsConfig() {
+    return {
       username: [
         this.user.username,
         [Validators.required, Validators.minLength(4), Validators.maxLength(12)]
@@ -77,14 +100,18 @@ export class UserFormComponent implements OnInit {
           Validators.minLength(10),
           Validators.maxLength(10)
         ]
-      ],
+      ]
+    };
+  }
+
+  getDriverExtraControlsConfig() {
+    return {
       driverLicenseCategory: [
         this.user.drivingLicenseCategory,
         [Validators.required]
       ],
-      spokenLanguages: [this.user.spokenLanguage, [Validators.required]],
-      userStatus: [this.user.userStatus, [Validators.required]]
-    });
+      spokenLanguages: [this.user.spokenLanguage, [Validators.required]]
+    };
   }
 
   isUserFormValid(): boolean {
@@ -92,18 +119,32 @@ export class UserFormComponent implements OnInit {
   }
 
   getUserFromFormControls(): Personal {
-    const editUserFormControls = this.userFormGroup.controls;
-    return {
-      drivingLicenseCategory: editUserFormControls.driverLicenseCategory.value,
+    debugger;
+    const userFormControls = this.userFormGroup.controls;
+    const userFromFormData = {
       id: 0,
-      role: undefined,
-      spokenLanguage: editUserFormControls.spokenLanguages.value,
-      userStatus: editUserFormControls.userStatus.value,
-      username: editUserFormControls.username.value,
-      email: editUserFormControls.email.value,
-      lastName: editUserFormControls.lastName.value,
-      firstName: editUserFormControls.firstName.value,
-      phoneNumber: editUserFormControls.phoneNumber.value
+      role: this.userRole,
+      spokenLanguage: undefined,
+      drivingLicenseCategory: undefined,
+      userStatus: userFormControls.userStatus.value,
+      username: userFormControls.username.value,
+      email: userFormControls.email.value,
+      lastName: userFormControls.lastName.value,
+      firstName: userFormControls.firstName.value,
+      phoneNumber: userFormControls.phoneNumber.value
+    };
+    if (this.userRole === PersonalRole.DRIVER) {
+      return this.setDriverProperties(userFromFormData);
+    }
+    return userFromFormData;
+  }
+
+  setDriverProperties(user: Personal): Personal {
+    const userFormControls = this.userFormGroup.controls;
+    return {
+      ...user,
+      spokenLanguage: userFormControls.spokenLanguages.value,
+      drivingLicenseCategory: userFormControls.driverLicenseCategory.value
     };
   }
 
