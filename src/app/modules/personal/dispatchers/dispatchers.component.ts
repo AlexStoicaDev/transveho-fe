@@ -1,54 +1,39 @@
-import { AfterViewInit, Component, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { PaginatorComponent } from '@transveho-shared';
 import { MatTableDataSource } from '@angular/material/table';
 import { Personal, PersonalRole } from '@transveho-core';
-import { of, Subscription } from 'rxjs';
 import { DispatchersService } from './service/dispatchers.service';
 import { PersonalService } from '../service/personal.service';
-import { catchError, startWith, switchMap } from 'rxjs/operators';
 import {
   actionsColumn,
   personalColumns,
   userStatusColumn
 } from '../columns-to-display';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'dispatchers',
   templateUrl: './dispatchers.component.html',
   styleUrls: ['./dispatchers.component.scss']
 })
-export class DispatchersComponent implements OnDestroy, AfterViewInit {
+export class DispatchersComponent implements OnInit {
   @ViewChild(PaginatorComponent) paginatorComponent: PaginatorComponent;
 
-  pageIndex: number = 0;
   dataSource = new MatTableDataSource<Personal>([]);
   columnsToDisplay = [...personalColumns, userStatusColumn, actionsColumn];
   headerColumns = this.columnsToDisplay.map(
     column => column.elementPropertyName
   );
-  loadAllDispatchersSubscription: Subscription;
   performActionsOnDispatcher: Personal = null;
 
   constructor(
     private dispatchersService: DispatchersService,
-    private personalService: PersonalService
+    private personalService: PersonalService,
+    private route: ActivatedRoute
   ) {}
 
-  ngAfterViewInit() {
-    this.loadAllDispatchersSubscription = this.paginatorComponent.matPaginator.page
-      .pipe(
-        startWith({}),
-        switchMap(() => {
-          this.pageIndex = 1;
-          return this.dispatchersService.loadAllDispatchers();
-        }),
-        catchError(() => {
-          return of([]);
-        })
-      )
-      .subscribe(dispatchersArray => {
-        this.dataSource.data = dispatchersArray;
-      });
+  ngOnInit(): void {
+    this.dataSource.data = this.route.snapshot.data.dispatchers;
   }
 
   openActionPopup(clickEvent, element: Personal) {
@@ -143,11 +128,5 @@ export class DispatchersComponent implements OnDestroy, AfterViewInit {
           `Dispecerul cu username-ul: ${updatedDispatcher.username} a fost editat!`
         );
       });
-  }
-
-  ngOnDestroy(): void {
-    if (this.loadAllDispatchersSubscription) {
-      this.loadAllDispatchersSubscription.unsubscribe();
-    }
   }
 }

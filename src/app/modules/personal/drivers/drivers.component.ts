@@ -1,7 +1,5 @@
-import { AfterViewInit, Component, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { PaginatorComponent } from '@transveho-shared';
-import { catchError, startWith, switchMap } from 'rxjs/operators';
-import { of, Subscription } from 'rxjs';
 import { Personal, PersonalRole } from '@transveho-core';
 import { DriversService } from './service/drivers.service';
 import { MatTableDataSource } from '@angular/material/table';
@@ -12,16 +10,16 @@ import {
   personalColumns,
   userStatusColumn
 } from '../columns-to-display';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'personal',
   templateUrl: './drivers.component.html',
   styleUrls: ['./drivers.component.scss']
 })
-export class DriversComponent implements OnDestroy, AfterViewInit {
+export class DriversComponent implements OnInit {
   @ViewChild(PaginatorComponent) paginatorComponent: PaginatorComponent;
 
-  pageIndex: number = 0;
   dataSource = new MatTableDataSource<Personal>();
   columnsToDisplay = [
     ...personalColumns,
@@ -32,29 +30,16 @@ export class DriversComponent implements OnDestroy, AfterViewInit {
   headerColumns = this.columnsToDisplay.map(
     column => column.elementPropertyName
   );
-  loadAllDriversSubscription: Subscription;
   performActionsOnDriver: Personal = null;
 
   constructor(
     private driversService: DriversService,
-    private personalService: PersonalService
+    private personalService: PersonalService,
+    private route: ActivatedRoute
   ) {}
 
-  ngAfterViewInit() {
-    this.loadAllDriversSubscription = this.paginatorComponent.matPaginator.page
-      .pipe(
-        startWith({}),
-        switchMap(() => {
-          this.pageIndex = 1;
-          return this.driversService.loadAllDrivers();
-        }),
-        catchError(() => {
-          return of([]);
-        })
-      )
-      .subscribe(driversArray => {
-        this.dataSource.data = driversArray;
-      });
+  ngOnInit(): void {
+    this.dataSource.data = this.route.snapshot.data.drivers;
   }
 
   openActionPopup(clickEvent, element: Personal) {
@@ -147,11 +132,5 @@ export class DriversComponent implements OnDestroy, AfterViewInit {
           `Soferul cu username-ul: ${updatedDriver.username} a fost editat!`
         );
       });
-  }
-
-  ngOnDestroy(): void {
-    if (this.loadAllDriversSubscription) {
-      this.loadAllDriversSubscription.unsubscribe();
-    }
   }
 }
