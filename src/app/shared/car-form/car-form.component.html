@@ -1,0 +1,133 @@
+<form [formGroup]="carFormGroup" class="py-3 row" (ngSubmit)="onSubmit()">
+  <div class="col">
+    <mat-form-field class="w-100">
+      <mat-label>numar inmatriculare</mat-label>
+      <input matInput id="plateNumber" formControlName="plateNumber" />
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-label>model</mat-label>
+      <input matInput id="model" formControlName="model" />
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-label>numar locuri</mat-label>
+      <input
+        matInput
+        id="numberOfSeats"
+        formControlName="numberOfSeats"
+        numbersOnly
+      />
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-label>numar sasiu</mat-label>
+      <input matInput id="chassisNumber" formControlName="chassisNumber" />
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-label>tip motor</mat-label>
+      <mat-select id="engineType" formControlName="engineType">
+        <mat-option value="Gasoline">benzina</mat-option>
+        <mat-option value="Diesel">diesel</mat-option>
+        <mat-option value="BioDiesel">bio diesel</mat-option>
+        <mat-option value="NaturalGas">gaz natural</mat-option>
+        <mat-option value="Electric">electric</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="w-50 pb-2">
+      <label>este inchiriata?</label>
+      <mat-radio-group class="row" id="rented" formControlName="rented">
+        <mat-radio-button class="col" value="true">Da</mat-radio-button>
+        <mat-radio-button class="col" value="false">Nu</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <div class="w-100">
+      <label>este in acest moment in transit?</label>
+      <div class="w-50">
+        <mat-radio-group class="row" id="inTransit" formControlName="inTransit">
+          <mat-radio-button class="col" value="true">Da</mat-radio-button>
+          <mat-radio-button class="col" value="false">Nu</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <mat-form-field class="w-100">
+      <mat-label>status</mat-label>
+      <mat-select id="status" formControlName="status">
+        <mat-option value="Available">disponibila</mat-option>
+        <mat-option value="OnRoute">pe traseu</mat-option>
+        <mat-option value="Defective" class="car-status-defective-option"
+          >defecta</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="w-100">
+      <mat-label>data expirare itp</mat-label>
+      <input
+        id="itpExpirationDate"
+        matInput
+        [matDatepicker]="itpExpirationDatePicker"
+        formControlName="itpExpirationDate"
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="itpExpirationDatePicker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #itpExpirationDatePicker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-label>data expirare rovinieta</mat-label>
+      <input
+        id="rovignetteExpirationDate"
+        matInput
+        [matDatepicker]="rovignetteExpirationDate"
+        formControlName="rovignetteExpirationDate"
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="rovignetteExpirationDate"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #rovignetteExpirationDate></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-label>data expirare huvinieta</mat-label>
+      <input
+        id="huvignetteExpirationDate"
+        matInput
+        [matDatepicker]="huvignetteExpirationDate"
+        formControlName="huvignetteExpirationDate"
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="huvignetteExpirationDate"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #huvignetteExpirationDate></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-label>data expirare rca</mat-label>
+      <input
+        id="rcaExpirationDate"
+        matInput
+        [matDatepicker]="rcaExpirationDate"
+        formControlName="rcaExpirationDate"
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="rcaExpirationDate"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #rcaExpirationDate></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-100">
+      <mat-label>altele</mat-label>
+      <textarea id="others" matInput formControlName="others"></textarea>
+    </mat-form-field>
+  </div>
+</form>

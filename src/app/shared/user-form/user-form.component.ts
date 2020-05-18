@@ -32,6 +32,10 @@ export class UserFormComponent implements OnInit {
     this.addValuesToPersonalStatusesArray();
   }
 
+  ngOnInit(): void {
+    this.userFormGroup = this.formBuilder.group(this.getControlsConfig());
+  }
+
   addValuesToDrivingLicenseCategoriesArray() {
     for (let value in DrivingLicenseCategory) {
       if (typeof DrivingLicenseCategory[value] === 'number') {
@@ -54,11 +58,6 @@ export class UserFormComponent implements OnInit {
         this.personalStatuses.push(value);
       }
     }
-  }
-
-  ngOnInit(): void {
-    this.userFormGroup = this.formBuilder.group(this.getControlsConfig());
-    debugger;
   }
 
   getControlsConfig() {
@@ -119,7 +118,6 @@ export class UserFormComponent implements OnInit {
   }
 
   getUserFromFormControls(): Personal {
-    debugger;
     const userFormControls = this.userFormGroup.controls;
     const userFromFormData = {
       id: 0,

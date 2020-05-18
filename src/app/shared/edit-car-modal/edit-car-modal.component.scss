@@ -1,0 +1,25 @@
+@import '../../../theme';
+@import '../../../assets/styles/colors';
+
+$color-light-mustard: map-get($main-colors, light-mustard);
+$color-dark-mustard: map-get($main-colors, dark-mustard);
+$color-pure-white: map-get($main-colors, pure-white);
+
+.plateNumber {
+  color: mat-color($my-app-accent, default);
+}
+
+//TODO create a common classes file
+.modal-button {
+  &:focus {
+    outline: none;
+  }
+}
+
+.edit-button {
+  background-color: $color-dark-mustard;
+  color: $color-pure-white;
+  &:hover {
+    background-color: $color-light-mustard;
+  }
+}

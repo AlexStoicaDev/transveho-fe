@@ -1,8 +1,9 @@
 <div
   class="status text-center rounded-pill mx-auto"
   [ngClass]="{
-    'status-canceled': ['Former'].indexOf(status) !== -1,
-    'status-pending': ['DayOff', 'Holiday', 'Medical'].indexOf(status) !== -1,
+    'status-canceled': ['Former', 'Defective'].indexOf(status) !== -1,
+    'status-pending':
+      ['DayOff', 'Holiday', 'Medical', 'OnRoute'].indexOf(status) !== -1,
     'status-done': ['Available'].indexOf(status) !== -1
   }"
 >
@@ -11,4 +12,6 @@
   <p class="status__text" *ngIf="status === 'Holiday'">concediu</p>
   <p class="status__text" *ngIf="status === 'Medical'">medical</p>
   <p class="status__text" *ngIf="status === 'Available'">disponibil</p>
+  <p class="status__text" *ngIf="status === 'OnRoute'">pe traseu</p>
+  <p class="status__text" *ngIf="status === 'Defective'">defecta</p>
 </div>

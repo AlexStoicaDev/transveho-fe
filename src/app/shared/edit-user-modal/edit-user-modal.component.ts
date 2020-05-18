@@ -23,7 +23,7 @@ export class EditUserModalComponent implements AfterViewInit {
   @ViewChild(UserFormComponent) userFormComponent: UserFormComponent;
 
   constructor(
-    public dialogRef: MatDialogRef<DeleteModalComponent>,
+    public dialogRef: MatDialogRef<EditUserModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: EditUserModalData,
     private cdRef: ChangeDetectorRef
   ) {}

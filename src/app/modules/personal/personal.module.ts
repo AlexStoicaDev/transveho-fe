@@ -19,8 +19,8 @@ import { DriversService } from './drivers/service/drivers.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { PersonalService } from './service/personal.service';
 import { DispatchersService } from './dispatchers/service/dispatchers.service';
-import { DriversResolve } from './drivers/resolver/drivers.resolve';
-import { DispatchersResolve } from './dispatchers/resolver/dispatchers.resolve';
+import { DriversResolver } from './drivers/resolver/drivers.resolver';
+import { DispatchersResolver } from './dispatchers/resolver/dispatchers.resolver';
 
 @NgModule({
   declarations: [routedComponents],
@@ -42,8 +42,8 @@ import { DispatchersResolve } from './dispatchers/resolver/dispatchers.resolve';
     DriversService,
     DispatchersService,
     PersonalService,
-    DriversResolve,
-    DispatchersResolve
+    DriversResolver,
+    DispatchersResolver
   ]
 })
 export class PersonalModule {}

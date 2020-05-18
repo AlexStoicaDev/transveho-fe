@@ -1,0 +1,26 @@
+<div class="px-4">
+  <h1 mat-dialog-title>Buna</h1>
+  <div>
+    <p>
+      Vrei sa editezi masina cu numarul de inmatriculare
+      <span class="plateNumber">{{ data.car.plateNumber }}</span> ?
+    </p>
+    <car-form
+      [car]="this.data?.car"
+      (onSubmitOutput)="onEnterSubmit($event)"
+    ></car-form>
+  </div>
+  <div mat-dialog-actions class="row">
+    <button class="col w-75 modal-button" mat-button (click)="onCancelClick()">
+      Anuleaza
+    </button>
+    <button
+      class="col w-75 modal-button edit-button"
+      mat-flat-button
+      [disabled]="!isCarFormValid()"
+      (click)="onEditButtonClick()"
+    >
+      Editeaza
+    </button>
+  </div>
+</div>

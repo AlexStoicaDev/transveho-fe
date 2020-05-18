@@ -1,1 +1,116 @@
-<p>cars works!</p>
+<div class="container-fluid pl-5 pr-5">
+  <div class="table-actions-container w-100 d-flex">
+    <button
+      class="table-actions-container__button"
+      (click)="openCreateCarModal()"
+    >
+      <span class="table-actions-container__button__circle">
+        <span class="material-icons table-actions-container__button__icon plus"
+          >add</span
+        >
+      </span>
+      <span class="table-actions-container__button__text">Adauga</span>
+    </button>
+  </div>
+  <div
+    *ngIf="dataSource.data"
+    class="table-wrapper rounded mat-elevation-z8 p-3 pl-5 pr-5"
+  >
+    <table
+      mat-table
+      [dataSource]="dataSource"
+      multiTemplateDataRows
+      class="w-100"
+    >
+      <ng-container matColumnDef="plateNumber">
+        <th mat-header-cell *matHeaderCellDef>NR INMATRICULARE</th>
+        <td mat-cell class="plate-number-td" *matCellDef="let element">
+          {{ element.plateNumber }}
+        </td>
+      </ng-container>
+      <ng-container
+        matColumnDef="{{ column.elementPropertyName }}"
+        *ngFor="
+          let column of columnsToDisplay | slice: 1:columnsToDisplay.length - 5
+        "
+      >
+        <th mat-header-cell *matHeaderCellDef>
+          {{ column.romanianTranslation }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element[column.elementPropertyName] }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="numberOfSeats">
+        <th mat-header-cell class="text-center" *matHeaderCellDef>NR LOC</th>
+        <td mat-cell class="text-center" *matCellDef="let element">
+          {{ element.numberOfSeats }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="rented">
+        <th mat-header-cell class="text-center" *matHeaderCellDef>
+          INCHIRIATA
+        </th>
+        <td mat-cell class="text-center" *matCellDef="let element">
+          {{ getStringForBooleanValue(element.rented) }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="inTransit">
+        <th mat-header-cell class="text-center" *matHeaderCellDef>TRANSIT</th>
+        <td mat-cell class="text-center" *matCellDef="let element">
+          {{ getStringForBooleanValue(element.inTransit) }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="carStatus">
+        <th mat-header-cell class="text-center" *matHeaderCellDef>STATUS</th>
+        <td mat-cell *matCellDef="let element">
+          <status-bar class="w-75" [status]="element.status"></status-bar>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell class="text-center" *matCellDef="let element">
+          <div
+            class="actions-container rounded-pill mr-1"
+            (click)="openActionPopup($event, element)"
+            mat-raised-button
+            color="primary"
+            [mdePopoverTriggerFor]="appPopover"
+            mdePopoverTriggerOn="click"
+            #popoverTrigger="mdePopoverTrigger"
+          >
+            <span
+              class="actions-container__dot rounded-circle d-inline-block"
+            ></span>
+            <span
+              class="ml-1 actions-container__dot rounded-circle d-inline-block"
+            ></span>
+            <span
+              class="ml-1 actions-container__dot rounded-circle d-inline-block"
+            ></span>
+          </div>
+        </td>
+      </ng-container>
+
+      <mde-popover #appPopover="mdePopover" [mdePopoverOverlapTrigger]="false">
+        <mat-card>
+          <mat-card-content>
+            <div class="row justify-content-end pr-1 pl-1">
+              <edit-button (click)="openUpdateCarModal()"></edit-button>
+              <delete-button (click)="openDeleteCarModal()"></delete-button>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </mde-popover>
+
+      <tr mat-header-row *matHeaderRowDef="headerColumns"></tr>
+      <tr
+        mat-row
+        class="element-row"
+        *matRowDef="let row; columns: headerColumns"
+      ></tr>
+    </table>
+  </div>
+  <paginator></paginator>
+</div>

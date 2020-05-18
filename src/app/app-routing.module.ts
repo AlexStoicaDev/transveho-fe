@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PassengersComponent } from './modules/passengers/passengers.component';
 import { CarsComponent } from './modules/cars/cars.component';
 import { AuthenticationGuard, DispatcherGuard } from '@transveho-core';
+import { CarsResolver } from './modules/cars/resolver/cars.resolver';
 
 const routes: Routes = [
   {
@@ -15,7 +16,8 @@ const routes: Routes = [
     path: 'cars',
     component: CarsComponent,
     pathMatch: 'full',
-    canActivate: [DispatcherGuard, AuthenticationGuard]
+    canActivate: [DispatcherGuard, AuthenticationGuard],
+    resolve: { cars: CarsResolver }
   }
 ];
 

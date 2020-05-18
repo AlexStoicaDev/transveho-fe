@@ -15,7 +15,7 @@ export interface CreateUserModalData {
 }
 
 @Component({
-  selector: 'app-create-user-modal',
+  selector: 'create-user-modal',
   templateUrl: './create-user-modal.component.html',
   styleUrls: ['./create-user-modal.component.scss']
 })
@@ -36,7 +36,7 @@ export class CreateUserModalComponent implements AfterViewInit {
   };
 
   constructor(
-    public dialogRef: MatDialogRef<DeleteModalComponent>,
+    public dialogRef: MatDialogRef<CreateUserModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: CreateUserModalData,
     private cdRef: ChangeDetectorRef
   ) {}

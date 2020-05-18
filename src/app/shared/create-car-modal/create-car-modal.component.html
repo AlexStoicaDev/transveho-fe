@@ -1,0 +1,25 @@
+<div class="px-4">
+  <h1 mat-dialog-title>Buna</h1>
+  <div>
+    <p>
+      Vrei sa adaugi o noua masina?
+    </p>
+    <car-form
+      [car]="emptyCar"
+      (onSubmitOutput)="onEnterSubmit($event)"
+    ></car-form>
+  </div>
+  <div mat-dialog-actions class="row">
+    <button class="col w-75 modal-button" mat-button (click)="onCancelClick()">
+      Anuleaza
+    </button>
+    <button
+      class="col w-75 modal-button create-button"
+      mat-flat-button
+      [disabled]="!isUserFormValid()"
+      (click)="onCreateButtonClick()"
+    >
+      Creeaza
+    </button>
+  </div>
+</div>

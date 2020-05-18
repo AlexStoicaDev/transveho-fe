@@ -1,7 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { PaginatorComponent } from '@transveho-shared';
 import { MatTableDataSource } from '@angular/material/table';
-import { Personal, PersonalRole } from '@transveho-core';
+import {
+  ArraysService,
+  Personal,
+  PersonalRole,
+  SnackBarService
+} from '@transveho-core';
 import { DispatchersService } from './service/dispatchers.service';
 import { PersonalService } from '../service/personal.service';
 import {
@@ -29,6 +34,8 @@ export class DispatchersComponent implements OnInit {
   constructor(
     private dispatchersService: DispatchersService,
     private personalService: PersonalService,
+    private arraysService: ArraysService,
+    private snackBarService: SnackBarService,
     private route: ActivatedRoute
   ) {}
 
@@ -60,11 +67,11 @@ export class DispatchersComponent implements OnInit {
     this.dispatchersService
       .createDispatcher(newDispatcher)
       .subscribe(newDispatcher => {
-        this.dataSource.data = this.personalService.addUserAtTheBeggingOfTheArray(
+        this.dataSource.data = this.arraysService.addElementAtTheBeggingOfTheArray(
           newDispatcher,
           this.dataSource.data
         );
-        this.personalService.openSnackBar(
+        this.snackBarService.openSnackBar(
           `Dispecerul cu username-ul: ${newDispatcher.username} a fost creat!`
         );
       });
@@ -87,11 +94,11 @@ export class DispatchersComponent implements OnInit {
   deleteDispatcher() {
     const username = this.performActionsOnDispatcher.username;
     this.dispatchersService.deleteDispatcher(username).subscribe(() => {
-      this.dataSource.data = this.personalService.removeUserFromArray(
+      this.dataSource.data = this.arraysService.removeElementFromArray(
         this.getElementIndexInDatasource(),
         this.dataSource.data
       );
-      this.personalService.openSnackBar(
+      this.snackBarService.openSnackBar(
         `Dispecerul cu username-ul: ${username} a fost sters!`
       );
     });
@@ -119,12 +126,12 @@ export class DispatchersComponent implements OnInit {
         editedDispatcher
       )
       .subscribe(updatedDispatcher => {
-        this.dataSource.data = this.personalService.updateUserInArray(
+        this.dataSource.data = this.arraysService.updateElementInArray(
           this.getElementIndexInDatasource(),
           updatedDispatcher,
           this.dataSource.data
         );
-        this.personalService.openSnackBar(
+        this.snackBarService.openSnackBar(
           `Dispecerul cu username-ul: ${updatedDispatcher.username} a fost editat!`
         );
       });

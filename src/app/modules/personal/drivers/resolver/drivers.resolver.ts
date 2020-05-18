@@ -5,7 +5,7 @@ import { DriversService } from '../service/drivers.service';
 import { Observable } from 'rxjs';
 
 @Injectable()
-export class DriversResolve implements Resolve<Personal[]> {
+export class DriversResolver implements Resolve<Personal[]> {
   constructor(private driversService: DriversService) {}
 
   resolve(route: ActivatedRouteSnapshot): Observable<Personal[]> {

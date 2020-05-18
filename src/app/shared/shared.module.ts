@@ -18,6 +18,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { CreateUserModalComponent } from './create-user-modal/create-user-modal.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { MatSelectModule } from '@angular/material/select';
+import { CarFormComponent } from './car-form/car-form.component';
+import { DirectivesModule } from '@transveho-core';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { EditCarModalComponent } from './edit-car-modal/edit-car-modal.component';
+import { CreateCarModalComponent } from './create-car-modal/create-car-modal.component';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   imports: [
@@ -30,7 +37,11 @@ import { MatSelectModule } from '@angular/material/select';
     FormsModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatRadioModule,
+    DirectivesModule
   ],
   declarations: [
     FooterComponent,
@@ -42,7 +53,10 @@ import { MatSelectModule } from '@angular/material/select';
     DeleteModalComponent,
     EditUserModalComponent,
     CreateUserModalComponent,
-    UserFormComponent
+    UserFormComponent,
+    CarFormComponent,
+    EditCarModalComponent,
+    CreateCarModalComponent
   ],
   exports: [
     FooterComponent,

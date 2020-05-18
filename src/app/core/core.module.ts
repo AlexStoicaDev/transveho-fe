@@ -9,9 +9,7 @@ import { HttpProxyInterceptor } from './interceptors/http-proxy.interceptor';
 //TODO create a module for authentication, interceptors,guards etc
 
 @NgModule({
-  declarations: [],
   imports: [HttpClientModule],
-  exports: [],
   entryComponents: [],
   providers: [
     AdminGuard,

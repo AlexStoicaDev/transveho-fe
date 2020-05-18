@@ -3,8 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { DriversComponent } from './drivers/drivers.component';
 import { DispatchersComponent } from './dispatchers/dispatchers.component';
 import { AuthenticationGuard, DispatcherGuard } from '@transveho-core';
-import { DriversResolve } from './drivers/resolver/drivers.resolve';
-import { DispatchersResolve } from './dispatchers/resolver/dispatchers.resolve';
+import { DriversResolver } from './drivers/resolver/drivers.resolver';
+import { DispatchersResolver } from './dispatchers/resolver/dispatchers.resolver';
 
 const routes: Routes = [
   {
@@ -14,12 +14,12 @@ const routes: Routes = [
       {
         path: 'dispatchers',
         component: DispatchersComponent,
-        resolve: { dispatchers: DispatchersResolve }
+        resolve: { dispatchers: DispatchersResolver }
       },
       {
         path: 'drivers',
         component: DriversComponent,
-        resolve: { drivers: DriversResolve }
+        resolve: { drivers: DriversResolver }
       }
     ]
   }
