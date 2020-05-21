@@ -11,6 +11,7 @@ import { PersonalModule } from './modules/personal/personal.module';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { NotFoundModule } from './modules/not-found/not-found.module';
 import { CarsModule } from './modules/cars/cars.module';
+import { RoutesModule } from './modules/routes/routes.module';
 
 @NgModule({
   declarations: [AppComponent, PassengersComponent],
@@ -20,6 +21,7 @@ import { CarsModule } from './modules/cars/cars.module';
     DashboardModule,
     PersonalModule,
     CarsModule,
+    RoutesModule,
     BrowserAnimationsModule,
     CoreModule,
     AppRoutingModule,

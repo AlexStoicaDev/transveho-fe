@@ -1,5 +1,3 @@
-import { CarStatus, EngineType } from '@transveho-core';
-
 export const carsColumns = [
   {
     elementPropertyName: 'plateNumber',

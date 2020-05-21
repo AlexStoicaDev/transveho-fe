@@ -47,7 +47,7 @@ export class CreateCarModalComponent implements AfterViewInit {
     this.dialogRef.close('cancel');
   }
 
-  isUserFormValid(): boolean {
+  isCarFormValid(): boolean {
     return this.carFormComponent && this.carFormComponent.isCarFormValid();
   }
 
@@ -59,7 +59,7 @@ export class CreateCarModalComponent implements AfterViewInit {
   }
 
   onCreateButtonClick() {
-    if (this.isUserFormValid()) {
+    if (this.isCarFormValid()) {
       this.dialogRef.close({
         action: 'create',
         newUser: this.carFormComponent.getCarFromFormControls()

@@ -2,12 +2,12 @@
   <h1 mat-dialog-title>Buna</h1>
   <div>
     <p>
-      Vrei sa adaugi o noua masina?
+      Vrei sa adaugi o noua Ruta?
     </p>
-    <car-form
-      [car]="emptyCar"
+    <route-form
+      [route]="emptyRoute"
       (onSubmitOutput)="onEnterSubmit($event)"
-    ></car-form>
+    ></route-form>
   </div>
   <div mat-dialog-actions class="row">
     <button class="col w-75 modal-button" mat-button (click)="onCancelClick()">
@@ -16,7 +16,7 @@
     <button
       class="col w-75 modal-button create-button"
       mat-flat-button
-      [disabled]="!isCarFormValid()"
+      [disabled]="!isRouteFormValid()"
       (click)="onCreateButtonClick()"
     >
       Creeaza

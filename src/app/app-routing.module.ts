@@ -4,6 +4,8 @@ import { PassengersComponent } from './modules/passengers/passengers.component';
 import { CarsComponent } from './modules/cars/cars.component';
 import { AuthenticationGuard, DispatcherGuard } from '@transveho-core';
 import { CarsResolver } from './modules/cars/resolver/cars.resolver';
+import { RoutesComponent } from './modules/routes/routes.component';
+import { RoutesResolver } from './modules/routes/resolver/routes.resolver';
 
 const routes: Routes = [
   {
@@ -18,6 +20,13 @@ const routes: Routes = [
     pathMatch: 'full',
     canActivate: [DispatcherGuard, AuthenticationGuard],
     resolve: { cars: CarsResolver }
+  },
+  {
+    path: 'routes',
+    component: RoutesComponent,
+    pathMatch: 'full',
+    canActivate: [DispatcherGuard, AuthenticationGuard],
+    resolve: { routes: RoutesResolver }
   }
 ];
 

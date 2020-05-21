@@ -1,0 +1,47 @@
+<form [formGroup]="routeFormGroup" class="py-3" (ngSubmit)="onSubmit()">
+  <mat-form-field class="w-100">
+    <mat-label>plecare din</mat-label>
+    <input matInput id="toLocation" formControlName="toLocation" />
+  </mat-form-field>
+  <mat-form-field class="w-100">
+    <mat-label>destinatie</mat-label>
+    <input matInput id="fromLocation" formControlName="fromLocation" />
+  </mat-form-field>
+
+  <mat-form-field class="w-100">
+    <mat-label>distanta in km</mat-label>
+    <input
+      matInput
+      id="distanceInKm"
+      formControlName="distanceInKm"
+      numbersOnly
+    />
+  </mat-form-field>
+
+  <mat-form-field class="w-100">
+    <mat-label>pretul in ron</mat-label>
+    <input matInput id="priceInRon" formControlName="priceInRon" numbersOnly />
+  </mat-form-field>
+
+  <mat-form-field class="w-100">
+    <mat-label>pretul in eur</mat-label>
+    <input matInput id="priceInEur" formControlName="priceInEur" numbersOnly />
+  </mat-form-field>
+
+  <div class="w-50 pb-2">
+    <label>transit</label>
+    <mat-radio-group
+      class="row"
+      id="transitRoute"
+      formControlName="transitRoute"
+    >
+      <mat-radio-button class="col" value="true">Da</mat-radio-button>
+      <mat-radio-button class="col" value="false">Nu</mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <mat-form-field appearance="fill" class="w-100">
+    <mat-label>altele</mat-label>
+    <textarea id="notes" matInput formControlName="notes"></textarea>
+  </mat-form-field>
+</form>

@@ -6,4 +6,6 @@ export * from './edit-button/edit-button.component';
 export * from './delete-button/delete-button.component';
 export * from './create-car-modal/create-car-modal.component';
 export * from './edit-car-modal/edit-car-modal.component';
+export * from './create-route-modal/create-route-modal.component';
+export * from './edit-route-modal/edit-route-modal.component';
 export * from './shared.module';

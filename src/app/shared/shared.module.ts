@@ -25,6 +25,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { EditCarModalComponent } from './edit-car-modal/edit-car-modal.component';
 import { CreateCarModalComponent } from './create-car-modal/create-car-modal.component';
 import { MatNativeDateModule } from '@angular/material/core';
+import { CreateRouteModalComponent } from './create-route-modal/create-route-modal.component';
+import { EditRouteModalComponent } from './edit-route-modal/edit-route-modal.component';
+import { RouteFormComponent } from './route-form/route-form.component';
 
 @NgModule({
   imports: [
@@ -56,7 +59,10 @@ import { MatNativeDateModule } from '@angular/material/core';
     UserFormComponent,
     CarFormComponent,
     EditCarModalComponent,
-    CreateCarModalComponent
+    CreateCarModalComponent,
+    CreateRouteModalComponent,
+    EditRouteModalComponent,
+    RouteFormComponent
   ],
   exports: [
     FooterComponent,

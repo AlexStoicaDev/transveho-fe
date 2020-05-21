@@ -55,7 +55,7 @@ export class CarFormComponent implements OnInit {
       ],
       chassisNumber: [
         this.car.chassisNumber,
-        [Validators.required, Validators.minLength(3), Validators.maxLength(12)]
+        [Validators.required, Validators.minLength(1), Validators.maxLength(12)]
       ],
       rented: [this.car.rented.toString()],
       inTransit: [this.car.inTransit.toString()],
