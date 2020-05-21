@@ -4,72 +4,23 @@
 @import '../../../assets/styles/fonts';
 
 $color-transveho-medium-blue: map-get($main-colors, transveho-medium-blue);
-$color-transveho-light-blue: map-get($main-colors, transveho-light-blue);
-$color-transveho-dark-blue: map-get($main-colors, transveho-dark-blue);
-.footer-text-size {
-  display: inline;
-  cursor: pointer;
+$color-pure-white: map-get($main-colors, pure-white);
+
+.wrapper {
+  background-color: $color-transveho-medium-blue;
+  height: 50px;
 }
 
-.footer-text {
-  font-size: 16px;
-  line-height: 23px;
+.footer {
+  text-align: center;
 
-  color: $color-transveho-dark-blue;
-  &:hover {
-    color: $color-transveho-medium-blue;
-  }
-}
-
-.no-left-padding {
-  padding-left: 0px !important;
-}
-
-.separator {
-  border-top: 1px solid $color-transveho-dark-blue;
-  margin: 47px 210px 34px 250px;
-}
-
-.no-padding {
-  padding: 0px !important;
-}
-
-.footer-bottom-margin {
-  margin-bottom: 65px;
-}
-
-@media (max-width: 991px) {
-  .footer-bottom-margin {
-    margin-bottom: 24px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .footer-margins {
-    margin-left: 187px;
-    margin-right: 110px;
-  }
-}
-
-@media (max-width: 767px) {
-  .footer-bottom-margin {
-    margin-bottom: 30px;
-  }
-
-  .mobile-center {
-    text-align: center;
-  }
-
-  .footer-text {
+  &__text {
     font-size: 16px;
     line-height: 23px;
-    color: #373d42;
-    margin-bottom: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
     cursor: pointer;
-  }
-
-  .separator {
-    margin-top: 30px;
-    margin-bottom: 20px;
+    color: $color-pure-white;
   }
 }

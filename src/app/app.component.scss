@@ -7,10 +7,9 @@ $color-pure-white: map-get($main-colors, pure-white);
 body {
   background-color: $color-lighter-gray;
 }
-
-//.mat-card:not([class*='mat-elevation-z']) {
-//  box-shadow: none;
-//}
+.content {
+  min-height: calc(100vh - 150px);
+}
 
 .navigation-bar-padding {
   padding-top: 200px;
