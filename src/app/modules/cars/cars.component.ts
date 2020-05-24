@@ -120,11 +120,5 @@ export class CarsComponent implements OnInit {
     });
   }
 
-  //TODO move to a common place
-  getStringForBooleanValue(value: boolean): string {
-    if (value) {
-      return 'DA';
-    }
-    return 'NU';
-  }
+  //TODO look how the width is set for the email column in passengers html and do the same for all tables
 }

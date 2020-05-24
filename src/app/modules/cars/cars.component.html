@@ -52,13 +52,13 @@
           INCHIRIATA
         </th>
         <td mat-cell class="text-center" *matCellDef="let element">
-          {{ getStringForBooleanValue(element.rented) }}
+          {{ element.rented ? 'DA' : 'NU' }}
         </td>
       </ng-container>
       <ng-container matColumnDef="inTransit">
         <th mat-header-cell class="text-center" *matHeaderCellDef>TRANSIT</th>
         <td mat-cell class="text-center" *matCellDef="let element">
-          {{ getStringForBooleanValue(element.inTransit) }}
+          {{ element.inTransit ? 'DA' : 'NU' }}
         </td>
       </ng-container>
       <ng-container matColumnDef="carStatus">

@@ -9,14 +9,41 @@ import { PassengersService } from './service/passengers.service';
 import { ActivatedRoute } from '@angular/router';
 import { PaginatorComponent } from '@transveho-shared';
 import { MatTableDataSource } from '@angular/material/table';
-import { passengersColumns } from './columns-to-display';
+import {
+  detailsColumnsToDisplay,
+  passengersColumns
+} from './columns-to-display';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger
+} from '@angular/animations';
+import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
   selector: 'passengers',
   templateUrl: './passengers.component.html',
-  styleUrls: ['./passengers.component.scss']
+  styleUrls: ['./passengers.component.scss'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({ height: '0px', minHeight: '0' })),
+      state(
+        'expanded',
+        style({
+          height: '*'
+        })
+      ),
+      transition(
+        'expanded <=> collapsed',
+        animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')
+      )
+    ])
+  ]
 })
 export class PassengersComponent implements OnInit {
+  //TODO fix styling for laptop screen and do not show extra columns for return transfer if there is no return transfer
   @ViewChild(PaginatorComponent) paginatorComponent: PaginatorComponent;
 
   dataSource = new MatTableDataSource<Passenger>();
@@ -24,7 +51,10 @@ export class PassengersComponent implements OnInit {
   headerColumns = this.columnsToDisplay.map(
     column => column.elementPropertyName
   );
+  detailsColumnsToDisplay = detailsColumnsToDisplay;
+  expandedElement: Passenger | null;
   performActionsOnPassenger: Passenger = null;
+  selection = new SelectionModel<Passenger>(true, []);
   availableRoutes: Route[] = [];
 
   constructor(
@@ -130,10 +160,41 @@ export class PassengersComponent implements OnInit {
     });
   }
 
-  getStringForBooleanValue(value: boolean): string {
-    if (value) {
-      return 'DA';
+  getRouteText(routeId: number): string {
+    const route: Route = this.availableRoutes.find(
+      route => route.id === routeId
+    );
+    if (route) {
+      return (
+        route.fromLocation.toLocaleLowerCase() +
+        ' - ' +
+        route.toLocation.toLocaleLowerCase()
+      );
     }
-    return 'NU';
+    return '';
+  }
+
+  /** Whether the number of selected elements matches the total number of rows. */
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
+  }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  masterToggle() {
+    this.isAllSelected()
+      ? this.selection.clear()
+      : this.dataSource.data.forEach(row => this.selection.select(row));
+  }
+
+  /** The label for the checkbox on the passed row */
+  checkboxLabel(row?: Passenger): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
+    }
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${
+      this.dataSource.data.indexOf(row) + 1
+    }`;
   }
 }

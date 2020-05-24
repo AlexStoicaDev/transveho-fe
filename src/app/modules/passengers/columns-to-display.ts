@@ -1,28 +1,11 @@
 export const passengersColumns = [
-  {
-    elementPropertyName: 'numberOfAdults',
-    romanianTranslation: 'NR ADULTI'
-  },
-  { elementPropertyName: 'numberOfChildren', romanianTranslation: 'NR COPII' },
-  { elementPropertyName: 'numberOfInfants', romanianTranslation: 'NR INFANTI' },
+  { elementPropertyName: 'select', romanianTranslation: 'select' },
   { elementPropertyName: 'email', romanianTranslation: 'EMAIL' },
   {
     elementPropertyName: 'lastName',
     romanianTranslation: 'NUME'
   },
-  {
-    elementPropertyName: 'firstName',
-    romanianTranslation: 'PRENUME'
-  },
-  {
-    elementPropertyName: 'phoneNumber',
-    romanianTranslation: 'NR TELEFON'
-  },
-  {
-    elementPropertyName: 'routeId',
-    romanianTranslation: 'ID RUTA'
-  },
-  { elementPropertyName: 'paymentMethod', romanianTranslation: 'METODA PLATA' },
+
   {
     elementPropertyName: 'transportType',
     romanianTranslation: 'TIP TRANSPORT'
@@ -41,6 +24,36 @@ export const passengersColumns = [
     romanianTranslation: 'ORA PRELUARE'
   },
   { elementPropertyName: 'flightDateTime', romanianTranslation: 'ORA ZBOR' },
+  {
+    elementPropertyName: 'routeId',
+    romanianTranslation: 'ID RUTA'
+  },
+  { elementPropertyName: 'returnTransfer', romanianTranslation: 'RETUR' },
+  {
+    elementPropertyName: 'numberOfCoPassengers',
+    romanianTranslation: 'COPASAGERI'
+  },
+  {
+    elementPropertyName: 'passengerTripStatus',
+    romanianTranslation: 'STATUS'
+  },
+  {
+    elementPropertyName: 'actions',
+    romanianTranslation: 'ACTIONS'
+  }
+];
+
+export const detailsColumnsToDisplay = [
+  {
+    elementPropertyName: 'firstName',
+    romanianTranslation: 'PRENUME'
+  },
+  {
+    elementPropertyName: 'phoneNumber',
+    romanianTranslation: 'NR TELEFON'
+  },
+  { elementPropertyName: 'paidForTransfer', romanianTranslation: 'PLATIT' },
+  { elementPropertyName: 'paymentMethod', romanianTranslation: 'METODA PLATA' },
   { elementPropertyName: 'flightDetails', romanianTranslation: 'DETALII ZBOR' },
   {
     elementPropertyName: 'returnPickUpAddress',
@@ -58,16 +71,5 @@ export const passengersColumns = [
   {
     elementPropertyName: 'returnFlightDetails',
     romanianTranslation: 'DETALII RETUR'
-  },
-  { elementPropertyName: 'returnTransfer', romanianTranslation: 'RETUR' },
-  { elementPropertyName: 'paidForTransfer', romanianTranslation: 'PLATIT' },
-
-  // {
-  //   elementPropertyName: 'carStatus',
-  //   romanianTranslation: 'STATUS'
-  // },
-  {
-    elementPropertyName: 'actions',
-    romanianTranslation: 'ACTIONS'
   }
 ];
