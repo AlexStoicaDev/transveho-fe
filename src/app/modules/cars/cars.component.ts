@@ -120,6 +120,7 @@ export class CarsComponent implements OnInit {
     });
   }
 
+  //TODO move to a common place
   getStringForBooleanValue(value: boolean): string {
     if (value) {
       return 'DA';

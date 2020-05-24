@@ -1,1 +1,26 @@
-<p>edit-passenger-modal works!</p>
+<div class="px-4">
+  <h1 mat-dialog-title>Buna</h1>
+  <div>
+    <p>
+      Vrei sa editezi acest pasager?
+    </p>
+    <passenger-form
+      [routes]="this.data?.routes"
+      [passenger]="this.data?.passenger"
+      (onSubmitOutput)="onEnterSubmit($event)"
+    ></passenger-form>
+  </div>
+  <div mat-dialog-actions class="row">
+    <button class="col w-75 modal-button" mat-button (click)="onCancelClick()">
+      Anuleaza
+    </button>
+    <button
+      class="col w-75 modal-button edit-button"
+      mat-flat-button
+      [disabled]="!isPassengerFormValid()"
+      (click)="onEditButtonClick()"
+    >
+      Editeaza
+    </button>
+  </div>
+</div>

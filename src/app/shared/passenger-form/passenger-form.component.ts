@@ -21,14 +21,12 @@ export class PassengerFormComponent implements OnInit {
   passengerFormGroup: FormGroup;
   transportTypes: Array<string> = [];
   paymentMethods: Array<string> = [];
-  //passengerTypes: Array<string> = [];
 
   @Output() onSubmitOutput: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private formBuilder: FormBuilder) {
     this.addValuesToTransportTypesArray();
     this.addValuesToPaymentMethodsArray();
-    // this.addValuesToPassengerTypesArray();
   }
 
   ngOnInit(): void {
@@ -50,14 +48,6 @@ export class PassengerFormComponent implements OnInit {
       }
     }
   }
-
-  // addValuesToPassengerTypesArray() {
-  //   for (let value in PassengerType) {
-  //     if (typeof PassengerType[value] === 'number') {
-  //       this.passengerTypes.push(value);
-  //     }
-  //   }
-  // }
 
   getControlsConfig() {
     return {
@@ -112,8 +102,14 @@ export class PassengerFormComponent implements OnInit {
           Validators.maxLength(255)
         ]
       ],
-      pickUpDateTime: [this.passenger.pickUpDateTime, Validators.required],
-      flightDateTime: [this.passenger.flightDateTime, Validators.required],
+      pickUpDateTime: [
+        new Date(this.passenger.pickUpDateTime),
+        Validators.required
+      ],
+      flightDateTime: [
+        new Date(this.passenger.flightDateTime),
+        Validators.required
+      ],
       flightDetails: [
         this.passenger.flightDetails,
         [Validators.maxLength(255)]
@@ -135,7 +131,7 @@ export class PassengerFormComponent implements OnInit {
         ]
       ],
       returnPickUpDateTime: [
-        this.passenger.returnPickUpDateTime,
+        new Date(this.passenger.returnPickUpDateTime),
         Validators.required
       ],
       returnFlightDetails: [

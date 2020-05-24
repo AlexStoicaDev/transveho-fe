@@ -21,10 +21,6 @@ export class PassengersService {
     public dialog: MatDialog
   ) {}
 
-  public getAllRoutes(): Observable<Route[]> {
-    return this.occRoutesService.getAllRoutes();
-  }
-
   public openCreatePassengerModal(routes: Route[]) {
     return this.dialog.open(CreatePassengerModalComponent, {
       id: 'createPassengerModal',
@@ -33,10 +29,10 @@ export class PassengersService {
     });
   }
 
-  public openUpdatePassengerModal(passenger: Passenger) {
+  public openUpdatePassengerModal(passenger: Passenger, routes: Route[]) {
     return this.dialog.open(EditPassengerModalComponent, {
       width: '1000px',
-      data: { passenger }
+      data: { passenger, routes }
     });
   }
 

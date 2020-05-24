@@ -10,12 +10,6 @@ import { PassengersResolver } from './modules/passengers/resolver/passengers.res
 
 const routes: Routes = [
   {
-    path: 'passengers',
-    component: PassengersComponent,
-    pathMatch: 'full',
-    canActivate: [DispatcherGuard, AuthenticationGuard]
-  },
-  {
     path: 'cars',
     component: CarsComponent,
     pathMatch: 'full',
@@ -34,7 +28,7 @@ const routes: Routes = [
     component: PassengersComponent,
     pathMatch: 'full',
     canActivate: [DispatcherGuard, AuthenticationGuard],
-    resolve: { passengers: PassengersResolver }
+    resolve: { passengers: PassengersResolver, routes: RoutesResolver }
   }
 ];
 
