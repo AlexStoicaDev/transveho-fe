@@ -1,0 +1,26 @@
+<div class="px-4">
+  <h1 mat-dialog-title>Buna</h1>
+  <div>
+    <p>
+      Vrei sa adaugi un nou pasager?
+    </p>
+    <passenger-form
+      [routes]="this.data?.routes"
+      [passenger]="emptyCreatePassenger"
+      (onSubmitOutput)="onEnterSubmit($event)"
+    ></passenger-form>
+  </div>
+  <div mat-dialog-actions class="row">
+    <button class="col w-75 modal-button" mat-button (click)="onCancelClick()">
+      Anuleaza
+    </button>
+    <button
+      class="col w-75 modal-button create-button"
+      mat-flat-button
+      [disabled]="!isPassengerFormValid()"
+      (click)="onCreateButtonClick()"
+    >
+      Creeaza
+    </button>
+  </div>
+</div>

@@ -1,4 +1,5 @@
 @import '~@angular/material/theming';
+@import '~@mat-datetimepicker/core/datetimepicker/datetimepicker-theme.scss';
 
 $md-transveho-accent-palette: (
   50: #eef7fc,
@@ -73,3 +74,4 @@ $my-app-accent: mat-palette($md-transveho-accent-palette, 500, 900, A100);
 $my-app-warn: mat-palette($md-transveho-warn-palette);
 $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
 @include angular-material-theme($my-app-theme);
+@include mat-datetimepicker-theme($my-app-theme);

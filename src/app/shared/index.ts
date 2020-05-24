@@ -8,4 +8,6 @@ export * from './create-car-modal/create-car-modal.component';
 export * from './edit-car-modal/edit-car-modal.component';
 export * from './create-route-modal/create-route-modal.component';
 export * from './edit-route-modal/edit-route-modal.component';
+export * from './create-passenger-modal/create-passenger-modal.component';
+export * from './edit-passenger-modal/edit-passenger-modal.component';
 export * from './shared.module';

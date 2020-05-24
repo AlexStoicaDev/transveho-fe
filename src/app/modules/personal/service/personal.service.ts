@@ -13,6 +13,7 @@ import { Personal, PersonalRole } from '@transveho-core';
 export class PersonalService {
   constructor(public dialog: MatDialog) {}
 
+  //TODO have only user or psersonal for components names not bouth
   openCreateUserModal(userRole: PersonalRole) {
     return this.dialog.open(CreateUserModalComponent, {
       id: 'createUserModal',

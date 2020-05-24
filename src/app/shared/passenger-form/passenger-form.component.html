@@ -1,0 +1,250 @@
+<form [formGroup]="passengerFormGroup" class="py-3 row" (ngSubmit)="onSubmit()">
+  <div class="col">
+    <mat-form-field class="w-100">
+      <mat-label>email</mat-label>
+      <input matInput id="email" formControlName="email" />
+    </mat-form-field>
+    <mat-form-field class="w-100">
+      <mat-label>nume</mat-label>
+      <input matInput id="lastName" formControlName="lastName" />
+    </mat-form-field>
+    <mat-form-field class="w-100">
+      <mat-label>prenume</mat-label>
+      <input matInput id="firstName" formControlName="firstName" />
+    </mat-form-field>
+    <mat-form-field class="w-100">
+      <mat-label>numar de telefon</mat-label>
+      <input
+        matInput
+        id="phoneNumber"
+        formControlName="phoneNumber"
+        numbersOnly
+      />
+    </mat-form-field>
+    <div class="w-50">
+      <label>a platit?</label>
+      <mat-radio-group
+        class="row"
+        id="paidForTransfer"
+        formControlName="paidForTransfer"
+      >
+        <mat-radio-button class="col" value="true">Da</mat-radio-button>
+        <mat-radio-button class="col" value="false">Nu</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <mat-form-field class="w-100">
+      <mat-label>tip plata</mat-label>
+      <mat-select id="paymentMethod" formControlName="paymentMethod">
+        <mat-option
+          *ngFor="let paymentMethod of paymentMethods"
+          [value]="paymentMethod"
+        >
+          {{ paymentMethod }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-label>ruta</mat-label>
+      <mat-select id="routeId" formControlName="routeId">
+        <mat-option *ngFor="let route of routes" [value]="route.id">
+          {{ route.fromLocation | uppercase }} -
+          {{ route.toLocation | uppercase }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-label>tip transport</mat-label>
+      <mat-select id="transportType" formControlName="transportType">
+        <mat-option
+          *ngFor="let transportType of transportTypes"
+          [value]="transportType"
+        >
+          {{ transportType }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="col">
+    <mat-form-field class="w-100">
+      <mat-label>adresa preluare / terminal aeroport</mat-label>
+      <input matInput id="pickUpAddress" formControlName="pickUpAddress" />
+    </mat-form-field>
+    <mat-form-field class="w-100">
+      <mat-placeholder>data transfer</mat-placeholder>
+      <mat-datetimepicker-toggle
+        [for]="pickUpDateTime"
+        matSuffix
+      ></mat-datetimepicker-toggle>
+      <mat-datetimepicker
+        #pickUpDateTime
+        type="datetime"
+        openOnFocus="true"
+        timeInterval="5"
+      >
+      </mat-datetimepicker>
+      <input
+        matInput
+        formControlName="pickUpDateTime"
+        [matDatetimepicker]="pickUpDateTime"
+        required
+        autocomplete="false"
+      />
+    </mat-form-field>
+    <mat-form-field class="w-100">
+      <mat-placeholder>data decolare</mat-placeholder>
+      <mat-datetimepicker-toggle
+        [for]="flightDateTime"
+        matSuffix
+      ></mat-datetimepicker-toggle>
+      <mat-datetimepicker
+        #flightDateTime
+        type="datetime"
+        openOnFocus="true"
+        timeInterval="5"
+      >
+      </mat-datetimepicker>
+      <input
+        matInput
+        formControlName="flightDateTime"
+        [matDatetimepicker]="flightDateTime"
+        required
+        autocomplete="false"
+      />
+    </mat-form-field>
+    <mat-form-field class="w-100">
+      <mat-label>destinatie transfer / terminal Aeroport</mat-label>
+      <input
+        matInput
+        id="destinationAddress"
+        formControlName="destinationAddress"
+      />
+    </mat-form-field>
+    <div class="row">
+      <mat-form-field class="col-10 pr-0">
+        <mat-label>numar adulti</mat-label>
+        <input
+          matInput
+          type="number"
+          id="numberOfAdults"
+          formControlName="numberOfAdults"
+          numbersOnly
+        />
+      </mat-form-field>
+      <div class="col-2 d-flex align-items-center icon-container">
+        <span class="material-icons">
+          person
+        </span>
+      </div>
+    </div>
+    <div class="row">
+      <mat-form-field class="col-10 pr-0">
+        <mat-label>numar copii</mat-label>
+
+        <input
+          matInput
+          type="number"
+          id="numberOfChildren"
+          formControlName="numberOfChildren"
+          numbersOnly
+        />
+      </mat-form-field>
+      <div class="col-2 d-flex align-items-center icon-container">
+        <span class="material-icons">
+          child_care
+        </span>
+      </div>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="col-10 w-100 pr-0">
+        <mat-label>numar infanti</mat-label>
+        <input
+          matInput
+          type="number"
+          id="numberOfInfants"
+          formControlName="numberOfInfants"
+          numbersOnly
+        />
+      </mat-form-field>
+      <div class="col-2 d-flex align-items-center icon-container">
+        <span class="material-icons">
+          child_friendly
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <mat-form-field appearance="fill" class="w-100">
+      <mat-label>detalii zbor</mat-label>
+      <textarea
+        id="flightDetails"
+        matInput
+        formControlName="flightDetails"
+      ></textarea>
+    </mat-form-field>
+    <div class="w-50">
+      <label>transfer dus-intors?</label>
+      <mat-radio-group
+        class="row"
+        id="returnTransfer"
+        formControlName="returnTransfer"
+      >
+        <mat-radio-button class="col" value="true">Da</mat-radio-button>
+        <mat-radio-button class="col" value="false">Nu</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <ng-container
+      *ngIf="passengerFormGroup.controls.returnTransfer.value === 'true'"
+    >
+      <mat-form-field class="w-100">
+        <mat-label>adresa preluare / terminal aeroport intoarcere</mat-label>
+        <input
+          matInput
+          id="returnPickUpAddress"
+          formControlName="returnPickUpAddress"
+        />
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <mat-label>destinatie transfer intoarcere</mat-label>
+        <input
+          matInput
+          id="returnDestinationAddress"
+          formControlName="returnDestinationAddress"
+        />
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <mat-placeholder>data transfer intoarcere</mat-placeholder>
+        <mat-datetimepicker-toggle
+          [for]="returnPickUpDateTime"
+          matSuffix
+        ></mat-datetimepicker-toggle>
+        <mat-datetimepicker
+          class="icon-container"
+          #returnPickUpDateTime
+          type="datetime"
+          openOnFocus="true"
+          timeInterval="5"
+        >
+        </mat-datetimepicker>
+        <input
+          matInput
+          formControlName="returnPickUpDateTime"
+          [matDatetimepicker]="returnPickUpDateTime"
+          required
+          autocomplete="false"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>detalii zbor intoarcere</mat-label>
+        <textarea
+          id="returnFlightDetails"
+          matInput
+          formControlName="returnFlightDetails"
+        ></textarea>
+      </mat-form-field>
+    </ng-container>
+  </div>
+</form>

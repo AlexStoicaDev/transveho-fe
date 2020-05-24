@@ -6,15 +6,15 @@ import { AuthenticationPagesModule } from './modules/authentication/authenticati
 import { SharedModule } from '@transveho-shared';
 import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PassengersComponent } from './modules/passengers/passengers.component';
 import { PersonalModule } from './modules/personal/personal.module';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { NotFoundModule } from './modules/not-found/not-found.module';
 import { CarsModule } from './modules/cars/cars.module';
 import { RoutesModule } from './modules/routes/routes.module';
+import { PassengersModule } from './modules/passengers/passengers.module';
 
 @NgModule({
-  declarations: [AppComponent, PassengersComponent],
+  declarations: [AppComponent],
   imports: [
     BusinessServicesModule,
     AuthenticationPagesModule,
@@ -22,6 +22,7 @@ import { RoutesModule } from './modules/routes/routes.module';
     PersonalModule,
     CarsModule,
     RoutesModule,
+    PassengersModule,
     BrowserAnimationsModule,
     CoreModule,
     AppRoutingModule,

@@ -1,0 +1,6 @@
+@import '../../../theme';
+@import '../../../assets/styles/colors';
+
+.icon-container {
+  color: mat-color($my-app-accent, default);
+}

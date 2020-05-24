@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
 import { AuthenticationService } from '../authentication/authentication.service';
 
 const AUTH_API = 'http://localhost:8080/transveho/';
-
+//TODO create an error proxy
 @Injectable()
 export class HttpProxyInterceptor implements HttpInterceptor {
   constructor(private authenticationService: AuthenticationService) {}

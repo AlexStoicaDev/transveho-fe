@@ -24,10 +24,16 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { EditCarModalComponent } from './edit-car-modal/edit-car-modal.component';
 import { CreateCarModalComponent } from './create-car-modal/create-car-modal.component';
-import { MatNativeDateModule } from '@angular/material/core';
 import { CreateRouteModalComponent } from './create-route-modal/create-route-modal.component';
 import { EditRouteModalComponent } from './edit-route-modal/edit-route-modal.component';
 import { RouteFormComponent } from './route-form/route-form.component';
+import { CreatePassengerModalComponent } from './create-passenger-modal/create-passenger-modal.component';
+import { EditPassengerModalComponent } from './edit-passenger-modal/edit-passenger-modal.component';
+import { PassengerFormComponent } from './passenger-form/passenger-form.component';
+import {
+  MatDatetimepickerModule,
+  MatNativeDatetimeModule
+} from '@mat-datetimepicker/core';
 
 @NgModule({
   imports: [
@@ -42,9 +48,10 @@ import { RouteFormComponent } from './route-form/route-form.component';
     ReactiveFormsModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatNativeDateModule,
     MatRadioModule,
-    DirectivesModule
+    DirectivesModule,
+    MatDatetimepickerModule,
+    MatNativeDatetimeModule
   ],
   declarations: [
     FooterComponent,
@@ -62,7 +69,10 @@ import { RouteFormComponent } from './route-form/route-form.component';
     CreateCarModalComponent,
     CreateRouteModalComponent,
     EditRouteModalComponent,
-    RouteFormComponent
+    RouteFormComponent,
+    CreatePassengerModalComponent,
+    EditPassengerModalComponent,
+    PassengerFormComponent
   ],
   exports: [
     FooterComponent,

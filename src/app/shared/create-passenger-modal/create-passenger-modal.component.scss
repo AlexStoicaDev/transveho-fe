@@ -1,0 +1,14 @@
+@import '../../../theme';
+@import '../../../assets/styles/colors';
+
+$color-dark-green: map-get($main-colors, dark-green);
+$color-light-green: map-get($main-colors, light-green);
+$color-pure-white: map-get($main-colors, pure-white);
+
+.create-button {
+  background-color: $color-dark-green;
+  color: $color-pure-white;
+  &:hover {
+    background-color: $color-light-green;
+  }
+}
