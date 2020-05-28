@@ -16,7 +16,7 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
-      <div class="hori-selector">
+      <div class="hori-selector" [ngClass]="{ 'd-none': !active }">
         <div class="left"></div>
         <div class="right"></div>
       </div>
@@ -64,7 +64,6 @@
         class="nav-item cursor-pointer"
         routerLinkActive="active"
         routerLink="/passengers"
-        [routerLinkActiveOptions]="{ exact: true }"
         (click)="setSelectorDivPosition()"
       >
         <a class="nav-link"

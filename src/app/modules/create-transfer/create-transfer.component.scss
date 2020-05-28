@@ -1,0 +1,133 @@
+@import '../../../assets/styles/colors';
+@import '../../../assets/styles/fonts';
+@import '../../../assets/styles/table';
+
+$color-lighter-gray: map-get($main-colors, lighter-gray);
+$color-light-gray: map-get($main-colors, light-gray);
+$transveho-medium-blue: map-get($main-colors, transveho-medium-blue);
+$transveho-dark-blue: map-get($main-colors, transveho-dark-blue);
+$color-dark-red: map-get($main-colors, dark-red);
+$color-light-red: map-get($main-colors, light-red);
+$color-dark-green: map-get($main-colors, dark-green);
+$color-light-green: map-get($main-colors, light-green);
+
+.accordion-header {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.select-column {
+  text-align: center;
+  display: block;
+
+  &__wrapper {
+    display: table-cell;
+    vertical-align: middle;
+    height: 50px;
+  }
+}
+.route {
+  padding-left: 24px;
+  color: $color-light-gray;
+  font-weight: 500;
+
+  &__label {
+    color: $transveho-medium-blue;
+  }
+}
+.mat-stepper-horizontal {
+  margin-top: 8px;
+}
+
+.mat-form-field {
+  margin-top: 16px;
+}
+
+.create-transfer-stepper {
+  background-color: $color-lighter-gray;
+}
+
+.co-passengers-icon {
+  color: $transveho-medium-blue;
+}
+
+.co-passengers-icon-count {
+  font-weight: 500;
+  color: $transveho-dark-blue;
+}
+
+.passengers-accordion {
+  &__panel {
+    //padding-top: 10px;
+    &__passenger-name {
+      font-weight: 500;
+      // color:$transveho-medium-blue;
+    }
+
+    &__header {
+      color: $transveho-medium-blue;
+    }
+  }
+}
+
+.example-action-buttons {
+  padding-bottom: 20px;
+}
+
+.example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.example-headers-align .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+
+.delete-icon {
+  margin: 0 auto;
+  color: $color-dark-red;
+
+  &:hover {
+    cursor: pointer;
+    color: $color-light-red;
+  }
+}
+
+.expend-icon {
+  color: $color-light-gray;
+  font-size: 30px;
+
+  &:hover {
+    cursor: pointer;
+    color: $transveho-medium-blue;
+  }
+}
+
+.route {
+  color: $transveho-medium-blue;
+}
+
+.total-passenger-count-label {
+  font-weight: 500;
+  color: $transveho-medium-blue;
+}
+
+.selected-car-header {
+  font-weight: 500;
+  color: $transveho-medium-blue;
+}
+.color-light-gray {
+  color: $color-light-gray;
+}
+
+.create-button {
+  background-color: $color-dark-green;
+  color: $color-pure-white;
+  &:hover {
+    background-color: $color-light-green;
+  }
+}

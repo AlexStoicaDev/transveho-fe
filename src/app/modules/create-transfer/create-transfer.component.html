@@ -1,0 +1,768 @@
+<div class="container-fluid pl-5 pr-5">
+  <mat-horizontal-stepper class="create-transfer-stepper" #stepper>
+    <mat-step label="Step 1" state="phone">
+      <ng-template matStepLabel>verifica pasagerii</ng-template>
+      <div class="p-0">
+        <span
+          class="material-icons expend-icon"
+          (click)="passengersAccordion.openAll()"
+        >
+          unfold_more
+        </span>
+        <span
+          class="material-icons expend-icon"
+          (click)="passengersAccordion.closeAll()"
+        >
+          unfold_less
+        </span>
+      </div>
+      <mat-card class="accordion-header">
+        <div class="row">
+          <div class="col">
+            <p class="color-light-gray m-0">PASAGERI</p>
+          </div>
+        </div>
+      </mat-card>
+      <mat-accordion class="example-headers-align passengers-accordion" multi>
+        <mat-expansion-panel
+          class="passengers-accordion__panel"
+          *ngFor="let passenger of passengers; let isFirst = first"
+          [expanded]="false"
+        >
+          <mat-expansion-panel-header>
+            <mat-panel-description>
+              <div class="row w-100 justify-content-end pt-3">
+                <div class="col">
+                  <p class="passengers-accordion__panel__passenger-name">
+                    {{ passenger.lastName }}<br />{{ passenger.firstName }}
+                  </p>
+                </div>
+                <div class="col">
+                  <span class="material-icons co-passengers-icon">
+                    person
+                  </span>
+                  <span class="co-passengers-icon-count">
+                    {{ passenger.numberOfAdults }}</span
+                  >
+                  <span class="material-icons co-passengers-icon ml-2">
+                    child_care
+                  </span>
+
+                  <span class="co-passengers-icon-count mr-2">
+                    {{ passenger.numberOfChildren }}</span
+                  >
+                  <span class="material-icons co-passengers-icon">
+                    child_friendly
+                  </span>
+                  <span class="co-passengers-icon-count">
+                    {{ passenger.numberOfInfants }}</span
+                  >
+                </div>
+                <div class="col">
+                  <p>
+                    <span class="passengers-accordion__panel__header"
+                      >data transfer</span
+                    ><br />{{ passenger.pickUpDateTime }}
+                  </p>
+                </div>
+                <div class="col">
+                  <p>
+                    <span class="passengers-accordion__panel__header"
+                      >ora avion</span
+                    ><br />{{ passenger.pickUpDateTime }}
+                  </p>
+                </div>
+                <div class="col">
+                  <p>
+                    <span class="passengers-accordion__panel__header"
+                      >adresa preluare</span
+                    ><br />{{ passenger.pickUpAddress }}
+                  </p>
+                </div>
+                <div class="col">
+                  <p>
+                    <span class="passengers-accordion__panel__header"
+                      >adresa destinatie</span
+                    ><br />{{ passenger.destinationAddress }}
+                  </p>
+                </div>
+              </div>
+              <div class="text-center d-flex align-items-center col">
+                <span
+                  class="material-icons delete-icon"
+                  (click)="removePassenger(passenger)"
+                >
+                  clear
+                </span>
+              </div>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>
+            <span class="passengers-accordion__panel__header">telefon</span>
+            {{ passenger.phoneNumber }}
+            <br /><span class="passengers-accordion__panel__header">email</span>
+            {{ passenger.email }}
+            <br /><span class="passengers-accordion__panel__header"
+              >metoda plata</span
+            >
+            {{ passenger.paymentMethod }}
+            <br /><span class="passengers-accordion__panel__header"
+              >a platit</span
+            >
+            {{ passenger.paidForTransfer ? 'DA' : 'NU' }}
+            <br /><span class="passengers-accordion__panel__header"
+              >detalii zbor</span
+            ><br />
+            {{ passenger.flightDetails }}
+          </p>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-step>
+    <mat-step state="chat">
+      <ng-template matStepLabel>alege masina</ng-template>
+      <div class="row">
+        <div class="col">
+          <mat-card>
+            <div class="row">
+              <div class="col">
+                <p class="color-light-gray">RUTA</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <p class="total-passenger-count-label">TIMISOARA - BUDAPESTA</p>
+              </div>
+            </div>
+          </mat-card>
+          <mat-card class="mt-2">
+            <div class="row">
+              <div class="col">
+                <p class="color-light-gray">PASAGERI</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <p class="total-passenger-count-label m-0">
+                  numar total pasageri
+                </p>
+              </div>
+              <div class="col text-center">
+                <span class="material-icons co-passengers-icon">
+                  person
+                </span>
+                <span class="co-passengers-icon-count">
+                  {{ totalNumberOfAdults }}</span
+                >
+                <span class="material-icons co-passengers-icon ml-2">
+                  child_care
+                </span>
+
+                <span class="co-passengers-icon-count mr-2">
+                  {{ totalNumberOfChildren }}</span
+                >
+                <span class="material-icons co-passengers-icon">
+                  child_friendly
+                </span>
+                <span class="co-passengers-icon-count">
+                  {{ totalNumberOfInfants }}</span
+                >
+              </div>
+            </div>
+            <div class="row" *ngFor="let passenger of passengers">
+              <div class="col color-light-gray">
+                {{ passenger.lastName }} {{ passenger.firstName }}
+              </div>
+              <div class="col text-center">
+                <span class="material-icons co-passengers-icon">
+                  person
+                </span>
+                <span class="co-passengers-icon-count">
+                  {{ passenger.numberOfAdults }}</span
+                >
+                <span class="material-icons co-passengers-icon ml-2">
+                  child_care
+                </span>
+
+                <span class="co-passengers-icon-count mr-2">
+                  {{ passenger.numberOfChildren }}</span
+                >
+                <span class="material-icons co-passengers-icon">
+                  child_friendly
+                </span>
+                <span class="co-passengers-icon-count">
+                  {{ passenger.numberOfInfants }}</span
+                >
+              </div>
+            </div>
+          </mat-card>
+        </div>
+        <div class="col-8">
+          <mat-card class="accordion-header">
+            <div class="row">
+              <div class="col">
+                <p class="color-light-gray m-0">MASINI</p>
+              </div>
+            </div>
+          </mat-card>
+          <mat-accordion
+            class="example-headers-align passengers-accordion"
+            multi
+          >
+            <mat-expansion-panel
+              class="passengers-accordion__panel"
+              *ngFor="let car of cars; let i = index"
+            >
+              <mat-expansion-panel-header>
+                <mat-panel-description>
+                  <div class="row w-100 justify-content-end pt-3">
+                    <div class="col-2 select-column">
+                      <div class="select-column__wrapper">
+                        <mat-checkbox
+                          class="mr-1"
+                          required="true"
+                          (click)="$event.stopPropagation()"
+                          (change)="selectedCarIndex = i"
+                          [checked]="selectedCarIndex === i"
+                        >
+                        </mat-checkbox>
+                        <span
+                          class="passengers-accordion__panel__passenger-name"
+                        >
+                          {{ car.plateNumber }}
+                        </span>
+                      </div>
+                    </div>
+                    <div class="col text-center">
+                      <p>
+                        <span class="passengers-accordion__panel__header"
+                          >numar locuri</span
+                        ><br />{{ car.numberOfSeats }}
+                      </p>
+                    </div>
+                    <div class="col">
+                      <p>
+                        <span class="passengers-accordion__panel__header"
+                          >model</span
+                        ><br />{{ car.model }}
+                      </p>
+                    </div>
+                    <div class="col">
+                      <p>
+                        <span class="passengers-accordion__panel__header"
+                          >data exp itp</span
+                        ><br />{{ car.itpExpirationDate }}
+                      </p>
+                    </div>
+                    <div class="col">
+                      <p>
+                        <span class="passengers-accordion__panel__header"
+                          >data exp rca</span
+                        ><br />{{ car.rcaExpirationDate }}
+                      </p>
+                    </div>
+                    <div class="col">
+                      <p>
+                        <span class="passengers-accordion__panel__header"
+                          >data exp rov</span
+                        ><br />{{ car.rovignetteExpirationDate }}
+                      </p>
+                    </div>
+                    <div class="col">
+                      <p>
+                        <span class="passengers-accordion__panel__header"
+                          >data exp huv</span
+                        ><br />{{ car.huvignetteExpirationDate }}
+                      </p>
+                    </div>
+                  </div>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <p>
+                <span class="passengers-accordion__panel__header"
+                  >numar sasiu</span
+                >
+                {{ car.chassisNumber }}
+                <br /><span class="passengers-accordion__panel__header"
+                  >motor</span
+                >
+                {{ car.engineType }}
+                <br />
+                <span class="passengers-accordion__panel__header"
+                  >inchiriata</span
+                >
+                {{ car.rented ? 'DA' : 'NU' }}
+              </p>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>alege soferul</ng-template>
+      <div class="row">
+        <div class="col">
+          <mat-card>
+            <div class="row">
+              <div class="col">
+                <p class="color-light-gray">RUTA</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <p class="total-passenger-count-label">TIMISOARA - BUDAPESTA</p>
+              </div>
+            </div>
+          </mat-card>
+          <mat-card class="mt-2">
+            <div class="row">
+              <div class="col">
+                <p class="color-light-gray">PASAGERI</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <p class="total-passenger-count-label m-0">
+                  numar total pasageri
+                </p>
+              </div>
+              <div class="col text-center">
+                <span class="material-icons co-passengers-icon">
+                  person
+                </span>
+                <span class="co-passengers-icon-count">
+                  {{ totalNumberOfAdults }}</span
+                >
+                <span class="material-icons co-passengers-icon ml-2">
+                  child_care
+                </span>
+
+                <span class="co-passengers-icon-count mr-2">
+                  {{ totalNumberOfChildren }}</span
+                >
+                <span class="material-icons co-passengers-icon">
+                  child_friendly
+                </span>
+                <span class="co-passengers-icon-count">
+                  {{ totalNumberOfInfants }}</span
+                >
+              </div>
+            </div>
+            <div class="row" *ngFor="let passenger of passengers">
+              <div class="col color-light-gray">
+                {{ passenger.lastName }} {{ passenger.firstName }}
+              </div>
+              <div class="col text-center">
+                <span class="material-icons co-passengers-icon">
+                  person
+                </span>
+                <span class="co-passengers-icon-count">
+                  {{ passenger.numberOfAdults }}</span
+                >
+                <span class="material-icons co-passengers-icon ml-2">
+                  child_care
+                </span>
+
+                <span class="co-passengers-icon-count mr-2">
+                  {{ passenger.numberOfChildren }}</span
+                >
+                <span class="material-icons co-passengers-icon">
+                  child_friendly
+                </span>
+                <span class="co-passengers-icon-count">
+                  {{ passenger.numberOfInfants }}</span
+                >
+              </div>
+            </div>
+          </mat-card>
+          <mat-card class="mt-2" *ngIf="selectedCarIndex !== null">
+            <div class="row">
+              <div class="col">
+                <p class="color-light-gray">MASINA</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <p class="selected-car-header mb-0">numar inmatriculare</p>
+                <p class="color-light-gray">
+                  {{ cars[selectedCarIndex].plateNumber }}
+                </p>
+              </div>
+              <div class="col">
+                <p class="selected-car-header mb-0">numar locuri</p>
+                <p class="color-light-gray">
+                  {{ cars[selectedCarIndex].numberOfSeats }}
+                </p>
+              </div>
+              <div class="col">
+                <p class="selected-car-header mb-0">model</p>
+                <p class="color-light-gray">
+                  {{ cars[selectedCarIndex].model }}
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <p class="selected-car-header mb-0">data exp itp</p>
+                <p class="color-light-gray">
+                  {{ cars[selectedCarIndex].itpExpirationDate }}
+                </p>
+              </div>
+              <div class="col">
+                <p class="selected-car-header mb-0">data exp rca</p>
+                <p class="color-light-gray">
+                  {{ cars[selectedCarIndex].rcaExpirationDate }}
+                </p>
+              </div>
+              <div class="col">
+                <p class="selected-car-header mb-0">data exp rov</p>
+                <p class="color-light-gray">
+                  {{ cars[selectedCarIndex].rovignetteExpirationDate }}
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <p class="selected-car-header mb-0">data exp huv</p>
+                <p class="color-light-gray">
+                  {{ cars[selectedCarIndex].huvignetteExpirationDate }}
+                </p>
+              </div>
+              <div class="col">
+                <p class="selected-car-header mb-0">motor</p>
+                <p class="color-light-gray">
+                  {{ cars[selectedCarIndex].engineType }}
+                </p>
+              </div>
+              <div class="col">
+                <p class="selected-car-header mb-0">inchiriata</p>
+                <p class="color-light-gray">
+                  {{ cars[selectedCarIndex].rented ? 'DA' : 'NU' }}
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <p class="selected-car-header mb-0">numar sasiu</p>
+                <p class="color-light-gray">
+                  {{ cars[selectedCarIndex].chassisNumber }}
+                </p>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+        <div class="col-8">
+          <mat-card class="accordion-header">
+            <div class="row">
+              <div class="col">
+                <p class="color-light-gray m-0">SOFERI</p>
+              </div>
+            </div>
+          </mat-card>
+          <mat-accordion
+            class="example-headers-align passengers-accordion"
+            multi
+          >
+            <mat-expansion-panel
+              class="passengers-accordion__panel"
+              *ngFor="let driver of drivers; let i = index"
+            >
+              <mat-expansion-panel-header>
+                <mat-panel-description>
+                  <div class="row w-100 justify-content-end pt-3">
+                    <div class="col select-column">
+                      <div class="select-column__wrapper">
+                        <mat-checkbox
+                          class="mr-1"
+                          required="true"
+                          (click)="$event.stopPropagation()"
+                          (change)="selectedDriverIndex = i"
+                          [checked]="selectedDriverIndex === i"
+                        >
+                        </mat-checkbox>
+                        <span
+                          class="passengers-accordion__panel__passenger-name"
+                        >
+                          {{ driver.lastName }} {{ driver.firstName }}
+                        </span>
+                      </div>
+                    </div>
+                    <div class="col text-center">
+                      <p>
+                        <span class="passengers-accordion__panel__header"
+                          >categorie permis</span
+                        ><br />{{ driver.drivingLicenseCategory }}
+                      </p>
+                    </div>
+                    <div class="col text-center">
+                      <p>
+                        <span class="passengers-accordion__panel__header"
+                          >limbi vorbite</span
+                        ><br />{{ driver.spokenLanguage }}
+                      </p>
+                    </div>
+                    <div class="col">
+                      <p>
+                        <span class="passengers-accordion__panel__header"
+                          >numar telefon</span
+                        ><br />{{ driver.phoneNumber }}
+                      </p>
+                    </div>
+                  </div>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <p>
+                <span class="passengers-accordion__panel__header"
+                  >username</span
+                >
+                {{ driver.username }}
+                <br /><span class="passengers-accordion__panel__header"
+                  >email</span
+                >
+                {{ driver.email }}
+              </p>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>gata</ng-template>
+      <div class="row">
+        <div class="col">
+          <mat-card>
+            <div class="row">
+              <div class="col">
+                <p class="color-light-gray">RUTA</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <p class="total-passenger-count-label">TIMISOARA - BUDAPESTA</p>
+              </div>
+            </div>
+          </mat-card>
+          <mat-card class="mt-2">
+            <div class="row">
+              <div class="col">
+                <p class="color-light-gray">PASAGERI</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <p class="total-passenger-count-label m-0">
+                  numar total pasageri
+                </p>
+              </div>
+              <div class="col text-center">
+                <span class="material-icons co-passengers-icon">
+                  person
+                </span>
+                <span class="co-passengers-icon-count">
+                  {{ totalNumberOfAdults }}</span
+                >
+                <span class="material-icons co-passengers-icon ml-2">
+                  child_care
+                </span>
+
+                <span class="co-passengers-icon-count mr-2">
+                  {{ totalNumberOfChildren }}</span
+                >
+                <span class="material-icons co-passengers-icon">
+                  child_friendly
+                </span>
+                <span class="co-passengers-icon-count">
+                  {{ totalNumberOfInfants }}</span
+                >
+              </div>
+            </div>
+            <div class="row" *ngFor="let passenger of passengers">
+              <div class="col color-light-gray">
+                {{ passenger.lastName }} {{ passenger.firstName }}
+              </div>
+              <div class="col text-center">
+                <span class="material-icons co-passengers-icon">
+                  person
+                </span>
+                <span class="co-passengers-icon-count">
+                  {{ passenger.numberOfAdults }}</span
+                >
+                <span class="material-icons co-passengers-icon ml-2">
+                  child_care
+                </span>
+
+                <span class="co-passengers-icon-count mr-2">
+                  {{ passenger.numberOfChildren }}</span
+                >
+                <span class="material-icons co-passengers-icon">
+                  child_friendly
+                </span>
+                <span class="co-passengers-icon-count">
+                  {{ passenger.numberOfInfants }}</span
+                >
+              </div>
+            </div>
+          </mat-card>
+        </div>
+        <div class="col">
+          <mat-card *ngIf="selectedCarIndex !== null">
+            <div class="row">
+              <div class="col">
+                <p class="color-light-gray">MASINA</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <p class="selected-car-header mb-0">numar inmatriculare</p>
+                <p class="color-light-gray">
+                  {{ cars[selectedCarIndex].plateNumber }}
+                </p>
+              </div>
+              <div class="col">
+                <p class="selected-car-header mb-0">numar locuri</p>
+                <p class="color-light-gray">
+                  {{ cars[selectedCarIndex].numberOfSeats }}
+                </p>
+              </div>
+              <div class="col">
+                <p class="selected-car-header mb-0">model</p>
+                <p class="color-light-gray">
+                  {{ cars[selectedCarIndex].model }}
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <p class="selected-car-header mb-0">data exp itp</p>
+                <p class="color-light-gray">
+                  {{ cars[selectedCarIndex].itpExpirationDate }}
+                </p>
+              </div>
+              <div class="col">
+                <p class="selected-car-header mb-0">data exp rca</p>
+                <p class="color-light-gray">
+                  {{ cars[selectedCarIndex].rcaExpirationDate }}
+                </p>
+              </div>
+              <div class="col">
+                <p class="selected-car-header mb-0">data exp rov</p>
+                <p class="color-light-gray">
+                  {{ cars[selectedCarIndex].rovignetteExpirationDate }}
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <p class="selected-car-header mb-0">data exp huv</p>
+                <p class="color-light-gray">
+                  {{ cars[selectedCarIndex].huvignetteExpirationDate }}
+                </p>
+              </div>
+              <div class="col">
+                <p class="selected-car-header mb-0">motor</p>
+                <p class="color-light-gray">
+                  {{ cars[selectedCarIndex].engineType }}
+                </p>
+              </div>
+              <div class="col">
+                <p class="selected-car-header mb-0">inchiriata</p>
+                <p class="color-light-gray">
+                  {{ cars[selectedCarIndex].rented ? 'DA' : 'NU' }}
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <p class="selected-car-header mb-0">numar sasiu</p>
+                <p class="color-light-gray">
+                  {{ cars[selectedCarIndex].chassisNumber }}
+                </p>
+              </div>
+            </div>
+          </mat-card>
+          <mat-card class="mt-2" *ngIf="selectedDriverIndex != null">
+            <div class="row">
+              <div class="col">
+                <p class="color-light-gray">SOFER</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <p class="selected-car-header mb-0">nume</p>
+                <p class="color-light-gray">
+                  {{ drivers[selectedDriverIndex].lastName }}
+                </p>
+              </div>
+              <div class="col">
+                <p class="selected-car-header mb-0">prenume</p>
+                <p class="color-light-gray">
+                  {{ drivers[selectedDriverIndex].firstName }}
+                </p>
+              </div>
+              <div class="col">
+                <p class="selected-car-header mb-0">categorie permis</p>
+                <p class="color-light-gray">
+                  {{ drivers[selectedDriverIndex].drivingLicenseCategory }}
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <p class="selected-car-header mb-0">limbi vorbite</p>
+                <p class="color-light-gray">
+                  {{ drivers[selectedDriverIndex].spokenLanguage }}
+                </p>
+              </div>
+              <div class="col">
+                <p class="selected-car-header mb-0">numar telefon</p>
+                <p class="color-light-gray">
+                  {{ drivers[selectedDriverIndex].phoneNumber }}
+                </p>
+              </div>
+              <div class="col">
+                <p class="selected-car-header mb-0">username</p>
+                <p class="color-light-gray">
+                  {{ drivers[selectedDriverIndex].username }}
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <p class="selected-car-header mb-0">email</p>
+                <p class="color-light-gray">
+                  {{ drivers[selectedDriverIndex].email }}
+                </p>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+        <div class="col">
+          <mat-card>
+            <div class="row text-center">
+              <div class="col">
+                <p class="color-light-gray">
+                  Te rugam sa verifci toate datele inainte crearii transferului
+                </p>
+              </div>
+            </div>
+            <div class="row text-center">
+              <div class="col">
+                <button
+                  class="col w-75 modal-button create-button"
+                  mat-flat-button
+                >
+                  Creeaza Transfer
+                </button>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+    </mat-step>
+    <ng-template matStepperIcon="phone">
+      <mat-icon>call_end</mat-icon>
+    </ng-template>
+    <ng-template matStepperIcon="chat">
+      <mat-icon>forum</mat-icon>
+    </ng-template>
+  </mat-horizontal-stepper>
+</div>

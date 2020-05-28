@@ -5,6 +5,7 @@ $transveho-light-blue: map-get($main-colors, transveho-light-blue);
 $transveho-medium-blue: map-get($main-colors, transveho-medium-blue);
 $transveho-dark-blue: map-get($main-colors, transveho-dark-blue);
 $color-lighter-gray: map-get($main-colors, lighter-gray);
+$color-light-gray: map-get($main-colors, light-gray);
 
 .table-wrapper {
   background-color: $color-pure-white;
@@ -69,6 +70,11 @@ td.mat-footer-cell:last-of-type {
   }
 }
 
+.actions-popover {
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+}
+
 .table-actions-container {
   padding-left: 80px;
   padding-bottom: 20px;
@@ -85,7 +91,7 @@ td.mat-footer-cell:last-of-type {
     padding: 0;
     font-size: inherit;
     font-family: inherit;
-    width: 10rem;
+    width: 14rem;
     height: auto;
 
     &:hover &__circle {
@@ -145,4 +151,14 @@ td.mat-footer-cell:last-of-type {
       text-transform: uppercase;
     }
   }
+}
+
+.second-button {
+  width: 10rem;
+  left: -160px;
+  transition: left 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+}
+
+.disabled {
+  background: $color-light-gray;
 }

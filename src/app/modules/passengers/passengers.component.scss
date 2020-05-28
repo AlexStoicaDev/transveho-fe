@@ -2,22 +2,27 @@
 @import '../../../assets/styles/fonts';
 @import '../../../assets/styles/table';
 
+$color-pure-white: map-get($main-colors, pure-white);
 $transveho-medium-blue: map-get($main-colors, transveho-medium-blue);
 $transveho-dark-blue: map-get($main-colors, transveho-dark-blue);
 
 .element-row td {
   border-bottom-width: 0;
 }
+
 .element-row {
   border-top: 0;
   border-bottom: 0;
 }
+
 .email-td {
   width: 15%;
 }
+
 .route-td {
   width: 9%;
 }
+
 .co-passengers-icon {
   color: $transveho-medium-blue;
 }
@@ -25,4 +30,17 @@ $transveho-dark-blue: map-get($main-colors, transveho-dark-blue);
 .co-passengers-icon-count {
   font-weight: 500;
   color: $transveho-dark-blue;
+}
+
+.table-actions-container {
+  padding-left: 25px;
+  &__button {
+    &:hover + .second-button {
+      left: 1rem;
+    }
+  }
+}
+
+.second-button {
+  width: 10rem;
 }

@@ -11,10 +11,12 @@ import { SharedModule } from '@transveho-shared';
 import { PassengersComponent } from './passengers.component';
 import { PassengersService } from './service/passengers.service';
 import { PassengersResolver } from './resolver/passengers.resolver';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   imports: [
     OccPassengersModule,
+    MatButtonModule,
     MatTableModule,
     MatToolbarModule,
     CommonModule,

@@ -13,6 +13,8 @@ import {
   styleUrls: ['./top-nav.component.scss']
 })
 export class TopNavComponent implements OnDestroy, AfterViewChecked {
+  active: boolean = true;
+
   constructor(private renderer: Renderer2) {}
 
   ngOnDestroy() {
@@ -22,7 +24,7 @@ export class TopNavComponent implements OnDestroy, AfterViewChecked {
   setSelectorDivPosition() {
     const activeLink = document.getElementsByClassName('active')[0];
     if (activeLink) {
-      const selectedLinkCover = document.getElementsByClassName(
+      const selectedLinkCover: HTMLElement = document.getElementsByClassName(
         'hori-selector'
       )[0] as HTMLElement;
       selectedLinkCover.style.top =

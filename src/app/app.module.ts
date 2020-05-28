@@ -12,6 +12,7 @@ import { NotFoundModule } from './modules/not-found/not-found.module';
 import { CarsModule } from './modules/cars/cars.module';
 import { RoutesModule } from './modules/routes/routes.module';
 import { PassengersModule } from './modules/passengers/passengers.module';
+import { CreateTransferModule } from './modules/create-transfer/create-transfer.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +24,7 @@ import { PassengersModule } from './modules/passengers/passengers.module';
     CarsModule,
     RoutesModule,
     PassengersModule,
+    CreateTransferModule,
     BrowserAnimationsModule,
     CoreModule,
     AppRoutingModule,
