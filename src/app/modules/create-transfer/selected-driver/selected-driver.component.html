@@ -1,0 +1,55 @@
+<mat-card class="mt-2" *ngIf="selectedDriver">
+  <div class="row">
+    <div class="col">
+      <p class="color-light-gray">SOFER</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <p class="selected-driver-header mb-0">nume</p>
+      <p class="color-light-gray">
+        {{ selectedDriver.lastName }}
+      </p>
+    </div>
+    <div class="col">
+      <p class="selected-driver-header mb-0">prenume</p>
+      <p class="color-light-gray">
+        {{ selectedDriver.firstName }}
+      </p>
+    </div>
+    <div class="col">
+      <p class="selected-driver-header mb-0">categorie permis</p>
+      <p class="color-light-gray">
+        {{ selectedDriver.drivingLicenseCategory }}
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <p class="selected-driver-header mb-0">limbi vorbite</p>
+      <p class="color-light-gray">
+        {{ selectedDriver.spokenLanguage }}
+      </p>
+    </div>
+    <div class="col">
+      <p class="selected-driver-header mb-0">numar telefon</p>
+      <p class="color-light-gray">
+        {{ selectedDriver.phoneNumber }}
+      </p>
+    </div>
+    <div class="col">
+      <p class="selected-driver-header mb-0">username</p>
+      <p class="color-light-gray">
+        {{ selectedDriver.username }}
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <p class="selected-driver-header mb-0">email</p>
+      <p class="color-light-gray">
+        {{ selectedDriver.email }}
+      </p>
+    </div>
+  </div>
+</mat-card>

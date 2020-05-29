@@ -1,0 +1,13 @@
+@import '../../../../assets/styles/colors';
+
+$color-light-gray: map-get($main-colors, light-gray);
+$transveho-medium-blue: map-get($main-colors, transveho-medium-blue);
+
+.color-light-gray {
+  color: $color-light-gray;
+}
+
+.selected-car-header {
+  font-weight: 500;
+  color: $transveho-medium-blue;
+}

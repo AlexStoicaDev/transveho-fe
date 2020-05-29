@@ -23,15 +23,6 @@ $transveho-dark-blue: map-get($main-colors, transveho-dark-blue);
   width: 9%;
 }
 
-.co-passengers-icon {
-  color: $transveho-medium-blue;
-}
-
-.co-passengers-icon-count {
-  font-weight: 500;
-  color: $transveho-dark-blue;
-}
-
 .table-actions-container {
   padding-left: 25px;
   &__button {

@@ -1,0 +1,101 @@
+<div class="row">
+  <div class="col">
+    <selected-route
+      [fromLocation]="fromLocation"
+      [toLocation]="toLocation"
+    ></selected-route>
+    <selected-passengers
+      [totalNumberOfAdults]="totalNumberOfAdults"
+      [totalNumberOfChildren]="totalNumberOfChildren"
+      [totalNumberOfInfants]="totalNumberOfInfants"
+      [selectedPassengers]="passengers"
+    ></selected-passengers>
+  </div>
+  <div class="col-8">
+    <mat-card class="accordion-header">
+      <div class="row">
+        <div class="col">
+          <p class="color-light-gray m-0">MASINI</p>
+        </div>
+      </div>
+    </mat-card>
+    <mat-accordion class="example-headers-align passengers-accordion" multi>
+      <mat-expansion-panel
+        class="passengers-accordion__panel"
+        *ngFor="let car of cars; let i = index"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-description>
+            <div class="row w-100 justify-content-end pt-3">
+              <div class="col-2 select-column">
+                <div class="select-column__wrapper">
+                  <mat-checkbox
+                    class="mr-1"
+                    required="true"
+                    (click)="selectCar($event, car)"
+                    (change)="selectedCarIndex = i"
+                    [checked]="selectedCarIndex === i"
+                  >
+                  </mat-checkbox>
+                  <span class="passengers-accordion__panel__passenger-name">
+                    {{ car.plateNumber }}
+                  </span>
+                </div>
+              </div>
+              <div class="col text-center">
+                <p>
+                  <span class="passengers-accordion__panel__header"
+                    >numar locuri</span
+                  ><br />{{ car.numberOfSeats }}
+                </p>
+              </div>
+              <div class="col">
+                <p>
+                  <span class="passengers-accordion__panel__header">model</span
+                  ><br />{{ car.model }}
+                </p>
+              </div>
+              <div class="col">
+                <p>
+                  <span class="passengers-accordion__panel__header"
+                    >data exp itp</span
+                  ><br />{{ car.itpExpirationDate }}
+                </p>
+              </div>
+              <div class="col">
+                <p>
+                  <span class="passengers-accordion__panel__header"
+                    >data exp rca</span
+                  ><br />{{ car.rcaExpirationDate }}
+                </p>
+              </div>
+              <div class="col">
+                <p>
+                  <span class="passengers-accordion__panel__header"
+                    >data exp rov</span
+                  ><br />{{ car.rovignetteExpirationDate }}
+                </p>
+              </div>
+              <div class="col">
+                <p>
+                  <span class="passengers-accordion__panel__header"
+                    >data exp huv</span
+                  ><br />{{ car.huvignetteExpirationDate }}
+                </p>
+              </div>
+            </div>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>
+          <span class="passengers-accordion__panel__header">numar sasiu</span>
+          {{ car.chassisNumber }}
+          <br /><span class="passengers-accordion__panel__header">motor</span>
+          {{ car.engineType }}
+          <br />
+          <span class="passengers-accordion__panel__header">inchiriata</span>
+          {{ car.rented ? 'DA' : 'NU' }}
+        </p>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>

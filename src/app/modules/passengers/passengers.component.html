@@ -108,25 +108,11 @@
           PASAGERI
         </th>
         <td mat-cell class="text-center" *matCellDef="let element">
-          <span class="material-icons co-passengers-icon">
-            person
-          </span>
-          <span class="co-passengers-icon-count">
-            {{ element.numberOfAdults }}</span
-          >
-          <span class="material-icons co-passengers-icon ml-2">
-            child_care
-          </span>
-
-          <span class="co-passengers-icon-count mr-2">
-            {{ element.numberOfChildren }}</span
-          >
-          <span class="material-icons co-passengers-icon">
-            child_friendly
-          </span>
-          <span class="co-passengers-icon-count">
-            {{ element.numberOfInfants }}</span
-          >
+          <passenger-count
+            [numberOfAdults]="element.numberOfAdults"
+            [numberOfChildren]="element.numberOfChildren"
+            [numberOfInfants]="element.numberOfInfants"
+          ></passenger-count>
         </td>
       </ng-container>
       <ng-container matColumnDef="passengerTripStatus">
