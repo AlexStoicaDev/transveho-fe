@@ -1,14 +1,20 @@
 import { Injectable } from '@angular/core';
-import { Passenger } from '@transveho-core';
+import { CreateTransferStepperData } from '@transveho-core';
 import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
-import { PassengersService } from '../../passengers/service/passengers.service';
 import { Observable } from 'rxjs';
+import { CreateTransferService } from '../service/create-transfer.service';
 
 @Injectable()
-export class CreateTransferResolver implements Resolve<Passenger[]> {
-  constructor(private readonly passengersService: PassengersService) {}
+export class CreateTransferResolver
+  implements Resolve<CreateTransferStepperData> {
+  constructor(private createTransferService: CreateTransferService) {}
 
-  resolve(route: ActivatedRouteSnapshot): Observable<Passenger[]> {
-    return this.passengersService.getAllPassengers();
+  resolve(
+    route: ActivatedRouteSnapshot
+  ): Observable<CreateTransferStepperData> {
+    return this.createTransferService.getCreateTransferStepperData({
+      selectedPassengersIds: Object.values(route.params.selectedPassengersIds).map(value=>value.toString()).filter(value=>value !== ','),
+      routeId:route.params.routeId
+    });
   }
 }

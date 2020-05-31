@@ -1,9 +1,12 @@
 <div class="container-fluid pl-5 pr-5">
-  <mat-horizontal-stepper class="create-transfer-stepper" #stepper>
-    <mat-step label="Step 1" state="phone">
+  <mat-horizontal-stepper linear class="create-transfer-stepper" #stepper>
+<!--    <ng-template matStepperIcon="edit">-->
+<!--      <mat-icon>check</mat-icon>-->
+<!--    </ng-template>-->
+    <mat-step label="Step 1">
       <ng-template matStepLabel>verifica pasagerii</ng-template>
       <verify-passengers-step
-        [passengers]="passengers"
+        [passengers]="selectedPassengers"
         (onRemovePassengerOutput)="onRemovePassenger($event)"
       >
       </verify-passengers-step>
@@ -11,10 +14,10 @@
     <mat-step state="chat">
       <ng-template matStepLabel>alege masina</ng-template>
       <choose-car-step
-        [cars]="cars"
-        [passengers]="passengers"
-        [fromLocation]="'TIMISOARA'"
-        [toLocation]="'BUDAPESTA'"
+        [cars]="availableCars"
+        [passengers]="selectedPassengers"
+        [fromLocation]="selectedRoute.fromLocation"
+        [toLocation]="selectedRoute.toLocation"
         [totalNumberOfAdults]="totalNumberOfAdults"
         [totalNumberOfChildren]="totalNumberOfChildren"
         [totalNumberOfInfants]="totalNumberOfInfants"
@@ -24,36 +27,30 @@
     <mat-step>
       <ng-template matStepLabel>alege soferul</ng-template>
       <choose-driver-step
-        [drivers]="drivers"
-        [passengers]="passengers"
+        [drivers]="availableDrivers"
+        [passengers]="selectedPassengers"
         [selectedCar]="selectedCar"
-        [fromLocation]="'TIMISOARA'"
-        [toLocation]="'BUDAPESTA'"
+        [fromLocation]="selectedRoute.fromLocation"
+        [toLocation]="selectedRoute.toLocation"
         [totalNumberOfAdults]="totalNumberOfAdults"
         [totalNumberOfChildren]="totalNumberOfChildren"
         [totalNumberOfInfants]="totalNumberOfInfants"
         (onSelectDriverOutput)="onSelectDriver($event)"
       ></choose-driver-step>
     </mat-step>
-    <mat-step>
+    <mat-step label="Step 4">
       <ng-template matStepLabel>gata</ng-template>
       <final-step
         [selectedCar]="selectedCar"
-        [passengers]="passengers"
+        [passengers]="selectedPassengers"
         [selectedDriver]="selectedDriver"
-        [fromLocation]="'TIMISOARA'"
-        [toLocation]="'BUDAPESTA'"
+        [fromLocation]="selectedRoute.fromLocation"
+        [toLocation]="selectedRoute.toLocation"
         [totalNumberOfAdults]="totalNumberOfAdults"
         [totalNumberOfChildren]="totalNumberOfChildren"
         [totalNumberOfInfants]="totalNumberOfInfants"
         (onCreateTransfer)="onCreateTransfer()"
       ></final-step>
     </mat-step>
-    <ng-template matStepperIcon="phone">
-      <mat-icon>call_end</mat-icon>
-    </ng-template>
-    <ng-template matStepperIcon="chat">
-      <mat-icon>forum</mat-icon>
-    </ng-template>
   </mat-horizontal-stepper>
 </div>

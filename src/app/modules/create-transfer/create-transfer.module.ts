@@ -12,14 +12,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { SharedModule } from '@transveho-shared';
-import { SelectedRouteComponent } from './selected-route/selected-route.component';
-import { SelectedPassengersComponent } from './selected-passengers/selected-passengers.component';
-import { SelectedCarComponent } from './selected-car/selected-car.component';
-import { SelectedDriverComponent } from './selected-driver/selected-driver.component';
-import { VerifyPassengersStepComponent } from './verify-passengers-step/verify-passengers-step.component';
-import { ChooseCarStepComponent } from './choose-car-step/choose-car-step.component';
-import { ChooseDriverStepComponent } from './choose-driver-step/choose-driver-step.component';
-import { FinalStepComponent } from './final-step/final-step.component';
+import { SelectedRouteComponent } from './components/selected-route/selected-route.component';
+import { SelectedPassengersComponent } from './components/selected-passengers/selected-passengers.component';
+import { SelectedCarComponent } from './components/selected-car/selected-car.component';
+import { SelectedDriverComponent } from './components/selected-driver/selected-driver.component';
+import { VerifyPassengersStepComponent } from './steps/verify-passengers-step/verify-passengers-step.component';
+import { ChooseCarStepComponent } from './steps/choose-car-step/choose-car-step.component';
+import { ChooseDriverStepComponent } from './steps/choose-driver-step/choose-driver-step.component';
+import { FinalStepComponent } from './steps/final-step/final-step.component';
+import { CreateTransferService } from './service/create-transfer.service';
+import { OccCreateTransferModule } from '@transveho-core';
 
 @NgModule({
   imports: [
@@ -35,7 +37,8 @@ import { FinalStepComponent } from './final-step/final-step.component';
     MatIconModule,
     MatCardModule,
     MatCheckboxModule,
-    SharedModule
+    SharedModule,
+    OccCreateTransferModule
   ],
   declarations: [
     CreateTransferComponent,
@@ -48,6 +51,6 @@ import { FinalStepComponent } from './final-step/final-step.component';
     ChooseDriverStepComponent,
     FinalStepComponent
   ],
-  providers: [CreateTransferResolver]
+  providers: [CreateTransferResolver, CreateTransferService]
 })
 export class CreateTransferModule {}

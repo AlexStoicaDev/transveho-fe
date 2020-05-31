@@ -1,4 +1,4 @@
-@import '../../../../assets/styles/colors';
+@import 'src/assets/styles/colors';
 
 $color-light-gray: map-get($main-colors, light-gray);
 $transveho-medium-blue: map-get($main-colors, transveho-medium-blue);
@@ -6,7 +6,7 @@ $transveho-medium-blue: map-get($main-colors, transveho-medium-blue);
 .color-light-gray {
   color: $color-light-gray;
 }
-.total-passenger-count-label {
+.selected-car-label {
   font-weight: 500;
   color: $transveho-medium-blue;
 }

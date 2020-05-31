@@ -5,7 +5,7 @@ import { catchError } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 
 const PASSENGERS_ENDPOINT = 'passengers';
-const CO_PASSENGERS_ENDPOINT = 'co-passengers';
+const CO_PASSENGERS_ENDPOINT = 'co-selectedPassengers';
 const ALL = 'all';
 const SLASH = '/';
 

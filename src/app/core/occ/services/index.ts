@@ -4,3 +4,4 @@ export * from './passengers/index';
 export * from './users/index';
 export * from './cars/index';
 export * from './routes/index';
+export * from './create-transfer/index';

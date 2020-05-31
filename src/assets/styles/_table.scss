@@ -46,6 +46,7 @@ tr.element-row-expanded {
 tr.element-row:last-of-type td {
   border-bottom: 0;
 }
+
 //TODO create common scss file for personal pages and a common scss file for al common styles
 
 th.mat-header-cell:last-of-type,
@@ -72,7 +73,7 @@ td.mat-footer-cell:last-of-type {
 
 .actions-popover {
   box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
-    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
 }
 
 .table-actions-container {
@@ -91,7 +92,7 @@ td.mat-footer-cell:last-of-type {
     padding: 0;
     font-size: inherit;
     font-family: inherit;
-    width: 14rem;
+    width: 14.5rem;
     height: auto;
 
     &:hover &__circle {

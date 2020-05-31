@@ -120,5 +120,5 @@ export class CarsComponent implements OnInit {
     });
   }
 
-  //TODO look how the width is set for the email column in passengers html and do the same for all tables
+  //TODO look how the width is set for the email column in selectedPassengers html and do the same for all tables
 }

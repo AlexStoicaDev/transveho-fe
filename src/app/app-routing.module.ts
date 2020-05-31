@@ -39,10 +39,7 @@ const routes: Routes = [
     pathMatch: 'full',
     canActivate: [DispatcherGuard, AuthenticationGuard],
     resolve: {
-      passengers: CreateTransferResolver,
-      routes: RoutesResolver,
-      cars: CarsResolver,
-      drivers: DriversResolver
+      createTransferStepperData: CreateTransferResolver,
     }
   }
 ];
