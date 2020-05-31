@@ -1,0 +1,75 @@
+<mat-card class="mt-2" *ngIf="selectedCar">
+  <div class="row">
+    <div class="col">
+      <p class="color-light-gray">MASINA</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <p class="selected-car-header mb-0">numar inmatriculare</p>
+      <p class="color-light-gray">
+        {{ selectedCar.plateNumber }}
+      </p>
+    </div>
+    <div class="col">
+      <p class="selected-car-header mb-0">numar locuri</p>
+      <p class="color-light-gray">
+        {{ selectedCar.numberOfSeats }}
+      </p>
+    </div>
+    <div class="col">
+      <p class="selected-car-header mb-0">model</p>
+      <p class="color-light-gray">
+        {{ selectedCar.model }}
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <p class="selected-car-header mb-0">data exp itp</p>
+      <p class="color-light-gray">
+        {{ selectedCar.itpExpirationDate }}
+      </p>
+    </div>
+    <div class="col">
+      <p class="selected-car-header mb-0">data exp rca</p>
+      <p class="color-light-gray">
+        {{ selectedCar.rcaExpirationDate }}
+      </p>
+    </div>
+    <div class="col">
+      <p class="selected-car-header mb-0">data exp rov</p>
+      <p class="color-light-gray">
+        {{ selectedCar.rovignetteExpirationDate }}
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <p class="selected-car-header mb-0">data exp huv</p>
+      <p class="color-light-gray">
+        {{ selectedCar.huvignetteExpirationDate }}
+      </p>
+    </div>
+    <div class="col">
+      <p class="selected-car-header mb-0">motor</p>
+      <p class="color-light-gray">
+        {{ selectedCar.engineType }}
+      </p>
+    </div>
+    <div class="col">
+      <p class="selected-car-header mb-0">inchiriata</p>
+      <p class="color-light-gray">
+        {{ selectedCar.rented ? 'DA' : 'NU' }}
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <p class="selected-car-header mb-0">numar sasiu</p>
+      <p class="color-light-gray">
+        {{ selectedCar.chassisNumber }}
+      </p>
+    </div>
+  </div>
+</mat-card>

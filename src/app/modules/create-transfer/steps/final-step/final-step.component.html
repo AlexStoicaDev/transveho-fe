@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col">
+    <selected-route
+      [fromLocation]="fromLocation"
+      [toLocation]="toLocation"
+    ></selected-route>
+    <selected-passengers
+      [totalNumberOfAdults]="totalNumberOfAdults"
+      [totalNumberOfChildren]="totalNumberOfChildren"
+      [totalNumberOfInfants]="totalNumberOfInfants"
+      [selectedPassengers]="passengers"
+    ></selected-passengers>
+  </div>
+  <div class="col">
+    <ng-container *ngIf="selectedCar">
+      <selected-car [selectedCar]="selectedCar"></selected-car>
+    </ng-container>
+    <ng-container *ngIf="selectedDriver">
+      <selected-driver [selectedDriver]="selectedDriver"></selected-driver>
+    </ng-container>
+  </div>
+  <div class="col">
+    <mat-card>
+      <div class="row text-center">
+        <div class="col">
+          <p class="color-light-gray">
+            Te rugam sa verifci toate datele inainte crearii transferului
+          </p>
+        </div>
+      </div>
+      <div class="row text-center">
+        <div class="col">
+          <button
+            class="col w-75 modal-button create-button"
+            mat-flat-button
+            (click)="createTransfer($event)"
+          >
+            Creeaza Transfer
+          </button>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</div>

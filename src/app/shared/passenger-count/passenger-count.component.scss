@@ -1,0 +1,13 @@
+@import '../../../assets/styles/colors';
+
+$transveho-medium-blue: map-get($main-colors, transveho-medium-blue);
+$transveho-dark-blue: map-get($main-colors, transveho-dark-blue);
+
+.co-passengers-icon {
+  color: $transveho-medium-blue;
+}
+
+.co-passengers-icon-count {
+  font-weight: 500;
+  color: $transveho-dark-blue;
+}

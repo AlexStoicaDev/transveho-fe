@@ -1,0 +1,33 @@
+<mat-card class="mt-2">
+  <div class="row">
+    <div class="col">
+      <p class="color-light-gray">PASAGERI</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <p class="total-passenger-count-label m-0">
+        numar total pasageri
+      </p>
+    </div>
+    <div class="col text-center">
+      <passenger-count
+        [numberOfAdults]="totalNumberOfAdults"
+        [numberOfChildren]="totalNumberOfChildren"
+        [numberOfInfants]="totalNumberOfInfants"
+      ></passenger-count>
+    </div>
+  </div>
+  <div class="row" *ngFor="let passenger of selectedPassengers">
+    <div class="col color-light-gray">
+      {{ passenger.lastName }} {{ passenger.firstName }}
+    </div>
+    <div class="col text-center">
+      <passenger-count
+        [numberOfAdults]="passenger.numberOfAdults"
+        [numberOfChildren]="passenger.numberOfChildren"
+        [numberOfInfants]="passenger.numberOfInfants"
+      ></passenger-count>
+    </div>
+  </div>
+</mat-card>

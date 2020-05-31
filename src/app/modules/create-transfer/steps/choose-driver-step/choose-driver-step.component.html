@@ -1,0 +1,81 @@
+<div class="row">
+  <div class="col">
+    <selected-route
+      [fromLocation]="fromLocation"
+      [toLocation]="toLocation"
+    ></selected-route>
+    <selected-passengers
+      [totalNumberOfAdults]="totalNumberOfAdults"
+      [totalNumberOfChildren]="totalNumberOfChildren"
+      [totalNumberOfInfants]="totalNumberOfInfants"
+      [selectedPassengers]="passengers"
+    ></selected-passengers>
+    <ng-container *ngIf="selectedCar">
+      <selected-car [selectedCar]="selectedCar"></selected-car>
+    </ng-container>
+  </div>
+  <div class="col-8">
+    <mat-card class="accordion-header">
+      <div class="row">
+        <div class="col">
+          <p class="color-light-gray m-0">SOFERI</p>
+        </div>
+      </div>
+    </mat-card>
+    <mat-accordion class="example-headers-align passengers-accordion" multi>
+      <mat-expansion-panel
+        class="passengers-accordion__panel"
+        *ngFor="let driver of drivers; let i = index"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-description>
+            <div class="row w-100 justify-content-end pt-3">
+              <div class="col select-column">
+                <div class="select-column__wrapper">
+                  <mat-checkbox
+                    class="mr-1"
+                    required="true"
+                    (click)="selectDriver($event, driver)"
+                    (change)="selectedDriverIndex = i"
+                    [checked]="selectedDriverIndex === i"
+                  >
+                  </mat-checkbox>
+                  <span class="passengers-accordion__panel__passenger-name">
+                    {{ driver.lastName }} {{ driver.firstName }}
+                  </span>
+                </div>
+              </div>
+              <div class="col text-center">
+                <p>
+                  <span class="passengers-accordion__panel__header"
+                    >categorie permis</span
+                  ><br />{{ driver.drivingLicenseCategory }}
+                </p>
+              </div>
+              <div class="col text-center">
+                <p>
+                  <span class="passengers-accordion__panel__header"
+                    >limbi vorbite</span
+                  ><br />{{ driver.spokenLanguage }}
+                </p>
+              </div>
+              <div class="col">
+                <p>
+                  <span class="passengers-accordion__panel__header"
+                    >numar telefon</span
+                  ><br />{{ driver.phoneNumber }}
+                </p>
+              </div>
+            </div>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>
+          <span class="passengers-accordion__panel__header">username</span>
+          {{ driver.username }}
+          <br /><span class="passengers-accordion__panel__header">email</span>
+          {{ driver.email }}
+        </p>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>

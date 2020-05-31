@@ -1,0 +1,56 @@
+<div class="container-fluid pl-5 pr-5">
+  <mat-horizontal-stepper linear class="create-transfer-stepper" #stepper>
+<!--    <ng-template matStepperIcon="edit">-->
+<!--      <mat-icon>check</mat-icon>-->
+<!--    </ng-template>-->
+    <mat-step label="Step 1">
+      <ng-template matStepLabel>verifica pasagerii</ng-template>
+      <verify-passengers-step
+        [passengers]="selectedPassengers"
+        (onRemovePassengerOutput)="onRemovePassenger($event)"
+      >
+      </verify-passengers-step>
+    </mat-step>
+    <mat-step state="chat">
+      <ng-template matStepLabel>alege masina</ng-template>
+      <choose-car-step
+        [cars]="availableCars"
+        [passengers]="selectedPassengers"
+        [fromLocation]="selectedRoute.fromLocation"
+        [toLocation]="selectedRoute.toLocation"
+        [totalNumberOfAdults]="totalNumberOfAdults"
+        [totalNumberOfChildren]="totalNumberOfChildren"
+        [totalNumberOfInfants]="totalNumberOfInfants"
+        (onSelectCarOutput)="onSelectCar($event)"
+      ></choose-car-step>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>alege soferul</ng-template>
+      <choose-driver-step
+        [drivers]="availableDrivers"
+        [passengers]="selectedPassengers"
+        [selectedCar]="selectedCar"
+        [fromLocation]="selectedRoute.fromLocation"
+        [toLocation]="selectedRoute.toLocation"
+        [totalNumberOfAdults]="totalNumberOfAdults"
+        [totalNumberOfChildren]="totalNumberOfChildren"
+        [totalNumberOfInfants]="totalNumberOfInfants"
+        (onSelectDriverOutput)="onSelectDriver($event)"
+      ></choose-driver-step>
+    </mat-step>
+    <mat-step label="Step 4">
+      <ng-template matStepLabel>gata</ng-template>
+      <final-step
+        [selectedCar]="selectedCar"
+        [passengers]="selectedPassengers"
+        [selectedDriver]="selectedDriver"
+        [fromLocation]="selectedRoute.fromLocation"
+        [toLocation]="selectedRoute.toLocation"
+        [totalNumberOfAdults]="totalNumberOfAdults"
+        [totalNumberOfChildren]="totalNumberOfChildren"
+        [totalNumberOfInfants]="totalNumberOfInfants"
+        (onCreateTransfer)="onCreateTransfer()"
+      ></final-step>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>

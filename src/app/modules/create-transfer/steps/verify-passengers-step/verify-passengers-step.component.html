@@ -1,0 +1,97 @@
+<div class="p-0">
+  <span
+    class="material-icons expend-icon"
+    (click)="passengersAccordion.openAll()"
+  >
+    unfold_more
+  </span>
+  <span
+    class="material-icons expend-icon"
+    (click)="passengersAccordion.closeAll()"
+  >
+    unfold_less
+  </span>
+</div>
+<mat-card class="accordion-header">
+  <div class="row">
+    <div class="col">
+      <p class="color-light-gray m-0">PASAGERI</p>
+    </div>
+  </div>
+</mat-card>
+<mat-accordion class="example-headers-align passengers-accordion" multi>
+  <mat-expansion-panel
+    class="passengers-accordion__panel"
+    *ngFor="let passenger of passengers; let isFirst = first"
+    [expanded]="false"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-description>
+        <div class="row w-100 justify-content-end pt-3">
+          <div class="col">
+            <p class="passengers-accordion__panel__passenger-name">
+              {{ passenger.lastName }}<br />{{ passenger.firstName }}
+            </p>
+          </div>
+          <div class="col">
+            <passenger-count
+              [numberOfAdults]="passenger.numberOfAdults"
+              [numberOfChildren]="passenger.numberOfChildren"
+              [numberOfInfants]="passenger.numberOfInfants"
+            ></passenger-count>
+          </div>
+          <div class="col">
+            <p>
+              <span class="passengers-accordion__panel__header"
+                >data transfer</span
+              ><br />{{ passenger.pickUpDateTime }}
+            </p>
+          </div>
+          <div class="col">
+            <p>
+              <span class="passengers-accordion__panel__header">ora avion</span
+              ><br />{{ passenger.pickUpDateTime }}
+            </p>
+          </div>
+          <div class="col">
+            <p>
+              <span class="passengers-accordion__panel__header"
+                >adresa preluare</span
+              ><br />{{ passenger.pickUpAddress }}
+            </p>
+          </div>
+          <div class="col">
+            <p>
+              <span class="passengers-accordion__panel__header"
+                >adresa destinatie</span
+              ><br />{{ passenger.destinationAddress }}
+            </p>
+          </div>
+        </div>
+        <div class="text-center d-flex align-items-center col">
+          <span
+            class="material-icons delete-icon"
+            (click)="removePassenger(passenger)"
+          >
+            clear
+          </span>
+        </div>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>
+      <span class="passengers-accordion__panel__header">telefon</span>
+      {{ passenger.phoneNumber }}
+      <br /><span class="passengers-accordion__panel__header">email</span>
+      {{ passenger.email }}
+      <br /><span class="passengers-accordion__panel__header"
+        >metoda plata</span
+      >
+      {{ passenger.paymentMethod }}
+      <br /><span class="passengers-accordion__panel__header">a platit</span>
+      {{ passenger.paidForTransfer ? 'DA' : 'NU' }}
+      <br /><span class="passengers-accordion__panel__header">detalii zbor</span
+      ><br />
+      {{ passenger.flightDetails }}
+    </p>
+  </mat-expansion-panel>
+</mat-accordion>

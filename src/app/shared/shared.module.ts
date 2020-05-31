@@ -34,6 +34,7 @@ import {
   MatDatetimepickerModule,
   MatNativeDatetimeModule
 } from '@mat-datetimepicker/core';
+import { PassengerCountComponent } from './passenger-count/passenger-count.component';
 
 @NgModule({
   imports: [
@@ -72,7 +73,8 @@ import {
     RouteFormComponent,
     CreatePassengerModalComponent,
     EditPassengerModalComponent,
-    PassengerFormComponent
+    PassengerFormComponent,
+    PassengerCountComponent
   ],
   exports: [
     FooterComponent,
@@ -81,7 +83,8 @@ import {
     StatusBarComponent,
     EditButtonComponent,
     DeleteButtonComponent,
-    DeleteModalComponent
+    DeleteModalComponent,
+    PassengerCountComponent
   ]
 })
 export class SharedModule {}

@@ -1,8 +1,10 @@
 @import '../assets/styles/bootstrap-grid';
 @import '../assets/styles/colors';
 
+$color-light-gray: map-get($main-colors, light-gray);
 $color-lighter-gray: map-get($main-colors, lighter-gray);
 $color-pure-white: map-get($main-colors, pure-white);
+$transveho-medium-blue: map-get($main-colors, transveho-medium-blue);
 
 body {
   background-color: $color-lighter-gray;
@@ -26,6 +28,57 @@ input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 
+.mat-card:not([class*='mat-elevation-z']),
+.mat-expansion-panel:not([class*='mat-elevation-z']) {
+  box-shadow: none;
+}
+
 *:focus {
   outline: none;
+}
+
+.mat-stepper-horizontal-line {
+  border-top-color: $color-lighter-gray;
+}
+.mat-horizontal-stepper-header .mat-step-icon {
+  color: $color-pure-white;
+  padding: 23px;
+}
+
+.mat-step-header .mat-step-icon-selected,
+.mat-step-icon-state-done {
+  background-color: $color-lighter-gray;
+  border: 2px solid $transveho-medium-blue !important;
+  color: $transveho-medium-blue !important;
+}
+.mat-step-header .mat-step-icon {
+  background-color: $color-lighter-gray;
+  border: 2px solid $color-light-gray;
+  color: $color-light-gray;
+  font-weight: 500;
+}
+.mat-step-header .mat-step-label {
+  color: $color-light-gray !important;
+}
+.mat-step-header .mat-step-label-selected,
+.mat-step-icon-state-done + .mat-step-label {
+  font-weight: 500;
+  color: $transveho-medium-blue !important;
+}
+//
+//.mat-step-header .mat-step-icon-state-done + .mat-step-label{
+//  font-weight: 500;
+//  color: $transveho-medium-blue !important;
+//}
+
+.mat-horizontal-stepper-header-container {
+  padding: 24px;
+}
+.mat-accordion .mat-expansion-panel:first-of-type {
+  border-top-right-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+}
+
+.mat-accordion .mat-expansion-panel:last-of-type {
+  padding-bottom: 20px;
 }

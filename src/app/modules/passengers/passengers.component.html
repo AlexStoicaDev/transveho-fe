@@ -2,6 +2,25 @@
   <div class="table-actions-container w-100 d-flex">
     <button
       class="table-actions-container__button"
+      (click)="goToCreateTransferPage()"
+      [disabled]="selection.selected.length === 0"
+    >
+      <span
+        class="table-actions-container__button__circle"
+        [ngClass]="{
+          disabled: selection.selected.length === 0
+        }"
+      >
+        <span class="material-icons table-actions-container__button__icon plus"
+          >transfer_within_a_station</span
+        >
+      </span>
+      <span class="table-actions-container__button__text">
+        Creeaza Transfer</span
+      >
+    </button>
+    <button
+      class="table-actions-container__button second-button"
       (click)="openCreatePassengerModal()"
     >
       <span class="table-actions-container__button__circle">
@@ -63,13 +82,13 @@
         </td>
       </ng-container>
       <ng-container matColumnDef="pickUpDateTime">
-        <th mat-header-cell *matHeaderCellDef>RUTA</th>
+        <th mat-header-cell *matHeaderCellDef>DATA TRANSFER</th>
         <td mat-cell class="pickUpDateTime" *matCellDef="let element">
           {{ element.pickUpDateTime }}
         </td>
       </ng-container>
       <ng-container matColumnDef="flightDateTime">
-        <th mat-header-cell *matHeaderCellDef>RUTA</th>
+        <th mat-header-cell *matHeaderCellDef>DATA AVION</th>
         <td mat-cell class="flightDateTime" *matCellDef="let element">
           {{ element.flightDateTime }}
         </td>
@@ -91,25 +110,11 @@
           PASAGERI
         </th>
         <td mat-cell class="text-center" *matCellDef="let element">
-          <span class="material-icons co-passengers-icon">
-            person
-          </span>
-          <span class="co-passengers-icon-count">
-            {{ element.numberOfAdults }}</span
-          >
-          <span class="material-icons co-passengers-icon ml-2">
-            child_care
-          </span>
-
-          <span class="co-passengers-icon-count mr-2">
-            {{ element.numberOfChildren }}</span
-          >
-          <span class="material-icons co-passengers-icon">
-            child_friendly
-          </span>
-          <span class="co-passengers-icon-count">
-            {{ element.numberOfInfants }}</span
-          >
+          <passenger-count
+            [numberOfAdults]="element.numberOfAdults"
+            [numberOfChildren]="element.numberOfChildren"
+            [numberOfInfants]="element.numberOfInfants"
+          ></passenger-count>
         </td>
       </ng-container>
       <ng-container matColumnDef="passengerTripStatus">
@@ -144,7 +149,7 @@
       </ng-container>
 
       <mde-popover #appPopover="mdePopover" [mdePopoverOverlapTrigger]="false">
-        <mat-card>
+        <mat-card class="actions-popover">
           <mat-card-content>
             <div class="row justify-content-end pr-1 pl-1">
               <edit-button (click)="openUpdatePassengerModal()"></edit-button>

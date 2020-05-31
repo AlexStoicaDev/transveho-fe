@@ -6,7 +6,7 @@ import {
   SnackBarService
 } from '@transveho-core';
 import { PassengersService } from './service/passengers.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PaginatorComponent } from '@transveho-shared';
 import { MatTableDataSource } from '@angular/material/table';
 import {
@@ -61,7 +61,8 @@ export class PassengersComponent implements OnInit {
     private readonly passengersService: PassengersService,
     private arraysService: ArraysService,
     private snackBarService: SnackBarService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -196,5 +197,14 @@ export class PassengersComponent implements OnInit {
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${
       this.dataSource.data.indexOf(row) + 1
     }`;
+  }
+
+  goToCreateTransferPage() {
+    if (this.selection.selected) {
+      this.router.navigate([
+        'transfers',
+        { selectedPassengersIds: this.selection.selected.map(passenger => passenger.id),routeId:this.selection.selected[0].routeId}
+      ]);
+    }
   }
 }
