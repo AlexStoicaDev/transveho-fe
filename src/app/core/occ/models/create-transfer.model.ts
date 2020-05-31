@@ -11,9 +11,9 @@ export interface CreateTransferStepperData {
   availableDrivers: Personal[];
   selectedRoute: Route;
   selectedPassengers: Passenger[];
-  totalNumberOfAdults :number;
-  totalNumberOfChildren :number;
-  totalNumberOfInfants :number;
+  totalNumberOfAdults: number;
+  totalNumberOfChildren: number;
+  totalNumberOfInfants: number;
 }
 
 /**
@@ -28,5 +28,5 @@ export interface CreateTransferData {
 
 export interface SelectedPassengers {
   selectedPassengersIds: string[];
-  routeId:string;
+  routeId: string;
 }

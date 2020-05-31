@@ -39,7 +39,7 @@ const routes: Routes = [
     pathMatch: 'full',
     canActivate: [DispatcherGuard, AuthenticationGuard],
     resolve: {
-      createTransferStepperData: CreateTransferResolver,
+      createTransferStepperData: CreateTransferResolver
     }
   }
 ];

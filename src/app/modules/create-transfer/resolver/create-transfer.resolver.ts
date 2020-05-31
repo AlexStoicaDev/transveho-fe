@@ -13,8 +13,10 @@ export class CreateTransferResolver
     route: ActivatedRouteSnapshot
   ): Observable<CreateTransferStepperData> {
     return this.createTransferService.getCreateTransferStepperData({
-      selectedPassengersIds: Object.values(route.params.selectedPassengersIds).map(value=>value.toString()).filter(value=>value !== ','),
-      routeId:route.params.routeId
+      selectedPassengersIds: Object.values(route.params.selectedPassengersIds)
+        .map(value => value.toString())
+        .filter(value => value !== ','),
+      routeId: route.params.routeId
     });
   }
 }

@@ -203,7 +203,12 @@ export class PassengersComponent implements OnInit {
     if (this.selection.selected) {
       this.router.navigate([
         'transfers',
-        { selectedPassengersIds: this.selection.selected.map(passenger => passenger.id),routeId:this.selection.selected[0].routeId}
+        {
+          selectedPassengersIds: this.selection.selected.map(
+            passenger => passenger.id
+          ),
+          routeId: this.selection.selected[0].routeId
+        }
       ]);
     }
   }

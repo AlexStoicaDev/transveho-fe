@@ -1,9 +1,9 @@
-import {Component} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {Car, Passenger, Personal, Route} from '@transveho-core';
-import {FormBuilder} from '@angular/forms';
-import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
-import {CreateTransferService} from "./service/create-transfer.service";
+import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Car, Passenger, Personal, Route } from '@transveho-core';
+import { FormBuilder } from '@angular/forms';
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
+import { CreateTransferService } from './service/create-transfer.service';
 
 @Component({
   selector: 'create-transfer',
@@ -12,7 +12,7 @@ import {CreateTransferService} from "./service/create-transfer.service";
   providers: [
     {
       provide: STEPPER_GLOBAL_OPTIONS,
-      useValue: {displayDefaultIndicatorType: false}
+      useValue: { displayDefaultIndicatorType: false }
     }
   ]
 })
@@ -60,13 +60,17 @@ export class CreateTransferComponent {
   }
 
   onCreateTransfer() {
-    this.createTransferService.createTransfer({
-      selectedCarId: this.selectedCar.id,
-      selectedDriverId: this.selectedDriver.id,
-      selectedPassengersIds: this.selectedPassengers.map(selectedPassenger => selectedPassenger.id),
-      selectedRouteId: this.selectedRoute.id
-    }).subscribe(() => {
-      this.router.navigate(['passengers']);
-    })
+    this.createTransferService
+      .createTransfer({
+        selectedCarId: this.selectedCar.id,
+        selectedDriverId: this.selectedDriver.id,
+        selectedPassengersIds: this.selectedPassengers.map(
+          selectedPassenger => selectedPassenger.id
+        ),
+        selectedRouteId: this.selectedRoute.id
+      })
+      .subscribe(() => {
+        this.router.navigate(['passengers']);
+      });
   }
 }
