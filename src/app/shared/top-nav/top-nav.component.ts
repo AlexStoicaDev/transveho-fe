@@ -14,6 +14,10 @@ import {
 })
 export class TopNavComponent implements OnDestroy, AfterViewChecked {
   active: boolean = true;
+  previousTop: number = 0;
+  previousLeft: number = 0;
+  previousHeight: number = 68;
+  previousWidth: number = 0;
 
   constructor(private renderer: Renderer2) {}
 
@@ -23,18 +27,54 @@ export class TopNavComponent implements OnDestroy, AfterViewChecked {
 
   setSelectorDivPosition() {
     const activeLink = document.getElementsByClassName('active')[0];
-    if (activeLink) {
-      const selectedLinkCover: HTMLElement = document.getElementsByClassName(
-        'hori-selector'
-      )[0] as HTMLElement;
-      selectedLinkCover.style.top =
-        (activeLink as HTMLElement).offsetTop + 'px';
-      selectedLinkCover.style.left =
-        (activeLink as HTMLElement).offsetLeft + 'px';
-      selectedLinkCover.style.height = activeLink.clientHeight + 1 + 'px';
-      selectedLinkCover.style.width = activeLink.clientWidth + 'px';
+    const selectedLinkCover: HTMLElement = document.getElementsByClassName(
+      'hori-selector'
+    )[0] as HTMLElement;
+
+    const top: number =
+      (activeLink as HTMLElement)?.offsetTop || this.previousTop;
+    let left: number =
+      (activeLink as HTMLElement)?.offsetLeft || this.previousLeft;
+    const height: number = activeLink?.clientHeight + 1 || this.previousHeight;
+    const width: number = activeLink?.clientWidth || this.previousWidth;
+
+    if (!activeLink && this.previousLeft !== 0) {
+      left = window.innerWidth;
     }
+    this.setSelectorDivPositionProperties(
+      selectedLinkCover,
+      top,
+      left,
+      height,
+      width
+    );
+    this.setPreviousValues(top, left, height, width);
   }
+
+  private setSelectorDivPositionProperties = (
+    selectedLinkCover: HTMLElement,
+    top: number,
+    left: number,
+    height: number,
+    width: number
+  ) => {
+    selectedLinkCover.style.top = top + 'px';
+    selectedLinkCover.style.left = left + 'px';
+    selectedLinkCover.style.height = height + 'px';
+    selectedLinkCover.style.width = width + 'px';
+  };
+
+  private setPreviousValues = (
+    top: number,
+    left: number,
+    height: number,
+    width: number
+  ) => {
+    this.previousTop = top;
+    this.previousLeft = left;
+    this.previousHeight = height;
+    this.previousWidth = width;
+  };
 
   ngAfterViewChecked(): void {
     this.setSelectorDivPosition();
