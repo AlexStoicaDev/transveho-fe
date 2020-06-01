@@ -1,6 +1,6 @@
-@import '../../../assets/styles/colors';
-@import '../../../assets/styles/fonts';
-@import '../../../assets/styles/table';
+@import 'src/assets/styles/colors';
+@import 'src/assets/styles/fonts';
+@import 'src/assets/styles/table';
 
 $color-lighter-gray: map-get($main-colors, lighter-gray);
 $color-light-gray: map-get($main-colors, light-gray);

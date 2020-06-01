@@ -7,9 +7,8 @@ import { CarsResolver } from './modules/cars/resolver/cars.resolver';
 import { RoutesComponent } from './modules/routes/routes.component';
 import { RoutesResolver } from './modules/routes/resolver/routes.resolver';
 import { PassengersResolver } from './modules/passengers/resolver/passengers.resolver';
-import { CreateTransferComponent } from './modules/create-transfer/create-transfer.component';
-import { CreateTransferResolver } from './modules/create-transfer/resolver/create-transfer.resolver';
-import { DriversResolver } from './modules/personal/drivers/resolver/drivers.resolver';
+import { CreateTransferComponent } from './modules/transfer/create-transfer/create-transfer.component';
+import { CreateTransferResolver } from './modules/transfer/create-transfer/resolver/create-transfer.resolver';
 
 const routes: Routes = [
   {
