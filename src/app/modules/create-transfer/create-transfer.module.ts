@@ -12,10 +12,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { SharedModule } from '@transveho-shared';
-import { SelectedRouteComponent } from './components/selected-route/selected-route.component';
-import { SelectedPassengersComponent } from './components/selected-passengers/selected-passengers.component';
-import { SelectedCarComponent } from './components/selected-car/selected-car.component';
-import { SelectedDriverComponent } from './components/selected-driver/selected-driver.component';
 import { VerifyPassengersStepComponent } from './steps/verify-passengers-step/verify-passengers-step.component';
 import { ChooseCarStepComponent } from './steps/choose-car-step/choose-car-step.component';
 import { ChooseDriverStepComponent } from './steps/choose-driver-step/choose-driver-step.component';
@@ -42,10 +38,6 @@ import { OccCreateTransferModule } from '@transveho-core';
   ],
   declarations: [
     CreateTransferComponent,
-    SelectedRouteComponent,
-    SelectedPassengersComponent,
-    SelectedCarComponent,
-    SelectedDriverComponent,
     VerifyPassengersStepComponent,
     ChooseCarStepComponent,
     ChooseDriverStepComponent,

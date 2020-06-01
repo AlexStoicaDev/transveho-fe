@@ -35,6 +35,11 @@ import {
   MatNativeDatetimeModule
 } from '@mat-datetimepicker/core';
 import { PassengerCountComponent } from './passenger-count/passenger-count.component';
+import { SelectedCarComponent } from './transfer/selected-car/selected-car.component';
+import { SelectedDriverComponent } from './transfer/selected-driver/selected-driver.component';
+import { MatCardModule } from '@angular/material/card';
+import { SelectedPassengersComponent } from './transfer/selected-passengers/selected-passengers.component';
+import { SelectedRouteComponent } from './transfer/selected-route/selected-route.component';
 
 @NgModule({
   imports: [
@@ -52,7 +57,8 @@ import { PassengerCountComponent } from './passenger-count/passenger-count.compo
     MatRadioModule,
     DirectivesModule,
     MatDatetimepickerModule,
-    MatNativeDatetimeModule
+    MatNativeDatetimeModule,
+    MatCardModule
   ],
   declarations: [
     FooterComponent,
@@ -74,7 +80,11 @@ import { PassengerCountComponent } from './passenger-count/passenger-count.compo
     CreatePassengerModalComponent,
     EditPassengerModalComponent,
     PassengerFormComponent,
-    PassengerCountComponent
+    PassengerCountComponent,
+    SelectedCarComponent,
+    SelectedDriverComponent,
+    SelectedPassengersComponent,
+    SelectedRouteComponent
   ],
   exports: [
     FooterComponent,
@@ -84,7 +94,11 @@ import { PassengerCountComponent } from './passenger-count/passenger-count.compo
     EditButtonComponent,
     DeleteButtonComponent,
     DeleteModalComponent,
-    PassengerCountComponent
+    PassengerCountComponent,
+    SelectedCarComponent,
+    SelectedDriverComponent,
+    SelectedPassengersComponent,
+    SelectedRouteComponent
   ]
 })
 export class SharedModule {}
