@@ -6,7 +6,7 @@ import {
   ViewChild
 } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { DeleteModalComponent } from '..';
+import { DeleteModalComponent } from '@transveho-shared';
 import { Personal } from '@transveho-core';
 import { UserFormComponent } from '../user-form/user-form.component';
 

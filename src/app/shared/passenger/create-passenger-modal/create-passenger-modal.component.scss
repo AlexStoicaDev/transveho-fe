@@ -1,5 +1,5 @@
-@import '../../../theme';
-@import '../../../assets/styles/colors';
+@import 'src/theme';
+@import 'src/assets/styles/colors';
 
 $color-dark-green: map-get($main-colors, dark-green);
 $color-light-green: map-get($main-colors, light-green);
