@@ -4,7 +4,7 @@ import {
   CreateTransferData,
   CreateTransferStepperData,
   SelectedPassengers
-} from '../../models/create-transfer.model';
+} from '../../../models/create-transfer.model';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 

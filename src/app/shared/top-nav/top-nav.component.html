@@ -20,79 +20,104 @@
         <div class="left"></div>
         <div class="right"></div>
       </div>
-      <li
-        class="nav-item cursor-pointer"
-        routerLinkActive="active"
-        routerLink=""
-        [routerLinkActiveOptions]="{ exact: true }"
-        (click)="setSelectorDivPosition()"
-      >
-        <a class="nav-link">
-          <span class="material-icons my-icon">
-            dashboard
-          </span>
+      <ng-container *ngIf="authenticationService.userHasRole('DRIVER')">
+        <li
+          class="nav-item cursor-pointer"
+          routerLinkActive="active"
+          routerLink="current-transfer"
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="setSelectorDivPosition()"
+        >
+          <a class="nav-link">
+            <span class="material-icons my-icon">
+              tour
+            </span>
 
-          Dashboard</a
-        >
-      </li>
-      <li
-        class="nav-item cursor-pointer"
-        routerLinkActive="active"
-        routerLink="/personal/dispatchers"
-        [routerLinkActiveOptions]="{ exact: true }"
-        (click)="setSelectorDivPosition()"
+            Transfer Curent</a
+          >
+        </li>
+      </ng-container>
+      <ng-container
+        *ngIf="
+          authenticationService.userHasRole('ADMIN') ||
+          authenticationService.userHasRole('DISPATCHER')
+        "
       >
-        <a class="nav-link">
-          <span class="material-icons my-icon"> supervised_user_circle </span
-          >Dispeceri</a
+        <li
+          class="nav-item cursor-pointer"
+          routerLinkActive="active"
+          routerLink=""
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="setSelectorDivPosition()"
         >
-      </li>
-      <li
-        class="nav-item cursor-pointer"
-        routerLinkActive="active"
-        routerLink="/personal/drivers"
-        [routerLinkActiveOptions]="{ exact: true }"
-        (click)="setSelectorDivPosition()"
-      >
-        <a class="nav-link"
-          ><span class="material-icons my-icon">
-            transfer_within_a_station </span
-          >Soferi</a
+          <a class="nav-link">
+            <span class="material-icons my-icon">
+              dashboard
+            </span>
+
+            Dashboard</a
+          >
+        </li>
+        <li
+          class="nav-item cursor-pointer"
+          routerLinkActive="active"
+          routerLink="/personal/dispatchers"
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="setSelectorDivPosition()"
         >
-      </li>
-      <li
-        class="nav-item cursor-pointer"
-        routerLinkActive="active"
-        routerLink="/passengers"
-        (click)="setSelectorDivPosition()"
-      >
-        <a class="nav-link"
-          ><span class="material-icons my-icon"> accessibility_new </span
-          >Pasageri</a
+          <a class="nav-link">
+            <span class="material-icons my-icon"> supervised_user_circle </span
+            >Dispeceri</a
+          >
+        </li>
+        <li
+          class="nav-item cursor-pointer"
+          routerLinkActive="active"
+          routerLink="/personal/drivers"
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="setSelectorDivPosition()"
         >
-      </li>
-      <li
-        class="nav-item cursor-pointer"
-        routerLinkActive="active"
-        routerLink="/cars"
-        [routerLinkActiveOptions]="{ exact: true }"
-        (click)="setSelectorDivPosition()"
-      >
-        <a class="nav-link"
-          ><span class="material-icons my-icon"> directions_car </span>Masini</a
+          <a class="nav-link"
+            ><span class="material-icons my-icon">
+              transfer_within_a_station </span
+            >Soferi</a
+          >
+        </li>
+        <li
+          class="nav-item cursor-pointer"
+          routerLinkActive="active"
+          routerLink="/passengers"
+          (click)="setSelectorDivPosition()"
         >
-      </li>
-      <li
-        class="nav-item cursor-pointer"
-        routerLinkActive="active"
-        routerLink="/routes"
-        [routerLinkActiveOptions]="{ exact: true }"
-        (click)="setSelectorDivPosition()"
-      >
-        <a class="nav-link"
-          ><span class="material-icons my-icon"> directions </span>Rute</a
+          <a class="nav-link"
+            ><span class="material-icons my-icon"> accessibility_new </span
+            >Pasageri</a
+          >
+        </li>
+        <li
+          class="nav-item cursor-pointer"
+          routerLinkActive="active"
+          routerLink="/cars"
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="setSelectorDivPosition()"
         >
-      </li>
+          <a class="nav-link"
+            ><span class="material-icons my-icon"> directions_car </span
+            >Masini</a
+          >
+        </li>
+        <li
+          class="nav-item cursor-pointer"
+          routerLinkActive="active"
+          routerLink="/routes"
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="setSelectorDivPosition()"
+        >
+          <a class="nav-link"
+            ><span class="material-icons my-icon"> directions </span>Rute</a
+          >
+        </li>
+      </ng-container>
     </ul>
   </div>
 </nav>

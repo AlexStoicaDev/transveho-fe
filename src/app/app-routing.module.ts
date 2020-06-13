@@ -9,6 +9,8 @@ import { RoutesResolver } from './modules/routes/resolver/routes.resolver';
 import { PassengersResolver } from './modules/passengers/resolver/passengers.resolver';
 import { CreateTransferComponent } from './modules/transfer/create-transfer/create-transfer.component';
 import { CreateTransferResolver } from './modules/transfer/create-transfer/resolver/create-transfer.resolver';
+import { CurrentTransferResolver } from './modules/transfer/driver-transfer/current-transfer/resolver/current-transfer.resolver';
+import { CurrentTransferComponent } from './modules/transfer/driver-transfer/current-transfer/current-transfer.component';
 
 const routes: Routes = [
   {
@@ -33,12 +35,21 @@ const routes: Routes = [
     resolve: { passengers: PassengersResolver, routes: RoutesResolver }
   },
   {
-    path: 'transfers',
+    path: 'create-transfer',
     component: CreateTransferComponent,
     pathMatch: 'full',
     canActivate: [DispatcherGuard, AuthenticationGuard],
     resolve: {
       createTransferStepperData: CreateTransferResolver
+    }
+  },
+  {
+    path: 'current-transfer',
+    component: CurrentTransferComponent,
+    pathMatch: 'full',
+    canActivate: [AuthenticationGuard],
+    resolve: {
+      currentTransfer: CurrentTransferResolver
     }
   }
 ];

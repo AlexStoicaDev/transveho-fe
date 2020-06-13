@@ -20,19 +20,21 @@ export class HttpProxyInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     const url: string = request.url;
 
-    let currentUser = this.authenticationService.currentUserValue;
-    if (currentUser && currentUser.token) {
-      request = request.clone({
-        url: AUTH_API + url,
-        setHeaders: {
-          Authorization: `Bearer ${currentUser.token}`,
-          ContentType: 'application/json'
-        }
-      });
-    } else {
-      request = request.clone({
-        url: AUTH_API + url
-      });
+    if (!url.includes('ipapi') && !url.includes('maps')) {
+      let currentUser = this.authenticationService.currentUserValue;
+      if (currentUser && currentUser.token) {
+        request = request.clone({
+          url: AUTH_API + url,
+          setHeaders: {
+            Authorization: `Bearer ${currentUser.token}`,
+            ContentType: 'application/json'
+          }
+        });
+      } else {
+        request = request.clone({
+          url: AUTH_API + url
+        });
+      }
     }
     return next.handle(request);
   }

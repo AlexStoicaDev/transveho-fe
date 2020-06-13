@@ -1,0 +1,99 @@
+<div class="container-fluid pl-5 pr-5 mb-5">
+  <div class="row mb-5">
+    <div class="col mt-2">
+      <selected-route
+        [fromLocation]="currentTransfer.route.fromLocation"
+        [toLocation]="currentTransfer.route.toLocation"
+      ></selected-route>
+      <selected-car [selectedCar]="currentTransfer.car"></selected-car>
+    </div>
+    <div class="col mt-2">
+      <form [formGroup]="locationFormGroup" (ngSubmit)="onSubmit()">
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="location"
+            placeholder="Recipient's username"
+            aria-label="Adresa de start"
+            aria-describedby="basic-addon2"
+          />
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button">
+              Seteaza adresa start
+            </button>
+          </div>
+        </div>
+      </form>
+      <ng-container>
+        <agm-map
+          [fullscreenControl]="true"
+          class="map"
+          [latitude]="location?.latitude"
+          [longitude]="location?.longitude"
+        >
+          <agm-marker
+            (dragEnd)="setLocationByMarkerDragging($event)"
+            [markerDraggable]="true"
+            animation="BOUNCE"
+            [latitude]="location?.latitude"
+            [longitude]="location?.longitude"
+            [zIndex]="3"
+            [iconUrl]="{
+              url: './assets/images/marker.svg',
+              scaledSize: {
+                width: 40,
+                height: 60
+              }
+            }"
+          ></agm-marker>
+          <agm-marker
+            [iconUrl]="{
+              url: './assets/images/insurance.svg',
+              scaledSize: {
+                width: 40,
+                height: 60
+              }
+            }"
+            [latitude]="pickUpLocation?.latitude"
+            [longitude]="pickUpLocation?.longitude"
+            [zIndex]="2"
+          >
+            <agm-info-window #infowindow1 [isOpen]="true" [maxWidth]="320">
+              <div>
+                <p>adresa:</p>
+                <p>{{ pickUpLocation?.address }}</p>
+              </div>
+            </agm-info-window>
+          </agm-marker>
+          <agm-marker
+            [latitude]="destinationLocation?.latitude"
+            [longitude]="destinationLocation?.longitude"
+            [iconUrl]="{
+              url: './assets/images/destination.svg',
+              scaledSize: {
+                width: 40,
+                height: 60
+              }
+            }"
+          >
+            <agm-info-window #infowindow2 [isOpen]="true" [maxWidth]="320">
+              <div>
+                <p>destinatie: {{ destinationLocation?.address }}</p>
+              </div>
+            </agm-info-window>
+          </agm-marker>
+          <agm-polyline [strokeColor]="'#40d790'">
+            <ng-container *ngFor="let i of polyLine">
+              <agm-polyline-point
+                [latitude]="i.latitude"
+                [longitude]="i.longitude"
+              >
+              </agm-polyline-point>
+            </ng-container>
+          </agm-polyline>
+        </agm-map>
+      </ng-container>
+    </div>
+  </div>
+</div>

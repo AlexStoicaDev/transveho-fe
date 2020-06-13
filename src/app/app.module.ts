@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BusinessServicesModule, CoreModule } from '@transveho-core';
+import { AuthenticationModule, BusinessServicesModule } from '@transveho-core';
 import { AuthenticationPagesModule } from './modules/authentication/authentication-pages.module';
 import { SharedModule } from '@transveho-shared';
 import { MatIconModule } from '@angular/material/icon';
@@ -13,6 +13,7 @@ import { CarsModule } from './modules/cars/cars.module';
 import { RoutesModule } from './modules/routes/routes.module';
 import { PassengersModule } from './modules/passengers/passengers.module';
 import { CreateTransferModule } from './modules/transfer/create-transfer/create-transfer.module';
+import { DriverTransferModule } from './modules/transfer/driver-transfer/driver-transfer.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,8 +26,9 @@ import { CreateTransferModule } from './modules/transfer/create-transfer/create-
     RoutesModule,
     PassengersModule,
     CreateTransferModule,
+    DriverTransferModule,
     BrowserAnimationsModule,
-    CoreModule,
+    AuthenticationModule,
     AppRoutingModule,
     MatIconModule,
     NotFoundModule,

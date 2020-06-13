@@ -7,12 +7,12 @@ import {
   UrlTree
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthenticationService } from '../authentication/authentication.service';
+import { AuthenticationService } from '../authentication.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DispatcherGuard implements CanActivate {
+export class AdminGuard implements CanActivate {
   constructor(
     private authenticationService: AuthenticationService,
     private router: Router
@@ -26,13 +26,12 @@ export class DispatcherGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    const userHasDispatcherRole =
-      this.authenticationService.userHasRole('DISPATCHER') ||
-      this.authenticationService.userHasRole('ADMIN');
-
-    if (!userHasDispatcherRole) {
-      this.router.navigate(['']);
+    const userHasAdminRole: boolean = this.authenticationService.userHasRole(
+      'ADMIN'
+    );
+    if (!userHasAdminRole) {
+      this.router.navigate(['current-transfer']);
     }
-    return userHasDispatcherRole;
+    return userHasAdminRole;
   }
 }

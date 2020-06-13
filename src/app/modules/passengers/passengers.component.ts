@@ -202,7 +202,7 @@ export class PassengersComponent implements OnInit {
   goToCreateTransferPage() {
     if (this.selection.selected) {
       this.router.navigate([
-        'transfers',
+        'create-transfer',
         {
           selectedPassengersIds: this.selection.selected.map(
             passenger => passenger.id

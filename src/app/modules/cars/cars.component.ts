@@ -121,4 +121,6 @@ export class CarsComponent implements OnInit {
   }
 
   //TODO look how the width is set for the email column in selectedPassengers html and do the same for all tables
+
+  //TODO rename directories to either singular or plural for example cars or car subdirectory
 }

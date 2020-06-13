@@ -12,6 +12,7 @@
   },
   "private": true,
   "dependencies": {
+    "@agm/core": "^1.1.0",
     "@angular/animations": "^9.0.7",
     "@angular/cdk": "^9.2.1",
     "@angular/common": "~9.0.6",
@@ -23,6 +24,7 @@
     "@angular/platform-browser": "~9.0.6",
     "@angular/platform-browser-dynamic": "~9.0.6",
     "@angular/router": "~9.0.6",
+    "@mapbox/polyline": "^1.1.1",
     "@mat-datetimepicker/core": "^4.1.0",
     "@material-extended/mde": "^3.0.0",
     "bootstrap": "^4.4.1",

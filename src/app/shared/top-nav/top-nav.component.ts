@@ -4,6 +4,7 @@ import {
   OnDestroy,
   Renderer2
 } from '@angular/core';
+import { AuthenticationService, PersonalRole } from '@transveho-core';
 
 //TODO refactor component logic template(naming) and style, fix styling for mobile view
 
@@ -18,8 +19,12 @@ export class TopNavComponent implements OnDestroy, AfterViewChecked {
   previousLeft: number = 0;
   previousHeight: number = 68;
   previousWidth: number = 0;
+  personalRoles: string[] = [];
 
-  constructor(private renderer: Renderer2) {}
+  constructor(
+    private renderer: Renderer2,
+    private authenticationService: AuthenticationService
+  ) {}
 
   ngOnDestroy() {
     this.renderer.removeClass(document.body, 'modal-open');

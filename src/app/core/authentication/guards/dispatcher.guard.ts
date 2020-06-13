@@ -7,29 +7,32 @@ import {
   UrlTree
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthenticationService } from '../authentication/authentication.service';
+import { AuthenticationService } from '../authentication.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthenticationGuard implements CanActivate {
+export class DispatcherGuard implements CanActivate {
   constructor(
     private authenticationService: AuthenticationService,
     private router: Router
   ) {}
 
   canActivate(
-    router: ActivatedRouteSnapshot,
+    activatedRouteSnapshot: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ):
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    const isUserAuthenticated = this.authenticationService.isUserAuthenticated();
-    if (!isUserAuthenticated) {
-      this.router.navigate(['auth']);
+    const userHasDispatcherRole =
+      this.authenticationService.userHasRole('DISPATCHER') ||
+      this.authenticationService.userHasRole('ADMIN');
+
+    if (!userHasDispatcherRole) {
+      this.router.navigate(['current-transfer']);
     }
-    return isUserAuthenticated;
+    return userHasDispatcherRole;
   }
 }

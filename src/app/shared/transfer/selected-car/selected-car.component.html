@@ -28,19 +28,19 @@
     <div class="col">
       <p class="selected-car-header mb-0">data exp itp</p>
       <p class="color-light-gray">
-        {{ selectedCar.itpExpirationDate }}
+        {{ selectedCar.itpExpirationDate | date: 'dd/MM/yyyy' }}
       </p>
     </div>
     <div class="col">
       <p class="selected-car-header mb-0">data exp rca</p>
       <p class="color-light-gray">
-        {{ selectedCar.rcaExpirationDate }}
+        {{ selectedCar.rcaExpirationDate | date: 'dd/MM/yyyy' }}
       </p>
     </div>
     <div class="col">
       <p class="selected-car-header mb-0">data exp rov</p>
       <p class="color-light-gray">
-        {{ selectedCar.rovignetteExpirationDate }}
+        {{ selectedCar.rovignetteExpirationDate | date: 'dd/MM/yyyy' }}
       </p>
     </div>
   </div>
@@ -48,13 +48,14 @@
     <div class="col">
       <p class="selected-car-header mb-0">data exp huv</p>
       <p class="color-light-gray">
-        {{ selectedCar.huvignetteExpirationDate }}
+        {{ selectedCar.huvignetteExpirationDate | date: 'dd/MM/yyyy' }}
       </p>
     </div>
     <div class="col">
       <p class="selected-car-header mb-0">motor</p>
       <p class="color-light-gray">
-        {{ selectedCar.engineType }}
+        <!--        {{ selectedCar.engineType }}-->
+        Diesel
       </p>
     </div>
     <div class="col">

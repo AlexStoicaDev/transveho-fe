@@ -30,3 +30,48 @@ export interface SelectedPassengers {
   selectedPassengersIds: string[];
   routeId: string;
 }
+
+/**
+ * An interface representing the transfer entity
+ */
+export interface Transfer {
+  /**
+   * @member {number} [id]
+   */
+  id: number;
+
+  /**
+   * @member {Route} [route]
+   */
+  route: Route;
+
+  /**
+   * @member {Car} [car]
+   */
+  car: Car;
+
+  /**
+   * @member {Personal} [driver]
+   */
+  driver: Personal;
+
+  /**
+   * @member {Passenger[]} [passengers]
+   */
+  passengers: Passenger[];
+
+  /**
+   * @member {number} [totalNumberOfAdults]
+   */
+  totalNumberOfAdults: number;
+
+  /**
+   * @member {number} [totalNumberOfChildren]
+   */
+  totalNumberOfChildren: number;
+
+  /**
+   * @member {number} [totalNumberOfInfants]
+   */
+  totalNumberOfInfants: number;
+}

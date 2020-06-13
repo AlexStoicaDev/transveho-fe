@@ -36,7 +36,14 @@ export class LoginPageComponent implements OnInit {
       .pipe(first())
       .subscribe(
         _userData => {
-          this.router.navigate(['/']);
+          if (
+            this.authenticationService.userHasRole('ADMIN') ||
+            this.authenticationService.userHasRole('DISPATCHER')
+          ) {
+            this.router.navigate(['/']);
+          } else {
+            this.router.navigate(['/current-transfer']);
+          }
         },
         error => {
           console.log(error);

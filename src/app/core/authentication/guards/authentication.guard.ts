@@ -7,31 +7,29 @@ import {
   UrlTree
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthenticationService } from '../authentication/authentication.service';
+import { AuthenticationService } from '../authentication.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AdminGuard implements CanActivate {
+export class AuthenticationGuard implements CanActivate {
   constructor(
     private authenticationService: AuthenticationService,
     private router: Router
   ) {}
 
   canActivate(
-    activatedRouteSnapshot: ActivatedRouteSnapshot,
+    router: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ):
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    const userHasAdminRole: boolean = this.authenticationService.userHasRole(
-      'ADMIN'
-    );
-    if (!userHasAdminRole) {
-      this.router.navigate(['']);
+    const isUserAuthenticated = this.authenticationService.isUserAuthenticated();
+    if (!isUserAuthenticated) {
+      this.router.navigate(['auth']);
     }
-    return userHasAdminRole;
+    return isUserAuthenticated;
   }
 }
