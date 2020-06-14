@@ -28,7 +28,7 @@ export class OccDriverTransferService {
     const mockPassenger: Passenger = {
       destinationAddress:
         'Timisoara Airport, Strada Aeroportului 2, Ghiroda 307200, Romania',
-      email: 'rtineman1@wunderground.com',
+      email: 'rtineman1@gmail.com',
       firstName: 'Raynard',
       flightDateTime: new Date(),
       flightDetails: 'Quisque porta volutpat erat.',

@@ -17,6 +17,10 @@ $color-lighter-gray: map-get($main-colors, lighter-gray);
 .navbar-mainbg {
   background-color: $transveho-medium-blue;
   padding: 0px;
+
+  @include media-breakpoint-down(lg){
+    padding-left: 15px;
+  }
 }
 #navbarSupportedContent {
   overflow: hidden;

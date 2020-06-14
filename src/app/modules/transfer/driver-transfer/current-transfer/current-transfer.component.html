@@ -1,20 +1,125 @@
-<div class="container-fluid pl-5 pr-5 mb-5">
+<div class="container-fluid pl-lg-5 pr-lg-5 mb-5">
   <div class="row mb-5">
-    <div class="col mt-2">
+    <div class="col-lg mt-2">
       <selected-route
         [fromLocation]="currentTransfer.route.fromLocation"
         [toLocation]="currentTransfer.route.toLocation"
       ></selected-route>
+      <mat-card class="mt-2">
+        <div class="row">
+          <div class="col">
+            <p class="color-light-gray">CLIENT</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6 col-sm-4">
+            <p class="selected-car-header mb-0">nume</p>
+            <p class="color-light-gray">
+               {{passenger.lastName}}
+            </p>
+          </div>
+
+          <div class="col-6 col-sm-4">
+            <p class="selected-car-header mb-0">prenume</p>
+            <p class="color-light-gray">
+              {{ passenger.firstName }}
+            </p>
+          </div>
+
+          <div class="col-6 col-sm-4">
+            <p class="selected-car-header mb-0">pasageri</p>
+            <passenger-count
+              [numberOfAdults]="passenger.numberOfAdults"
+              [numberOfChildren]="passenger.numberOfChildren"
+              [numberOfInfants]="passenger.numberOfInfants"
+            ></passenger-count>
+          </div>
+
+          <div class="col-6 col-sm-4">
+            <p class="selected-car-header mb-0">telefon</p>
+            <p class="color-light-gray">
+              {{ passenger.phoneNumber }}
+            </p>
+          </div>
+
+
+
+
+
+<!--        </div>-->
+<!--        <div class="row">-->
+
+
+          <div class="col-6 col-sm-4">
+            <p class="selected-car-header mb-0">email</p>
+            <p class="color-light-gray">
+              {{ passenger.email }}
+            </p>
+          </div>
+
+          <div class="col-6 col-sm-4">
+            <p class="selected-car-header mb-0">metoda plata</p>
+            <p class="color-light-gray">
+<!--              {{ passenger.paymentMethod }}-->
+              ONLINE
+            </p>
+          </div>
+
+          <div class="col-6 col-sm-4">
+            <p class="selected-car-header mb-0">a platit</p>
+            <p class="color-light-gray">
+              {{ passenger.paidForTransfer ? 'DA' : 'NU' }}
+            </p>
+          </div>
+
+
+
+<!--        </div>-->
+<!--        <div class="row">-->
+
+          <div class="col-6 col-sm-4">
+            <p class="selected-car-header mb-0">data transfer</p>
+            <p class="color-light-gray">
+              {{ passenger.pickUpDateTime | date: 'hh:mm dd/MM/yyyy'}}
+            </p>
+          </div>
+
+          <div class="col-sm-4">
+            <p class="selected-car-header mb-0">adresa destinatie</p>
+            <p class="color-light-gray">
+              {{ passenger.destinationAddress }}
+            </p>
+          </div>
+
+
+
+
+
+          <div class="col-sm-4">
+            <p class="selected-car-header mb-0">adresa preluare</p>
+            <p class="color-light-gray">
+              {{passenger.pickUpAddress }}
+            </p>
+          </div>
+
+
+
+
+        </div>
+      </mat-card>
       <selected-car [selectedCar]="currentTransfer.car"></selected-car>
     </div>
-    <div class="col mt-2">
+
+
+    <div class="col-lg mt-2">
+
       <form [formGroup]="locationFormGroup" (ngSubmit)="onSubmit()">
         <div class="input-group mb-3">
           <input
             type="text"
             class="form-control"
             formControlName="location"
-            placeholder="Recipient's username"
+            placeholder="Adresa de start"
             aria-label="Adresa de start"
             aria-describedby="basic-addon2"
           />
@@ -27,10 +132,13 @@
       </form>
       <ng-container>
         <agm-map
+          id="Gmap"
+          [zoom]='13'
           [fullscreenControl]="true"
           class="map"
           [latitude]="location?.latitude"
           [longitude]="location?.longitude"
+
         >
           <agm-marker
             (dragEnd)="setLocationByMarkerDragging($event)"
@@ -47,25 +155,7 @@
               }
             }"
           ></agm-marker>
-          <agm-marker
-            [iconUrl]="{
-              url: './assets/images/insurance.svg',
-              scaledSize: {
-                width: 40,
-                height: 60
-              }
-            }"
-            [latitude]="pickUpLocation?.latitude"
-            [longitude]="pickUpLocation?.longitude"
-            [zIndex]="2"
-          >
-            <agm-info-window #infowindow1 [isOpen]="true" [maxWidth]="320">
-              <div>
-                <p>adresa:</p>
-                <p>{{ pickUpLocation?.address }}</p>
-              </div>
-            </agm-info-window>
-          </agm-marker>
+
           <agm-marker
             [latitude]="destinationLocation?.latitude"
             [longitude]="destinationLocation?.longitude"
@@ -77,19 +167,43 @@
               }
             }"
           >
-            <agm-info-window #infowindow2 [isOpen]="true" [maxWidth]="320">
+            <agm-info-window #infowindow2 [maxWidth]="320">
               <div>
-                <p>destinatie: {{ destinationLocation?.address }}</p>
+                <p>{{ destinationLocation?.address }}</p>
               </div>
             </agm-info-window>
           </agm-marker>
-          <agm-polyline [strokeColor]="'#40d790'">
+
+          <agm-marker
+            [iconUrl]="{
+              url: './assets/images/user.svg',
+              scaledSize: {
+                width: 40,
+                height: 60
+              }
+            }"
+            [latitude]="pickUpLocation?.latitude"
+            [longitude]="pickUpLocation?.longitude"
+            [zIndex]="2"
+          >
+            <agm-info-window #infowindow1 [maxWidth]="320">
+              <div>
+                <p>{{ pickUpLocation?.address }}</p>
+              </div>
+            </agm-info-window>
+          </agm-marker>
+
+
+          <agm-polyline [strokeColor]="'#40d790'" [geodesic]="true">
             <ng-container *ngFor="let i of polyLine">
               <agm-polyline-point
                 [latitude]="i.latitude"
                 [longitude]="i.longitude"
               >
               </agm-polyline-point>
+              <!--              <agm-icon-sequence [strokeColor]="'#40d790'"   [repeat]="'15px'" [offset]="0" [strokeWeight]="3" [scale]="2" [strokeOpacity]="100"-->
+              <!--                                 [path]="'FORWARD_CLOSED_ARROW'">-->
+              <!--              </agm-icon-sequence>-->
             </ng-container>
           </agm-polyline>
         </agm-map>
