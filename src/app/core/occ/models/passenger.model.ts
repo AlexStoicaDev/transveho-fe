@@ -73,7 +73,7 @@ export interface Passenger {
   /**
    * @member {Date} [pickUpDateTime]
    */
-  pickUpDateTime: Date;
+  pickUpDateTime: string;
   /**
    * @member {Date} [flightDateTime]
    */

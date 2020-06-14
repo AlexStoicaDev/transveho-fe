@@ -45,6 +45,7 @@
       <ng-container matColumnDef="select">
         <th mat-header-cell *matHeaderCellDef>
           <mat-checkbox
+            class="d-none"
             (change)="$event ? masterToggle() : null"
             [checked]="selection.hasValue() && isAllSelected()"
             [indeterminate]="selection.hasValue() && !isAllSelected()"
@@ -65,7 +66,7 @@
       <ng-container
         matColumnDef="{{ column.elementPropertyName }}"
         *ngFor="
-          let column of columnsToDisplay | slice: 1:columnsToDisplay.length - 7
+          let column of columnsToDisplay | slice: 1:columnsToDisplay.length - 5
         "
       >
         <th mat-header-cell *matHeaderCellDef>
@@ -84,27 +85,27 @@
       <ng-container matColumnDef="pickUpDateTime">
         <th mat-header-cell *matHeaderCellDef>DATA TRANSFER</th>
         <td mat-cell class="pickUpDateTime" *matCellDef="let element">
-          {{ element.pickUpDateTime }}
+          {{ element.pickUpDateTime | date: "dd/MM/yy HH:mm" }}
         </td>
       </ng-container>
-      <ng-container matColumnDef="flightDateTime">
-        <th mat-header-cell *matHeaderCellDef>DATA AVION</th>
-        <td mat-cell class="flightDateTime" *matCellDef="let element">
-          {{ element.flightDateTime }}
-        </td>
-      </ng-container>
+<!--      <ng-container matColumnDef="flightDateTime">-->
+<!--        <th mat-header-cell *matHeaderCellDef>DATA AVION</th>-->
+<!--        <td mat-cell class="flightDateTime" *matCellDef="let element">-->
+<!--          {{ element.flightDateTime }}-->
+<!--        </td>-->
+<!--      </ng-container>-->
       <ng-container matColumnDef="routeId">
         <th mat-header-cell *matHeaderCellDef>RUTA</th>
         <td mat-cell class="route-td" *matCellDef="let element">
           {{ getRouteText(element.routeId) }}
         </td>
       </ng-container>
-      <ng-container matColumnDef="returnTransfer">
-        <th mat-header-cell class="text-center" *matHeaderCellDef>RETUR</th>
-        <td mat-cell class="text-center" *matCellDef="let element">
-          {{ element.returnTransfer ? 'DA' : 'NU' }}
-        </td>
-      </ng-container>
+<!--      <ng-container matColumnDef="returnTransfer">-->
+<!--        <th mat-header-cell class="text-center" *matHeaderCellDef>RETUR</th>-->
+<!--        <td mat-cell class="text-center" *matCellDef="let element">-->
+<!--          {{ element.returnTransfer ? 'DA' : 'NU' }}-->
+<!--        </td>-->
+<!--      </ng-container>-->
       <ng-container matColumnDef="numberOfCoPassengers">
         <th mat-header-cell class="text-center" *matHeaderCellDef>
           PASAGERI
@@ -176,17 +177,23 @@
           }"
         >
           <div
-            class="row mx-auto overflow-hidden"
+            class="row mx-auto overflow-hidden w-50"
             [@detailExpand]="
               element == expandedElement ? 'expanded' : 'collapsed'
             "
           >
             <div
               class="col pt-3"
-              *ngFor="let column of detailsColumnsToDisplay"
+              *ngFor="let column of detailsColumnsToDisplay | slice: 0:detailsColumnsToDisplay.length-1 "
             >
               <p class="details-header">{{ column.romanianTranslation }}</p>
               <p>{{ element[column.elementPropertyName] }}</p>
+            </div>
+            <div
+              class="col pt-3"
+            >
+              <p class="details-header">A PLATIT</p>
+              <p>{{ element.paidForTransfer?'DA':'NU' }}</p>
             </div>
           </div>
         </td>

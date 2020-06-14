@@ -12,9 +12,6 @@ $color-light-gray: map-get($main-colors, light-gray);
     padding: 0;
   }
 
-  display: flex;
-  flex-flow: column;
-  height: 100%;
   justify-content: center;
   color: $color-pure-black;
 

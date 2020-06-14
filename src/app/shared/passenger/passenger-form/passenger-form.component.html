@@ -54,21 +54,21 @@
       </mat-select>
     </mat-form-field>
 
-    <mat-form-field class="w-100">
-      <mat-label>tip transport</mat-label>
-      <mat-select id="transportType" formControlName="transportType">
-        <mat-option
-          *ngFor="let transportType of transportTypes"
-          [value]="transportType"
-        >
-          {{ transportType }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+<!--    <mat-form-field class="w-100">-->
+<!--      <mat-label>tip transport</mat-label>-->
+<!--      <mat-select id="transportType" formControlName="transportType">-->
+<!--        <mat-option-->
+<!--          *ngFor="let transportType of transportTypes"-->
+<!--          [value]="transportType"-->
+<!--        >-->
+<!--          {{ transportType }}-->
+<!--        </mat-option>-->
+<!--      </mat-select>-->
+<!--    </mat-form-field>-->
   </div>
   <div class="col">
     <mat-form-field class="w-100">
-      <mat-label>adresa preluare / terminal aeroport</mat-label>
+      <mat-label>adresa preluare</mat-label>
       <input matInput id="pickUpAddress" formControlName="pickUpAddress" />
     </mat-form-field>
     <mat-form-field class="w-100">
@@ -92,29 +92,29 @@
         autocomplete="false"
       />
     </mat-form-field>
+<!--    <mat-form-field class="w-100">-->
+<!--      <mat-placeholder>data decolare</mat-placeholder>-->
+<!--      <mat-datetimepicker-toggle-->
+<!--        [for]="flightDateTime"-->
+<!--        matSuffix-->
+<!--      ></mat-datetimepicker-toggle>-->
+<!--      <mat-datetimepicker-->
+<!--        #flightDateTime-->
+<!--        type="datetime"-->
+<!--        openOnFocus="true"-->
+<!--        timeInterval="5"-->
+<!--      >-->
+<!--      </mat-datetimepicker>-->
+<!--      <input-->
+<!--        matInput-->
+<!--        formControlName="flightDateTime"-->
+<!--        [matDatetimepicker]="flightDateTime"-->
+<!--        required-->
+<!--        autocomplete="false"-->
+<!--      />-->
+<!--    </mat-form-field>-->
     <mat-form-field class="w-100">
-      <mat-placeholder>data decolare</mat-placeholder>
-      <mat-datetimepicker-toggle
-        [for]="flightDateTime"
-        matSuffix
-      ></mat-datetimepicker-toggle>
-      <mat-datetimepicker
-        #flightDateTime
-        type="datetime"
-        openOnFocus="true"
-        timeInterval="5"
-      >
-      </mat-datetimepicker>
-      <input
-        matInput
-        formControlName="flightDateTime"
-        [matDatetimepicker]="flightDateTime"
-        required
-        autocomplete="false"
-      />
-    </mat-form-field>
-    <mat-form-field class="w-100">
-      <mat-label>destinatie transfer / terminal Aeroport</mat-label>
+      <mat-label>destinatie transfer </mat-label>
       <input
         matInput
         id="destinationAddress"
@@ -176,75 +176,75 @@
     </div>
   </div>
 
-  <div class="col">
-    <mat-form-field appearance="fill" class="w-100">
-      <mat-label>detalii zbor</mat-label>
-      <textarea
-        id="flightDetails"
-        matInput
-        formControlName="flightDetails"
-      ></textarea>
-    </mat-form-field>
-    <div class="w-50">
-      <label>transfer dus-intors?</label>
-      <mat-radio-group
-        class="row"
-        id="returnTransfer"
-        formControlName="returnTransfer"
-      >
-        <mat-radio-button class="col" value="true">Da</mat-radio-button>
-        <mat-radio-button class="col" value="false">Nu</mat-radio-button>
-      </mat-radio-group>
-    </div>
-    <ng-container
-      *ngIf="passengerFormGroup.controls.returnTransfer.value === 'true'"
-    >
-      <mat-form-field class="w-100">
-        <mat-label>adresa preluare / terminal aeroport intoarcere</mat-label>
-        <input
-          matInput
-          id="returnPickUpAddress"
-          formControlName="returnPickUpAddress"
-        />
-      </mat-form-field>
-      <mat-form-field class="w-100">
-        <mat-label>destinatie transfer intoarcere</mat-label>
-        <input
-          matInput
-          id="returnDestinationAddress"
-          formControlName="returnDestinationAddress"
-        />
-      </mat-form-field>
-      <mat-form-field class="w-100">
-        <mat-placeholder>data transfer intoarcere</mat-placeholder>
-        <mat-datetimepicker-toggle
-          [for]="returnPickUpDateTime"
-          matSuffix
-        ></mat-datetimepicker-toggle>
-        <mat-datetimepicker
-          class="icon-container"
-          #returnPickUpDateTime
-          type="datetime"
-          openOnFocus="true"
-          timeInterval="5"
-        >
-        </mat-datetimepicker>
-        <input
-          matInput
-          formControlName="returnPickUpDateTime"
-          [matDatetimepicker]="returnPickUpDateTime"
-          required
-          autocomplete="false"
-        />
-      </mat-form-field>
-      <mat-form-field appearance="fill" class="w-100">
-        <mat-label>detalii zbor intoarcere</mat-label>
-        <textarea
-          id="returnFlightDetails"
-          matInput
-          formControlName="returnFlightDetails"
-        ></textarea>
-      </mat-form-field>
-    </ng-container>
-  </div>
+<!--  <div class="col">-->
+<!--    <mat-form-field appearance="fill" class="w-100">-->
+<!--      <mat-label>detalii zbor</mat-label>-->
+<!--      <textarea-->
+<!--        id="flightDetails"-->
+<!--        matInput-->
+<!--        formControlName="flightDetails"-->
+<!--      ></textarea>-->
+<!--    </mat-form-field>-->
+<!--    <div class="w-50">-->
+<!--      <label>transfer dus-intors?</label>-->
+<!--      <mat-radio-group-->
+<!--        class="row"-->
+<!--        id="returnTransfer"-->
+<!--        formControlName="returnTransfer"-->
+<!--      >-->
+<!--        <mat-radio-button class="col" value="true">Da</mat-radio-button>-->
+<!--        <mat-radio-button class="col" value="false">Nu</mat-radio-button>-->
+<!--      </mat-radio-group>-->
+<!--    </div>-->
+<!--    <ng-container-->
+<!--      *ngIf="passengerFormGroup.controls.returnTransfer.value === 'true'"-->
+<!--    >-->
+<!--      <mat-form-field class="w-100">-->
+<!--        <mat-label>adresa preluare / terminal aeroport intoarcere</mat-label>-->
+<!--        <input-->
+<!--          matInput-->
+<!--          id="returnPickUpAddress"-->
+<!--          formControlName="returnPickUpAddress"-->
+<!--        />-->
+<!--      </mat-form-field>-->
+<!--      <mat-form-field class="w-100">-->
+<!--        <mat-label>destinatie transfer intoarcere</mat-label>-->
+<!--        <input-->
+<!--          matInput-->
+<!--          id="returnDestinationAddress"-->
+<!--          formControlName="returnDestinationAddress"-->
+<!--        />-->
+<!--      </mat-form-field>-->
+<!--      <mat-form-field class="w-100">-->
+<!--        <mat-placeholder>data transfer intoarcere</mat-placeholder>-->
+<!--        <mat-datetimepicker-toggle-->
+<!--          [for]="returnPickUpDateTime"-->
+<!--          matSuffix-->
+<!--        ></mat-datetimepicker-toggle>-->
+<!--        <mat-datetimepicker-->
+<!--          class="icon-container"-->
+<!--          #returnPickUpDateTime-->
+<!--          type="datetime"-->
+<!--          openOnFocus="true"-->
+<!--          timeInterval="5"-->
+<!--        >-->
+<!--        </mat-datetimepicker>-->
+<!--        <input-->
+<!--          matInput-->
+<!--          formControlName="returnPickUpDateTime"-->
+<!--          [matDatetimepicker]="returnPickUpDateTime"-->
+<!--          required-->
+<!--          autocomplete="false"-->
+<!--        />-->
+<!--      </mat-form-field>-->
+<!--      <mat-form-field appearance="fill" class="w-100">-->
+<!--        <mat-label>detalii zbor intoarcere</mat-label>-->
+<!--        <textarea-->
+<!--          id="returnFlightDetails"-->
+<!--          matInput-->
+<!--          formControlName="returnFlightDetails"-->
+<!--        ></textarea>-->
+<!--      </mat-form-field>-->
+<!--    </ng-container>-->
+<!--  </div>-->
 </form>

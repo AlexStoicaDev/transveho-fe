@@ -42,7 +42,7 @@ export class OccDriverTransferService {
       paymentMethod: PaymentMethod.Online,
       phoneNumber: '0735871975',
       pickUpAddress: 'Strada Dinu Lipatti 2, Timișoara, Romania',
-      pickUpDateTime: new Date(),
+      pickUpDateTime: new Date().toDateString(),
       returnDestinationAddress: '',
       returnFlightDetails: '',
       returnPickUpAddress: '',

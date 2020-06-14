@@ -1,11 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import {
-  Passenger,
-  PaymentMethod,
-  Route,
-  TransportType
-} from '@transveho-core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Passenger, PaymentMethod, Route, TransportType} from '@transveho-core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'passenger-form',
@@ -49,6 +44,10 @@ export class PassengerFormComponent implements OnInit {
     }
   }
 
+  getLocalISOTimeString(date: Date): string {
+    return new Date(date.getTime() - (date.getTimezoneOffset() * 60000)).toISOString();
+  }
+
   getControlsConfig() {
     return {
       email: [
@@ -85,7 +84,7 @@ export class PassengerFormComponent implements OnInit {
       ],
       routeId: [this.passenger.routeId, [Validators.required]],
       paymentMethod: [this.passenger.paymentMethod, [Validators.required]],
-      transportType: [this.passenger.transportType, [Validators.required]],
+      transportType: ["Private"],
       pickUpAddress: [
         this.passenger.pickUpAddress,
         [
@@ -107,15 +106,15 @@ export class PassengerFormComponent implements OnInit {
         Validators.required
       ],
       flightDateTime: [
-        new Date(this.passenger.flightDateTime),
+        new Date(),
         Validators.required
       ],
       flightDetails: [
-        this.passenger.flightDetails,
+        "flightDetails",
         [Validators.maxLength(255)]
       ],
       returnPickUpAddress: [
-        this.passenger.returnPickUpAddress,
+        "returnPickUpAddress",
         [
           Validators.required,
           Validators.minLength(3),
@@ -123,7 +122,7 @@ export class PassengerFormComponent implements OnInit {
         ]
       ],
       returnDestinationAddress: [
-        this.passenger.returnDestinationAddress,
+        "returnDestinationAddress",
         [
           Validators.required,
           Validators.minLength(3),
@@ -131,11 +130,11 @@ export class PassengerFormComponent implements OnInit {
         ]
       ],
       returnPickUpDateTime: [
-        new Date(this.passenger.returnPickUpDateTime),
+        new Date(),
         Validators.required
       ],
       returnFlightDetails: [
-        this.passenger.returnFlightDetails,
+        "returnFlightDetails",
         [Validators.maxLength(255)]
       ],
       returnTransfer: [this.passenger.returnTransfer.toString()],
@@ -159,7 +158,7 @@ export class PassengerFormComponent implements OnInit {
       flightDateTime: passengerFormControls.flightDateTime.value,
       flightDetails: passengerFormControls.flightDetails.value,
       returnDestinationAddress:
-        passengerFormControls.returnDestinationAddress.value,
+      passengerFormControls.returnDestinationAddress.value,
       returnFlightDetails: passengerFormControls.returnFlightDetails.value,
       returnPickUpAddress: passengerFormControls.returnPickUpAddress.value,
       returnPickUpDateTime: passengerFormControls.returnPickUpDateTime.value,
@@ -171,7 +170,7 @@ export class PassengerFormComponent implements OnInit {
       paymentMethod: passengerFormControls.paymentMethod.value,
       phoneNumber: passengerFormControls.phoneNumber.value,
       pickUpAddress: passengerFormControls.pickUpAddress.value,
-      pickUpDateTime: passengerFormControls.pickUpDateTime.value,
+      pickUpDateTime: this.getLocalISOTimeString(passengerFormControls.pickUpDateTime.value),
       routeId: passengerFormControls.routeId.value,
       transportType: passengerFormControls.transportType.value
     };

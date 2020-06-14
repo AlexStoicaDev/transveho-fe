@@ -14,10 +14,10 @@ export const carsColumns = [
     elementPropertyName: 'rovignetteExpirationDate',
     romanianTranslation: 'D. EXP ROVT'
   },
-  {
-    elementPropertyName: 'huvignetteExpirationDate',
-    romanianTranslation: 'D. EXP HUVT'
-  },
+  // {
+  //   elementPropertyName: 'huvignetteExpirationDate',
+  //   romanianTranslation: 'D. EXP HUVT'
+  // },
   {
     elementPropertyName: 'rcaExpirationDate',
     romanianTranslation: 'D. EXP RCA'

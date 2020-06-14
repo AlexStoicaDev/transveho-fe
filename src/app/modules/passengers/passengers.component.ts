@@ -54,7 +54,7 @@ export class PassengersComponent implements OnInit {
   detailsColumnsToDisplay = detailsColumnsToDisplay;
   expandedElement: Passenger | null;
   performActionsOnPassenger: Passenger = null;
-  selection = new SelectionModel<Passenger>(true, []);
+  selection = new SelectionModel<Passenger>(false, []);
   availableRoutes: Route[] = [];
 
   constructor(
