@@ -1,6 +1,7 @@
 import { Passenger } from '@transveho-core';
 
 export let emptyPassenger: Passenger = {
+  status: undefined,
   id: 0,
   numberOfAdults: 0,
   numberOfChildren: 0,

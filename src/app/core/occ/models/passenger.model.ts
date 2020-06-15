@@ -10,6 +10,10 @@ export enum TransportType {
   Shuttle
 }
 
+export enum PassengerStatus {
+  TransferDone, OnRoute, Assigned, NotAssigned, Canceled
+}
+
 /**
  * An interface representing the Passenger entity
  */
@@ -106,4 +110,8 @@ export interface Passenger {
    * @member {boolean} [paidForTransfer]
    */
   paidForTransfer: boolean;
+  /**
+   * @member {PassengerStatus} [status]
+   */
+  status:PassengerStatus;
 }

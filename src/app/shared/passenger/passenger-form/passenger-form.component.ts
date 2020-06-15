@@ -138,7 +138,8 @@ export class PassengerFormComponent implements OnInit {
         [Validators.maxLength(255)]
       ],
       returnTransfer: [this.passenger.returnTransfer.toString()],
-      paidForTransfer: [this.passenger.paidForTransfer.toString()]
+      paidForTransfer: [this.passenger.paidForTransfer.toString()],
+      status: [this.passenger.status]
     };
   }
 
@@ -149,6 +150,7 @@ export class PassengerFormComponent implements OnInit {
   getPassengerFromFormControls(): Passenger {
     const passengerFormControls = this.passengerFormGroup.controls;
     return {
+      status: passengerFormControls.status.value,
       id: this.passenger.id,
       numberOfAdults: passengerFormControls.numberOfAdults.value,
       numberOfChildren: passengerFormControls.numberOfChildren.value,

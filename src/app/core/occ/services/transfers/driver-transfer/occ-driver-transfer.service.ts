@@ -26,6 +26,7 @@ export class OccDriverTransferService {
     // const myFormattedDate = pipe.transform(now, 'shortDate');
 
     const mockPassenger: Passenger = {
+      status: undefined,
       destinationAddress:
         'Timisoara Airport, Strada Aeroportului 2, Ghiroda 307200, Romania',
       email: 'rtineman1@gmail.com',

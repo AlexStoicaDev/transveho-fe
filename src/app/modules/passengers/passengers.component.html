@@ -12,7 +12,7 @@
         }"
       >
         <span class="material-icons table-actions-container__button__icon plus"
-          >transfer_within_a_station</span
+        >transfer_within_a_station</span
         >
       </span>
       <span class="table-actions-container__button__text">
@@ -25,7 +25,7 @@
     >
       <span class="table-actions-container__button__circle">
         <span class="material-icons table-actions-container__button__icon plus"
-          >add</span
+        >add</span
         >
       </span>
       <span class="table-actions-container__button__text">Adauga</span>
@@ -55,6 +55,10 @@
         </th>
         <td mat-cell *matCellDef="let row">
           <mat-checkbox
+            class="disabled"
+            [ngClass]="{
+           'disabled': row.status === 0
+        }"
             (click)="$event.stopPropagation()"
             (change)="$event ? selection.toggle(row) : null"
             [checked]="selection.isSelected(row)"
@@ -88,24 +92,24 @@
           {{ element.pickUpDateTime | date: "dd/MM/yy HH:mm" }}
         </td>
       </ng-container>
-<!--      <ng-container matColumnDef="flightDateTime">-->
-<!--        <th mat-header-cell *matHeaderCellDef>DATA AVION</th>-->
-<!--        <td mat-cell class="flightDateTime" *matCellDef="let element">-->
-<!--          {{ element.flightDateTime }}-->
-<!--        </td>-->
-<!--      </ng-container>-->
+      <!--      <ng-container matColumnDef="flightDateTime">-->
+      <!--        <th mat-header-cell *matHeaderCellDef>DATA AVION</th>-->
+      <!--        <td mat-cell class="flightDateTime" *matCellDef="let element">-->
+      <!--          {{ element.flightDateTime }}-->
+      <!--        </td>-->
+      <!--      </ng-container>-->
       <ng-container matColumnDef="routeId">
         <th mat-header-cell *matHeaderCellDef>RUTA</th>
         <td mat-cell class="route-td" *matCellDef="let element">
           {{ getRouteText(element.routeId) }}
         </td>
       </ng-container>
-<!--      <ng-container matColumnDef="returnTransfer">-->
-<!--        <th mat-header-cell class="text-center" *matHeaderCellDef>RETUR</th>-->
-<!--        <td mat-cell class="text-center" *matCellDef="let element">-->
-<!--          {{ element.returnTransfer ? 'DA' : 'NU' }}-->
-<!--        </td>-->
-<!--      </ng-container>-->
+      <!--      <ng-container matColumnDef="returnTransfer">-->
+      <!--        <th mat-header-cell class="text-center" *matHeaderCellDef>RETUR</th>-->
+      <!--        <td mat-cell class="text-center" *matCellDef="let element">-->
+      <!--          {{ element.returnTransfer ? 'DA' : 'NU' }}-->
+      <!--        </td>-->
+      <!--      </ng-container>-->
       <ng-container matColumnDef="numberOfCoPassengers">
         <th mat-header-cell class="text-center" *matHeaderCellDef>
           PASAGERI
@@ -121,7 +125,7 @@
       <ng-container matColumnDef="passengerTripStatus">
         <th mat-header-cell class="text-center" *matHeaderCellDef>STATUS</th>
         <td mat-cell *matCellDef="let element">
-          <status-bar [status]="'passenger-status-done'"></status-bar>
+          <status-bar [status]="element.status"></status-bar>
         </td>
       </ng-container>
       <ng-container matColumnDef="actions">
@@ -193,7 +197,7 @@
               class="col pt-3"
             >
               <p class="details-header">A PLATIT</p>
-              <p>{{ element.paidForTransfer?'DA':'NU' }}</p>
+              <p>{{ element.paidForTransfer ? 'DA' : 'NU' }}</p>
             </div>
           </div>
         </td>

@@ -4,6 +4,9 @@ $color-pure-white: map-get($main-colors, pure-white);
 $color-light-mustard: map-get($main-colors, light-mustard);
 $color-dark-red: map-get($main-colors, dark-red);
 $color-light-green: map-get($main-colors, light-green);
+$transveho-light-blue: map-get($main-colors, transveho-light-blue);
+$transveho-medium-blue: map-get($main-colors, transveho-medium-blue);
+$transveho-dark-blue: map-get($main-colors, transveho-dark-blue);
 
 .status {
   color: $color-pure-white;
@@ -24,4 +27,12 @@ $color-light-green: map-get($main-colors, light-green);
 
 .status-done {
   background-color: $color-light-green;
+}
+
+.status-assigned{
+  background-color: $transveho-medium-blue;
+}
+
+.status-on-going{
+  background-color: $transveho-dark-blue;
 }

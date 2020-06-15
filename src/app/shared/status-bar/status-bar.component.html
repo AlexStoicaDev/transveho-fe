@@ -2,19 +2,20 @@
   class="status text-center mx-auto rounded-pill"
   [ngClass]="{
     'status-canceled':
-      ['Former', 'Defective', 'passenger-status-canceled'].indexOf(status) !==
+      ['Former', 'Defective', 'Canceled'].indexOf(status) !==
       -1,
     'status-pending':
-      ['DayOff', 'Holiday', 'Medical', 'OnRoute'].indexOf(status) !== -1,
+      ['DayOff', 'Holiday', 'Medical', 'NotAssigned'].indexOf(status) !== -1,
+     'status-assigned':
+      ['Assigned'].indexOf(status) !== -1,
+     'status-on-going':
+      ['OnRoute'].indexOf(status) !== -1,
     'status-done':
-      ['Available', 'passenger-status-done'].indexOf(status) !== -1,
+      ['Available', 'TransferDone'].indexOf(status) !== -1,
     'mt-1': ['passenger-status'].indexOf(status) !== -1
   }"
 >
-  <p class="status__text" *ngIf="status === 'passenger-status-done'">asignat</p>
-  <p class="status__text" *ngIf="status === 'passenger-status-canceled'">
-    anulat
-  </p>
+  <p class="status__text" *ngIf="status === 'Assigned'">asignat</p>
   <p class="status__text" *ngIf="status === 'Former'">fost angajat</p>
   <p class="status__text" *ngIf="status === 'DayOff'">zi libera</p>
   <p class="status__text" *ngIf="status === 'Holiday'">concediu</p>
@@ -22,4 +23,7 @@
   <p class="status__text" *ngIf="status === 'Available'">disponibil</p>
   <p class="status__text" *ngIf="status === 'OnRoute'">pe traseu</p>
   <p class="status__text" *ngIf="status === 'Defective'">defecta</p>
+  <p class="status__text" *ngIf="status === 'Canceled'">anulat</p>
+  <p class="status__text" *ngIf="status === 'NotAssigned'">neasignat</p>
+  <p class="status__text" *ngIf="status === 'TransferDone'">finalizat</p>
 </div>
