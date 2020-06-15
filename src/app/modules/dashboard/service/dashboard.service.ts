@@ -1,20 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { ELEMENT_DATA_1, ELEMENT_DATA_2 } from './mock-data';
-import { DashboardEntryPage } from '@transveho-core';
+import { Observable, throwError } from 'rxjs';
+import { Transfer } from '@transveho-core';
+import { catchError } from 'rxjs/operators';
+
+const TRANSFERS_ENDPOINT = 'transfers';
+const SLASH = '/';
 
 @Injectable()
 export class DashboardService {
-  constructor(private _httpClient: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
-  public loadPaginatedEntries(page: number): Observable<DashboardEntryPage> {
-    let result: Observable<DashboardEntryPage>;
-    if (page === 0) {
-      result = of({ dashboardEntries: ELEMENT_DATA_1, pageNumber: 0 });
-    } else {
-      result = of({ dashboardEntries: ELEMENT_DATA_2, pageNumber: 1 });
-    }
-    return result;
+  public getAllTransfers(): Observable<Transfer[]> {
+    return this.http
+      .get<Transfer[]>(TRANSFERS_ENDPOINT)
+      .pipe(catchError(err => throwError(err)));
   }
 }

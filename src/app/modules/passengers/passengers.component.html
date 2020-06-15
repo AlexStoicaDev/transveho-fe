@@ -12,7 +12,7 @@
         }"
       >
         <span class="material-icons table-actions-container__button__icon plus"
-        >transfer_within_a_station</span
+          >transfer_within_a_station</span
         >
       </span>
       <span class="table-actions-container__button__text">
@@ -25,7 +25,7 @@
     >
       <span class="table-actions-container__button__circle">
         <span class="material-icons table-actions-container__button__icon plus"
-        >add</span
+          >add</span
         >
       </span>
       <span class="table-actions-container__button__text">Adauga</span>
@@ -57,8 +57,8 @@
           <mat-checkbox
             class="disabled"
             [ngClass]="{
-           'disabled': row.status === 0
-        }"
+              disabled: row.status === 0
+            }"
             (click)="$event.stopPropagation()"
             (change)="$event ? selection.toggle(row) : null"
             [checked]="selection.isSelected(row)"
@@ -89,7 +89,7 @@
       <ng-container matColumnDef="pickUpDateTime">
         <th mat-header-cell *matHeaderCellDef>DATA TRANSFER</th>
         <td mat-cell class="pickUpDateTime" *matCellDef="let element">
-          {{ element.pickUpDateTime | date: "dd/MM/yy HH:mm" }}
+          {{ element.pickUpDateTime | date: 'dd/MM/yy HH:mm' }}
         </td>
       </ng-container>
       <!--      <ng-container matColumnDef="flightDateTime">-->
@@ -188,14 +188,15 @@
           >
             <div
               class="col pt-3"
-              *ngFor="let column of detailsColumnsToDisplay | slice: 0:detailsColumnsToDisplay.length-1 "
+              *ngFor="
+                let column of detailsColumnsToDisplay
+                  | slice: 0:detailsColumnsToDisplay.length - 1
+              "
             >
               <p class="details-header">{{ column.romanianTranslation }}</p>
               <p>{{ element[column.elementPropertyName] }}</p>
             </div>
-            <div
-              class="col pt-3"
-            >
+            <div class="col pt-3">
               <p class="details-header">A PLATIT</p>
               <p>{{ element.paidForTransfer ? 'DA' : 'NU' }}</p>
             </div>

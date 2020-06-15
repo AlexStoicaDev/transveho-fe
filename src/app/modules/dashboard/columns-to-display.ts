@@ -1,30 +1,56 @@
-export const columnsToDisplay = [
-  { elementPropertyName: 'index', romanianTranslation: 'index' },
-  { elementPropertyName: 'date', romanianTranslation: 'DATA' },
-  { elementPropertyName: 'passengerSurname', romanianTranslation: 'NUME' },
-  { elementPropertyName: 'passengerName', romanianTranslation: 'PRENUME' },
+export const transferColumns = [
   {
-    elementPropertyName: 'passengerPhoneNumber',
-    romanianTranslation: 'NUMAR TELEFON'
-  },
-  { elementPropertyName: 'transferDate', romanianTranslation: 'DATA TRANSFER' },
-  { elementPropertyName: 'route', romanianTranslation: 'RUTA' },
-  { elementPropertyName: 'planeHour', romanianTranslation: 'ORA DEC/AT' },
-  {
-    elementPropertyName: 'deliveryAddress',
-    romanianTranslation: 'ADR DESTINATIE/TERMINAL'
+    elementPropertyName: 'route',
+    romanianTranslation: 'RUTA'
   },
   {
-    elementPropertyName: 'pickupAddress',
-    romanianTranslation: 'ADR PRELUARE/TERMINAL'
+    elementPropertyName: 'carPlateNumber',
+    romanianTranslation: 'MASINA'
   },
-  { elementPropertyName: 'status', romanianTranslation: 'STATUS' }
+  {
+    elementPropertyName: 'driverName',
+    romanianTranslation: 'SOFER'
+  }
 ];
+
+export const passengerColumns = [
+  { elementPropertyName: 'email', romanianTranslation: 'EMAIL' },
+  {
+    elementPropertyName: 'lastName',
+    romanianTranslation: 'NUME'
+  },
+  {
+    elementPropertyName: 'pickUpAddress',
+    romanianTranslation: 'ADRESA PRELUARE'
+  },
+
+  {
+    elementPropertyName: 'destinationAddress',
+    romanianTranslation: 'ADRESA DESTINATIE'
+  },
+  {
+    elementPropertyName: 'pickUpDateTime',
+    romanianTranslation: 'ORA PRELUARE'
+  },
+  {
+    elementPropertyName: 'numberOfCoPassengers',
+    romanianTranslation: 'COPASAGERI'
+  },
+  {
+    elementPropertyName: 'passengerTripStatus',
+    romanianTranslation: 'STATUS'
+  }
+];
+
 export const detailsColumnsToDisplay = [
-  { elementPropertyName: 'nrOfPersons', romanianTranslation: 'NUMAR PERSOANE' },
-  { elementPropertyName: 'notes', romanianTranslation: 'NOTE' },
+  {
+    elementPropertyName: 'firstName',
+    romanianTranslation: 'PRENUME'
+  },
+  {
+    elementPropertyName: 'phoneNumber',
+    romanianTranslation: 'NR TELEFON'
+  },
   { elementPropertyName: 'paymentMethod', romanianTranslation: 'METODA PLATA' },
-  { elementPropertyName: 'beneficiary', romanianTranslation: 'BENEFICIAR' },
-  { elementPropertyName: 'transporter', romanianTranslation: 'TRANSPORTATOR' },
-  { elementPropertyName: 'car', romanianTranslation: 'MASINA' }
+  { elementPropertyName: 'paidForTransfer', romanianTranslation: 'A PLATIT' }
 ];

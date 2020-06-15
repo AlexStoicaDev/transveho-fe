@@ -1,10 +1,4 @@
-import {
-  AfterViewChecked,
-  ChangeDetectorRef,
-  Component,
-  OnDestroy,
-  ViewChild
-} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {
   animate,
   state,
@@ -12,15 +6,15 @@ import {
   transition,
   trigger
 } from '@angular/animations';
-import { DashboardService } from './service/dashboard.service';
-import { of, Subscription } from 'rxjs';
-import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import {
-  columnsToDisplay,
-  detailsColumnsToDisplay
+  detailsColumnsToDisplay,
+  passengerColumns,
+  transferColumns
 } from './columns-to-display';
-import { DashboardEntry } from '@transveho-core';
+import { Transfer } from '@transveho-core';
 import { PaginatorComponent } from '../../shared/paginator/paginator.component';
+import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'dashboard',
@@ -42,55 +36,24 @@ import { PaginatorComponent } from '../../shared/paginator/paginator.component';
     ])
   ]
 })
-export class DashboardComponent implements OnDestroy, AfterViewChecked {
+export class DashboardComponent implements OnInit {
   @ViewChild(PaginatorComponent) paginatorComponent: PaginatorComponent;
 
-  pageIndex: number = 0;
-  dataSource: DashboardEntry[];
-  expandedElement: DashboardEntry | null;
-  columnsToDisplay = columnsToDisplay;
+  dataSource = new MatTableDataSource<Transfer>();
+  transferColumns = transferColumns;
+  passengerColumns = passengerColumns;
+
+  headerColumns = this.transferColumns
+    .map(column => column.elementPropertyName)
+    .concat(this.passengerColumns.map(column => column.elementPropertyName));
+
   detailsColumnsToDisplay = detailsColumnsToDisplay;
-  headerColumns = columnsToDisplay.map(column => column.elementPropertyName);
-  dashboardServiceSubscription: Subscription;
 
-  constructor(
-    private dashboardService: DashboardService,
-    private cdRef: ChangeDetectorRef
-  ) {}
+  expandedElement: Transfer | null;
 
-  ngAfterViewChecked() {
-    this.dashboardServiceSubscription = this.paginatorComponent.matPaginator.page
-      .pipe(
-        startWith({}),
-        switchMap(() => {
-          return this.dashboardService.loadPaginatedEntries(
-            this.paginatorComponent.matPaginator.pageIndex
-          );
-        }),
-        map(page => {
-          this.pageIndex = page.pageNumber;
-          return page.dashboardEntries;
-        }),
-        catchError(() => {
-          return of([]);
-        })
-      )
-      .subscribe(dashboardEntries => (this.dataSource = dashboardEntries));
-    this.cdRef.detectChanges();
-  }
+  constructor(private route: ActivatedRoute) {}
 
-  shouldHaveBlueBorder(element: DashboardEntry): boolean {
-    const elementIndex = this.dataSource.indexOf(element);
-    return (
-      element === this.expandedElement ||
-      (this.dataSource[elementIndex + 1] &&
-        this.dataSource[elementIndex + 1] === this.expandedElement)
-    );
-  }
-
-  ngOnDestroy(): void {
-    if (this.dashboardServiceSubscription) {
-      this.dashboardServiceSubscription.unsubscribe();
-    }
+  ngOnInit(): void {
+    this.dataSource.data = this.route.snapshot.data.transfers;
   }
 }

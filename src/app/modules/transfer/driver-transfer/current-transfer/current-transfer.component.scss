@@ -2,8 +2,6 @@
 @import '../../../../../assets/styles/bootstrap-grid';
 @import '../../../../../assets/styles/mixins';
 
-
-
 $color-light-gray: map-get($main-colors, light-gray);
 $transveho-medium-blue: map-get($main-colors, transveho-medium-blue);
 
@@ -16,9 +14,8 @@ $transveho-medium-blue: map-get($main-colors, transveho-medium-blue);
   color: $transveho-medium-blue;
 }
 
-.passenger-column{
-
-  @include media-breakpoint-down(md){
+.passenger-column {
+  @include media-breakpoint-down(md) {
     width: 50% !important;
   }
 }

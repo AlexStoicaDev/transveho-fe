@@ -11,7 +11,11 @@ export enum TransportType {
 }
 
 export enum PassengerStatus {
-  TransferDone, OnRoute, Assigned, NotAssigned, Canceled
+  TransferDone,
+  OnRoute,
+  Assigned,
+  NotAssigned,
+  Canceled
 }
 
 /**
@@ -113,5 +117,5 @@ export interface Passenger {
   /**
    * @member {PassengerStatus} [status]
    */
-  status:PassengerStatus;
+  status: PassengerStatus;
 }

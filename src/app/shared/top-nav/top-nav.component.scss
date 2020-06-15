@@ -18,7 +18,7 @@ $color-lighter-gray: map-get($main-colors, lighter-gray);
   background-color: $transveho-medium-blue;
   padding: 0px;
 
-  @include media-breakpoint-down(lg){
+  @include media-breakpoint-down(lg) {
     padding-left: 15px;
   }
 }

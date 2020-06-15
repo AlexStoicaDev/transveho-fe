@@ -41,37 +41,22 @@ export interface Transfer {
   id: number;
 
   /**
-   * @member {Route} [route]
+   * @member {string} [route]
    */
-  route: Route;
+  route: string;
 
   /**
-   * @member {Car} [car]
+   * @member {string} [carPlateNumber]
    */
-  car: Car;
+  carPlateNumber: string;
 
   /**
-   * @member {Personal} [driver]
+   * @member {string} [driverName]
    */
-  driver: Personal;
+  driverName: string;
 
   /**
-   * @member {Passenger[]} [passengers]
+   * @member {Passenger} [passenger]
    */
-  passengers: Passenger[];
-
-  /**
-   * @member {number} [totalNumberOfAdults]
-   */
-  totalNumberOfAdults: number;
-
-  /**
-   * @member {number} [totalNumberOfChildren]
-   */
-  totalNumberOfChildren: number;
-
-  /**
-   * @member {number} [totalNumberOfInfants]
-   */
-  totalNumberOfInfants: number;
+  passenger: Passenger;
 }

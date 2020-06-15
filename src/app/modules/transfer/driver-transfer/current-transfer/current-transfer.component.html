@@ -15,7 +15,7 @@
           <div class="col-6 col-sm-4">
             <p class="selected-car-header mb-0">nume</p>
             <p class="color-light-gray">
-               {{passenger.lastName}}
+              {{ passenger.lastName }}
             </p>
           </div>
 
@@ -42,13 +42,8 @@
             </p>
           </div>
 
-
-
-
-
-<!--        </div>-->
-<!--        <div class="row">-->
-
+          <!--        </div>-->
+          <!--        <div class="row">-->
 
           <div class="col-6 col-sm-4">
             <p class="selected-car-header mb-0">email</p>
@@ -60,7 +55,7 @@
           <div class="col-6 col-sm-4">
             <p class="selected-car-header mb-0">metoda plata</p>
             <p class="color-light-gray">
-<!--              {{ passenger.paymentMethod }}-->
+              <!--              {{ passenger.paymentMethod }}-->
               ONLINE
             </p>
           </div>
@@ -72,15 +67,13 @@
             </p>
           </div>
 
-
-
-<!--        </div>-->
-<!--        <div class="row">-->
+          <!--        </div>-->
+          <!--        <div class="row">-->
 
           <div class="col-6 col-sm-4">
             <p class="selected-car-header mb-0">data transfer</p>
             <p class="color-light-gray">
-              {{ passenger.pickUpDateTime | date: 'dd/MM/yyyy HH:mm'}}
+              {{ passenger.pickUpDateTime | date: 'dd/MM/yyyy HH:mm' }}
             </p>
           </div>
 
@@ -91,28 +84,18 @@
             </p>
           </div>
 
-
-
-
-
           <div class="col-sm-4">
             <p class="selected-car-header mb-0">adresa preluare</p>
             <p class="color-light-gray">
-              {{passenger.pickUpAddress }}
+              {{ passenger.pickUpAddress }}
             </p>
           </div>
-
-
-
-
         </div>
       </mat-card>
       <selected-car [selectedCar]="currentTransfer.car"></selected-car>
     </div>
 
-
     <div class="col-lg mt-2">
-
       <form [formGroup]="locationFormGroup" (ngSubmit)="onSubmit()">
         <div class="input-group mb-3">
           <input
@@ -133,12 +116,11 @@
       <ng-container>
         <agm-map
           id="Gmap"
-          [zoom]='13'
+          [zoom]="13"
           [fullscreenControl]="true"
           class="map"
           [latitude]="location?.latitude"
           [longitude]="location?.longitude"
-
         >
           <agm-marker
             (dragEnd)="setLocationByMarkerDragging($event)"
@@ -192,7 +174,6 @@
               </div>
             </agm-info-window>
           </agm-marker>
-
 
           <agm-polyline [strokeColor]="'#40d790'" [geodesic]="true">
             <ng-container *ngFor="let i of polyLine">

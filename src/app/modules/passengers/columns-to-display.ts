@@ -53,7 +53,7 @@ export const detailsColumnsToDisplay = [
     romanianTranslation: 'NR TELEFON'
   },
   { elementPropertyName: 'paymentMethod', romanianTranslation: 'METODA PLATA' },
-  { elementPropertyName: 'paidForTransfer', romanianTranslation: 'A PLATIT' },
+  { elementPropertyName: 'paidForTransfer', romanianTranslation: 'A PLATIT' }
   // { elementPropertyName: 'flightDetails', romanianTranslation: 'DETALII ZBOR' },
   // {
   //   elementPropertyName: 'returnPickUpAddress',

@@ -82,7 +82,6 @@ export class TopNavComponent implements OnDestroy, AfterViewChecked {
   };
 
   ngAfterViewChecked(): void {
-    debugger
     this.setSelectorDivPosition();
   }
 

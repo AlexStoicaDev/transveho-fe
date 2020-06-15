@@ -14,7 +14,7 @@ import { RoutesModule } from './modules/routes/routes.module';
 import { PassengersModule } from './modules/passengers/passengers.module';
 import { CreateTransferModule } from './modules/transfer/create-transfer/create-transfer.module';
 import { DriverTransferModule } from './modules/transfer/driver-transfer/driver-transfer.module';
-import {MAT_DATE_LOCALE} from "@angular/material/core";
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 @NgModule({
   declarations: [AppComponent],
@@ -35,9 +35,7 @@ import {MAT_DATE_LOCALE} from "@angular/material/core";
     NotFoundModule,
     SharedModule
   ],
-  providers: [
-    { provide: MAT_DATE_LOCALE, useValue: 'ro-RO' }
-  ],
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'ro-RO' }],
 
   bootstrap: [AppComponent]
 })

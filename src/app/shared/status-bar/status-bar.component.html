@@ -2,16 +2,12 @@
   class="status text-center mx-auto rounded-pill"
   [ngClass]="{
     'status-canceled':
-      ['Former', 'Defective', 'Canceled'].indexOf(status) !==
-      -1,
+      ['Former', 'Defective', 'Canceled'].indexOf(status) !== -1,
     'status-pending':
       ['DayOff', 'Holiday', 'Medical', 'NotAssigned'].indexOf(status) !== -1,
-     'status-assigned':
-      ['Assigned'].indexOf(status) !== -1,
-     'status-on-going':
-      ['OnRoute'].indexOf(status) !== -1,
-    'status-done':
-      ['Available', 'TransferDone'].indexOf(status) !== -1,
+    'status-assigned': ['Assigned'].indexOf(status) !== -1,
+    'status-on-going': ['OnRoute'].indexOf(status) !== -1,
+    'status-done': ['Available', 'TransferDone'].indexOf(status) !== -1,
     'mt-1': ['passenger-status'].indexOf(status) !== -1
   }"
 >

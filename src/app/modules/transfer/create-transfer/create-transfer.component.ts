@@ -70,7 +70,7 @@ export class CreateTransferComponent {
         selectedRouteId: this.selectedRoute.id
       })
       .subscribe(() => {
-        this.router.navigate(['passengers']);
+        this.router.navigate(['']);
       });
   }
 }

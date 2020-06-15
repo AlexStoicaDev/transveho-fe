@@ -34,7 +34,6 @@ export class CurrentTransferService {
       'https://maps.googleapis.com/maps/api/geocode/json?address=' +
       address.replace(' ', '%20') +
       '&key=AIzaSyCzKKVgFL89spGJqRlR6yFLP0bEjM1XaNY';
-    // debugger
     // return of({url});
     return this.http.get<any>(url);
   }
