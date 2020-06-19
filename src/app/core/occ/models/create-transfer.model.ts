@@ -60,3 +60,31 @@ export interface Transfer {
    */
   passenger: Passenger;
 }
+
+
+export interface CurrentTransfer {
+  /**
+   * @member {number} [id]
+   */
+  id: number;
+
+  /**
+   * @member {Route} [route]
+   */
+  route: Route;
+
+  /**
+   * @member {Car} [car]
+   */
+  car: Car;
+
+  /**
+   * @member {string} [driverName]
+   */
+  driverName: string;
+
+  /**
+   * @member {Passenger} [passenger]
+   */
+  passenger: Passenger;
+}

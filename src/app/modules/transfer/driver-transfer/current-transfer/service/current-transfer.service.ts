@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { OccDriverTransferService, Transfer } from '@transveho-core';
+import {CurrentTransfer, OccDriverTransferService, Transfer} from '@transveho-core';
 import { HttpClient } from '@angular/common/http';
 
 interface Location {
@@ -16,7 +16,7 @@ export class CurrentTransferService {
     private readonly http: HttpClient
   ) {}
 
-  getCurrentTransfer(): Observable<Transfer> {
+  getCurrentTransfer(): Observable<CurrentTransfer> {
     return this.occDriverTransferService.getCurrentTransfer();
   }
 

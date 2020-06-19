@@ -96,7 +96,34 @@
     </div>
 
     <div class="col-lg mt-2">
-      <form [formGroup]="locationFormGroup" (ngSubmit)="onSubmit()">
+<!--      <div>-->
+<!--        <mat-card class="counter-card pb-0">-->
+<!--          <div class="row">-->
+<!--            <div class="col">-->
+<!--              <p class="color-light-gray counter-header">TRANSFERUL INCEPE IN</p>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <countdown [text]="text" units="Month | Days | Hours | Minutes" [end]="passenger.pickUpDateTime"></countdown>-->
+<!--        </mat-card>-->
+<!--      </div>-->
+<!--      <div>-->
+<!--                <button-->
+<!--                  class="col modal-button start-button mobile-button mr-2"-->
+<!--                  mat-flat-button-->
+<!--                >-->
+<!--                  Incepe Transferul-->
+<!--                </button>-->
+<!--      </div>-->
+      <div>
+
+                <button
+                  class="col modal-button finish-button mobile-button"
+                  mat-flat-button
+                >
+                 Finalizeaza Transferul
+                </button>
+      </div>
+      <form [formGroup]="locationFormGroup" (ngSubmit)="onSubmit()" class="mt-2">
         <div class="input-group mb-3">
           <input
             type="text"
@@ -114,80 +141,80 @@
         </div>
       </form>
       <ng-container>
-        <agm-map
-          id="Gmap"
-          [zoom]="13"
-          [fullscreenControl]="true"
-          class="map"
-          [latitude]="location?.latitude"
-          [longitude]="location?.longitude"
-        >
-          <agm-marker
-            (dragEnd)="setLocationByMarkerDragging($event)"
-            [markerDraggable]="true"
-            animation="BOUNCE"
-            [latitude]="location?.latitude"
-            [longitude]="location?.longitude"
-            [zIndex]="3"
-            [iconUrl]="{
-              url: './assets/images/marker.svg',
-              scaledSize: {
-                width: 40,
-                height: 60
-              }
-            }"
-          ></agm-marker>
+                <agm-map
+                  id="Gmap"
+                  [zoom]="13"
+                  [fullscreenControl]="true"
+                  class="map"
+                  [latitude]="location?.latitude"
+                  [longitude]="location?.longitude"
+                >
+                  <agm-marker
+                    (dragEnd)="setLocationByMarkerDragging($event)"
+                    [markerDraggable]="true"
+                    animation="BOUNCE"
+                    [latitude]="location?.latitude"
+                    [longitude]="location?.longitude"
+                    [zIndex]="3"
+                    [iconUrl]="{
+                      url: './assets/images/marker.svg',
+                      scaledSize: {
+                        width: 40,
+                        height: 60
+                      }
+                    }"
+                  ></agm-marker>
 
-          <agm-marker
-            [latitude]="destinationLocation?.latitude"
-            [longitude]="destinationLocation?.longitude"
-            [iconUrl]="{
-              url: './assets/images/destination.svg',
-              scaledSize: {
-                width: 40,
-                height: 60
-              }
-            }"
-          >
-            <agm-info-window #infowindow2 [maxWidth]="320">
-              <div>
-                <p>{{ destinationLocation?.address }}</p>
-              </div>
-            </agm-info-window>
-          </agm-marker>
+                  <agm-marker
+                    [latitude]="destinationLocation?.latitude"
+                    [longitude]="destinationLocation?.longitude"
+                    [iconUrl]="{
+                      url: './assets/images/destination.svg',
+                      scaledSize: {
+                        width: 40,
+                        height: 60
+                      }
+                    }"
+                  >
+                    <agm-info-window #infowindow2 [maxWidth]="320">
+                      <div>
+                        <p>{{ destinationLocation?.address }}</p>
+                      </div>
+                    </agm-info-window>
+                  </agm-marker>
 
-          <agm-marker
-            [iconUrl]="{
-              url: './assets/images/user.svg',
-              scaledSize: {
-                width: 40,
-                height: 60
-              }
-            }"
-            [latitude]="pickUpLocation?.latitude"
-            [longitude]="pickUpLocation?.longitude"
-            [zIndex]="2"
-          >
-            <agm-info-window #infowindow1 [maxWidth]="320">
-              <div>
-                <p>{{ pickUpLocation?.address }}</p>
-              </div>
-            </agm-info-window>
-          </agm-marker>
+                  <agm-marker
+                    [iconUrl]="{
+                      url: './assets/images/user.svg',
+                      scaledSize: {
+                        width: 40,
+                        height: 60
+                      }
+                    }"
+                    [latitude]="pickUpLocation?.latitude"
+                    [longitude]="pickUpLocation?.longitude"
+                    [zIndex]="2"
+                  >
+                    <agm-info-window #infowindow1 [maxWidth]="320">
+                      <div>
+                        <p>{{ pickUpLocation?.address }}</p>
+                      </div>
+                    </agm-info-window>
+                  </agm-marker>
 
-          <agm-polyline [strokeColor]="'#40d790'" [geodesic]="true">
-            <ng-container *ngFor="let i of polyLine">
-              <agm-polyline-point
-                [latitude]="i.latitude"
-                [longitude]="i.longitude"
-              >
-              </agm-polyline-point>
-              <!--              <agm-icon-sequence [strokeColor]="'#40d790'"   [repeat]="'15px'" [offset]="0" [strokeWeight]="3" [scale]="2" [strokeOpacity]="100"-->
-              <!--                                 [path]="'FORWARD_CLOSED_ARROW'">-->
-              <!--              </agm-icon-sequence>-->
-            </ng-container>
-          </agm-polyline>
-        </agm-map>
+                  <agm-polyline [strokeColor]="'#40d790'" [geodesic]="true">
+                    <ng-container *ngFor="let i of polyLine">
+                      <agm-polyline-point
+                        [latitude]="i.latitude"
+                        [longitude]="i.longitude"
+                      >
+                      </agm-polyline-point>
+                      <!--              <agm-icon-sequence [strokeColor]="'#40d790'"   [repeat]="'15px'" [offset]="0" [strokeWeight]="3" [scale]="2" [strokeOpacity]="100"-->
+                      <!--                                 [path]="'FORWARD_CLOSED_ARROW'">-->
+                      <!--              </agm-icon-sequence>-->
+                    </ng-container>
+                  </agm-polyline>
+                </agm-map>
       </ng-container>
     </div>
   </div>

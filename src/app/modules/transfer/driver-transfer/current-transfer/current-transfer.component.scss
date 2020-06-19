@@ -3,7 +3,13 @@
 @import '../../../../../assets/styles/mixins';
 
 $color-light-gray: map-get($main-colors, light-gray);
+$transveho-light-blue: map-get($main-colors, transveho-light-blue);
 $transveho-medium-blue: map-get($main-colors, transveho-medium-blue);
+$color-dark-green: map-get($main-colors, dark-green);
+$color-light-green: map-get($main-colors, light-green);
+$color-pure-white: map-get($main-colors, pure-white);
+
+
 
 .color-light-gray {
   color: $color-light-gray;
@@ -22,4 +28,39 @@ $transveho-medium-blue: map-get($main-colors, transveho-medium-blue);
 
 .map {
   height: 600px;
+}
+
+.start-button {
+  width: 200px;
+  background-color: $transveho-medium-blue;
+  color: $color-pure-white;
+  &:hover {
+    background-color: $transveho-light-blue;
+  }
+}
+
+.finish-button {
+  width: 200px;
+  background-color: $color-dark-green;
+  color: $color-pure-white;
+  &:hover {
+    background-color: $color-light-green;
+  }
+}
+
+.counter-card{
+  @include media-breakpoint-up(sm){
+    display: inline-block;
+  }
+}
+
+.counter-header{
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.mobile-button{
+  @include media-breakpoint-down(sm){
+    width: 100%;
+  }
 }

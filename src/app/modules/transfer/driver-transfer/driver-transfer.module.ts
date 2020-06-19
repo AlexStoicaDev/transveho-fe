@@ -10,6 +10,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AgmCoreModule } from '@agm/core';
+import {MatButtonModule} from "@angular/material/button";
+import {CountdownModule} from "ng2-date-countdown";
 
 @NgModule({
   imports: [
@@ -22,6 +24,9 @@ import { AgmCoreModule } from '@agm/core';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    MatButtonModule,
+    BrowserModule,
+    CountdownModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCzKKVgFL89spGJqRlR6yFLP0bEjM1XaNY'
     })

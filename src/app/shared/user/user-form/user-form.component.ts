@@ -82,7 +82,7 @@ export class UserFormComponent implements OnInit {
       ],
       email: [
         this.user.email,
-        [Validators.required, Validators.email, Validators.maxLength(30)]
+        [Validators.required, Validators.email, Validators.maxLength(100)]
       ],
       lastName: [
         this.user.lastName,

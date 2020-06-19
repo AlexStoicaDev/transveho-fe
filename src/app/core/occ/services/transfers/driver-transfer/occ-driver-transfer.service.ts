@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AuthenticationService } from '../../../../authentication';
-import { Observable, of, pipe } from 'rxjs';
+import {Observable, of, pipe, throwError} from 'rxjs';
 import {
-  Car,
+  Car, CurrentTransfer,
   EngineType,
   Passenger,
   PaymentMethod,
@@ -10,17 +10,16 @@ import {
   Transfer
 } from '../../../models';
 import { DatePipe } from '@angular/common';
+import {HttpClient} from "@angular/common/http";
+import {catchError} from "rxjs/operators";
+
 
 @Injectable()
 export class OccDriverTransferService {
-  constructor(private authenticationService: AuthenticationService) {}
+  constructor(private authenticationService: AuthenticationService,private http:HttpClient) {}
 
-  private getCurrentUserUsername(): string {
-    return this.authenticationService.currentUserValue.username;
-  }
-
-  getCurrentTransfer(): Observable<Transfer> {
-    // @ts-ignore
-    return of({});
+  getCurrentTransfer(): Observable<CurrentTransfer> {
+    const driverId = this.authenticationService.currentUserValue.id;
+    return this.http.get<CurrentTransfer>("transfers/current/"+driverId).pipe(catchError(err => throwError(err)));
   }
 }

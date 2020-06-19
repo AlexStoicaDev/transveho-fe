@@ -82,3 +82,39 @@ input:-webkit-autofill:active {
 .mat-accordion .mat-expansion-panel:last-of-type {
   padding-bottom: 20px;
 }
+
+.countdown {
+  height: 100px !important;
+  width: 300px !important;
+  background-color: white;
+  cursor: default;
+ // justify-content: flex-start !important;
+  font-weight: 500;
+  color: $transveho-medium-blue;
+
+  @include media-breakpoint-down(sm){
+    width: 100% !important;
+  }
+
+  .measurements {
+    font-weight: bold !important;
+    color: $transveho-medium-blue;
+    margin-right: 5px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0 10px;
+  }
+
+  .divider {
+    color: black;
+    font-size: 30px;
+  }
+}
+
+.countdown .measurements:first-of-type {
+  margin-left: 35px !important;
+
+  @include media-breakpoint-down(sm){
+    margin-left: 55px !important;
+  }
+}

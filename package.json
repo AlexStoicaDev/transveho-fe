@@ -28,6 +28,7 @@
     "@mat-datetimepicker/core": "^4.1.0",
     "@material-extended/mde": "^3.0.0",
     "bootstrap": "^4.4.1",
+    "ng2-date-countdown": "^1.1.2",
     "prettier": "^2.0.5",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",

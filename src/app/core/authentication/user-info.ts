@@ -4,7 +4,8 @@ export class UserInfo {
     private _tokenType: string,
     private _username: string,
     private _email: string,
-    private _roles: string[]
+    private _roles: string[],
+    private _id:number
   ) {}
 
   get token() {
@@ -40,5 +41,12 @@ export class UserInfo {
       return null;
     }
     return this._roles;
+  }
+
+  get id(){
+    if(!this._id){
+      return null;
+    }
+    return this._id;
   }
 }
