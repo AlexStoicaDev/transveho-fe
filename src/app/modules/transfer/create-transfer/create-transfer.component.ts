@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Car, Passenger, Personal, Route } from '@transveho-core';
-import { FormBuilder } from '@angular/forms';
-import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
-import { CreateTransferService } from './service/create-transfer.service';
+import {Component} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Car, Passenger, Personal, Route} from '@transveho-core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
+import {CreateTransferService} from './service/create-transfer.service';
 
 @Component({
   selector: 'create-transfer',
@@ -12,7 +12,7 @@ import { CreateTransferService } from './service/create-transfer.service';
   providers: [
     {
       provide: STEPPER_GLOBAL_OPTIONS,
-      useValue: { displayDefaultIndicatorType: false }
+      useValue: {displayDefaultIndicatorType: false}
     }
   ]
 })
@@ -24,13 +24,15 @@ export class CreateTransferComponent {
   selectedRoute: Route;
   availableCars: Car[];
   availableDrivers: Personal[];
-  selectedCar: Car = null;
   selectedDriver: Personal = null;
+
+  selectCarFormGroup: FormGroup;
+  selectedDriverFormGroup: FormGroup;
 
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private _formBuilder: FormBuilder,
+    private formBuilder: FormBuilder,
     private createTransferService: CreateTransferService
   ) {
     this.selectedPassengers = this.activatedRoute.snapshot.data.createTransferStepperData.selectedPassengers;
@@ -40,6 +42,14 @@ export class CreateTransferComponent {
     this.totalNumberOfAdults = this.activatedRoute.snapshot.data.createTransferStepperData.totalNumberOfAdults;
     this.totalNumberOfChildren = this.activatedRoute.snapshot.data.createTransferStepperData.totalNumberOfChildren;
     this.totalNumberOfInfants = this.activatedRoute.snapshot.data.createTransferStepperData.totalNumberOfInfants;
+
+    this.selectCarFormGroup = this.formBuilder.group({
+      selectCarControl: [undefined, Validators.required]
+    });
+
+    this.selectedDriverFormGroup = this.formBuilder.group({
+      selectDriverControl: [undefined, Validators.required]
+    });
   }
 
   onRemovePassenger(removePassenger: Passenger) {
@@ -52,18 +62,19 @@ export class CreateTransferComponent {
   }
 
   onSelectCar(selectedCar: Car) {
-    this.selectedCar = selectedCar;
+    this.selectCarFormGroup.controls['selectCarControl'].setValue(selectedCar);
   }
 
   onSelectDriver(selectedDriver: Personal) {
-    this.selectedDriver = selectedDriver;
+    this.selectedDriverFormGroup.controls['selectDriverControl'].setValue(selectedDriver);
+
   }
 
   onCreateTransfer() {
     this.createTransferService
       .createTransfer({
-        selectedCarId: this.selectedCar.id,
-        selectedDriverId: this.selectedDriver.id,
+        selectedCarId: this.selectCarFormGroup.controls['selectCarControl'].value.id,
+        selectedDriverId: this.selectedDriverFormGroup.controls['selectDriverControl'].value.id,
         selectedPassengersIds: this.selectedPassengers.map(
           selectedPassenger => selectedPassenger.id
         ),

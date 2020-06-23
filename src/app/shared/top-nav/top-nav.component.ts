@@ -82,10 +82,16 @@ export class TopNavComponent implements OnDestroy, AfterViewChecked {
   };
 
   ngAfterViewChecked(): void {
-    this.setSelectorDivPosition();
+   // setTimeout(()=>{
+      this.setSelectorDivPosition();
+   // },500)
   }
 
   onResize($event: any) {
     this.setSelectorDivPosition();
+  }
+
+  logout() {
+    this.authenticationService.logout();
   }
 }

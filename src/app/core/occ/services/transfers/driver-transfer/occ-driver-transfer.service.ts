@@ -22,4 +22,14 @@ export class OccDriverTransferService {
     const driverId = this.authenticationService.currentUserValue.id;
     return this.http.get<CurrentTransfer>("transfers/current/"+driverId).pipe(catchError(err => throwError(err)));
   }
+
+  startTransfer(passengerId: number,carId:number):Observable<any> {
+    const driverId = this.authenticationService.currentUserValue.id;
+    return this.http.put<any>(`transfers/current/start/${passengerId}/${carId}/${driverId}`,{}).pipe(catchError(err => throwError(err)));
+  }
+
+  finishTransfer(passengerId: number, carId: number) :Observable<any> {
+    const driverId = this.authenticationService.currentUserValue.id;
+    return this.http.put<any>(`transfers/current/finish/${passengerId}/${carId}/${driverId}`,{}).pipe(catchError(err => throwError(err)));
+  }
 }

@@ -1,9 +1,9 @@
 <div class="container-fluid pl-5 pr-5">
   <mat-horizontal-stepper linear class="create-transfer-stepper" #stepper>
     <!--    <ng-template matStepperIcon="edit">-->
-    <!--      <mat-icon>check</mat-icon>-->
+    <!--      <mat-icon>number</mat-icon>-->
     <!--    </ng-template>-->
-    <mat-step label="Step 1">
+    <mat-step label="Step 1" state="number">
       <ng-template matStepLabel>verifica pasagerii</ng-template>
       <verify-passengers-step
         [passengers]="selectedPassengers"
@@ -11,39 +11,46 @@
       >
       </verify-passengers-step>
     </mat-step>
-    <mat-step state="chat">
-      <ng-template matStepLabel>alege masina</ng-template>
-      <choose-car-step
-        [cars]="availableCars"
-        [passengers]="selectedPassengers"
-        [fromLocation]="selectedRoute.fromLocation"
-        [toLocation]="selectedRoute.toLocation"
-        [totalNumberOfAdults]="totalNumberOfAdults"
-        [totalNumberOfChildren]="totalNumberOfChildren"
-        [totalNumberOfInfants]="totalNumberOfInfants"
-        (onSelectCarOutput)="onSelectCar($event)"
-      ></choose-car-step>
+    <mat-step label="Step 2" state="number" [stepControl]="selectCarFormGroup">
+      <form [formGroup]="selectCarFormGroup">
+        <ng-template matStepLabel>alege masina</ng-template>
+        <input class="d-none" formControlName="selectCarControl">
+        <choose-car-step
+          [cars]="availableCars"
+          [cars]="availableCars"
+          [passengers]="selectedPassengers"
+          [fromLocation]="selectedRoute.fromLocation"
+          [toLocation]="selectedRoute.toLocation"
+          [totalNumberOfAdults]="totalNumberOfAdults"
+          [totalNumberOfChildren]="totalNumberOfChildren"
+          [totalNumberOfInfants]="totalNumberOfInfants"
+          (onSelectCarOutput)="onSelectCar($event)"
+        ></choose-car-step>
+      </form>
     </mat-step>
-    <mat-step>
-      <ng-template matStepLabel>alege soferul</ng-template>
-      <choose-driver-step
-        [drivers]="availableDrivers"
-        [passengers]="selectedPassengers"
-        [selectedCar]="selectedCar"
-        [fromLocation]="selectedRoute.fromLocation"
-        [toLocation]="selectedRoute.toLocation"
-        [totalNumberOfAdults]="totalNumberOfAdults"
-        [totalNumberOfChildren]="totalNumberOfChildren"
-        [totalNumberOfInfants]="totalNumberOfInfants"
-        (onSelectDriverOutput)="onSelectDriver($event)"
-      ></choose-driver-step>
+    <mat-step label="Step 3" state="number" [stepControl]="selectedDriverFormGroup">
+      <form [formGroup]="selectedDriverFormGroup">
+        <input class="d-none" formControlName="selectDriverControl">
+        <ng-template matStepLabel>alege soferul</ng-template>
+        <choose-driver-step
+          [drivers]="availableDrivers"
+          [passengers]="selectedPassengers"
+          [selectedCar]="selectCarFormGroup.controls['selectCarControl'].value"
+          [fromLocation]="selectedRoute.fromLocation"
+          [toLocation]="selectedRoute.toLocation"
+          [totalNumberOfAdults]="totalNumberOfAdults"
+          [totalNumberOfChildren]="totalNumberOfChildren"
+          [totalNumberOfInfants]="totalNumberOfInfants"
+          (onSelectDriverOutput)="onSelectDriver($event)"
+        ></choose-driver-step>
+      </form>
     </mat-step>
-    <mat-step label="Step 4">
+    <mat-step label="Step 4" state="number">
       <ng-template matStepLabel>gata</ng-template>
       <final-step
-        [selectedCar]="selectedCar"
+        [selectedCar]="selectCarFormGroup.controls['selectCarControl'].value"
         [passengers]="selectedPassengers"
-        [selectedDriver]="selectedDriver"
+        [selectedDriver]="this.selectedDriverFormGroup.controls['selectDriverControl'].value"
         [fromLocation]="selectedRoute.fromLocation"
         [toLocation]="selectedRoute.toLocation"
         [totalNumberOfAdults]="totalNumberOfAdults"

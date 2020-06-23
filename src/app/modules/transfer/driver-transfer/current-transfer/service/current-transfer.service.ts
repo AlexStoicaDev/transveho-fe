@@ -74,4 +74,12 @@ export class CurrentTransferService {
 
     return this.http.get<any>(url);
   }
+
+  startTransfer(passengerId: number,carId:number):Observable<any> {
+    return this.occDriverTransferService.startTransfer(passengerId,carId);
+  }
+
+  finishTransfer(passengerId: number,carId:number):Observable<any> {
+    return this.occDriverTransferService.finishTransfer(passengerId,carId);
+  }
 }

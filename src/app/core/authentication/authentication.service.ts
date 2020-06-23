@@ -52,7 +52,8 @@ export class AuthenticationService {
   public logout() {
     this.currentUserSubject.next(null);
     localStorage.removeItem('userInfo');
-    this.router.navigate(['/auth/login']);
+    this.currentUserSubject.next(null);
+    this.router.navigate(['/auth']);
   }
 
   //TODO improve, what if user manually ads a random token

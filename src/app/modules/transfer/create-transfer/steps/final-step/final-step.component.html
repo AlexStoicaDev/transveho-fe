@@ -4,17 +4,17 @@
       [fromLocation]="fromLocation"
       [toLocation]="toLocation"
     ></selected-route>
+    <ng-container *ngIf="selectedCar">
+      <selected-car [selectedCar]="selectedCar"></selected-car>
+    </ng-container>
+  </div>
+  <div class="col">
     <selected-passengers
       [totalNumberOfAdults]="totalNumberOfAdults"
       [totalNumberOfChildren]="totalNumberOfChildren"
       [totalNumberOfInfants]="totalNumberOfInfants"
       [selectedPassengers]="passengers"
     ></selected-passengers>
-  </div>
-  <div class="col">
-    <ng-container *ngIf="selectedCar">
-      <selected-car [selectedCar]="selectedCar"></selected-car>
-    </ng-container>
     <ng-container *ngIf="selectedDriver">
       <selected-driver [selectedDriver]="selectedDriver"></selected-driver>
     </ng-container>
