@@ -12,6 +12,9 @@ import {HttpClientModule} from '@angular/common/http';
 import {AgmCoreModule} from '@agm/core';
 import {MatButtonModule} from "@angular/material/button";
 import {CountdownModule} from "ng2-date-countdown";
+import { PreviousTransfersComponent } from './previous-transfers/previous-transfers.component';
+import {PreviousTransfersService} from "./previous-transfers/service/previous-transfers.service";
+import {PreviousTransfersResolver} from "./previous-transfers/resolver/previous-transfers.resolver";
 
 @NgModule({
   imports: [
@@ -31,7 +34,7 @@ import {CountdownModule} from "ng2-date-countdown";
       apiKey: 'AIzaSyCzKKVgFL89spGJqRlR6yFLP0bEjM1XaNY'
     })
   ],
-  declarations: [CurrentTransferComponent],
-  providers: [CurrentTransferService, CurrentTransferResolver]
+  declarations: [CurrentTransferComponent, PreviousTransfersComponent],
+  providers: [CurrentTransferService, CurrentTransferResolver, PreviousTransfersService, PreviousTransfersResolver]
 })
 export class DriverTransferModule {}

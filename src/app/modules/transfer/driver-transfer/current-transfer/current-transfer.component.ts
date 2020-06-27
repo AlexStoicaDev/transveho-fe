@@ -59,7 +59,7 @@ export class CurrentTransferComponent implements OnInit {
     Seconds: "Secunde"
   };
 
-  testDate: Date;
+  transferDate: Date;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -70,13 +70,13 @@ export class CurrentTransferComponent implements OnInit {
   ) {
     this.currentTransfer = this.activatedRoute.snapshot.data.currentTransfer;
     this.passenger = this.currentTransfer.passenger;
-
+    this.transferDate =  new Date(this.passenger.pickUpDateTime);
     // let newDate = new Date();
     // debugger
     // newDate.setMinutes(newDate.getMinutes()+2);
-    // this.testDate = newDate;
-
-    this.testDate = new Date();
+    // this.transferDate = newDate;
+    //
+    // this.transferDate = new Date();
   }
 
   ngOnInit(): void {
@@ -104,8 +104,7 @@ export class CurrentTransferComponent implements OnInit {
   }
 
   showCountDown():boolean{
-    debugger
-    return (new Date()) < this.testDate;
+    return (new Date()) < this.transferDate;
   }
 
   setPolylineLocations(pickUpAddress: string, destinationAddress: string) {

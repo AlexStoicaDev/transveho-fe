@@ -32,4 +32,10 @@ export class OccDriverTransferService {
     const driverId = this.authenticationService.currentUserValue.id;
     return this.http.put<any>(`transfers/current/finish/${passengerId}/${carId}/${driverId}`,{}).pipe(catchError(err => throwError(err)));
   }
+
+  getPreviousTransfers():Observable<CurrentTransfer[]> {
+    const driverId = this.authenticationService.currentUserValue.id;
+    return this.http.get<CurrentTransfer[]>("transfers/"+driverId).pipe(catchError(err => throwError(err)));
+  }
+
 }

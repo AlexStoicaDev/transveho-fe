@@ -11,6 +11,8 @@ import { CreateTransferComponent } from './modules/transfer/create-transfer/crea
 import { CreateTransferResolver } from './modules/transfer/create-transfer/resolver/create-transfer.resolver';
 import { CurrentTransferResolver } from './modules/transfer/driver-transfer/current-transfer/resolver/current-transfer.resolver';
 import { CurrentTransferComponent } from './modules/transfer/driver-transfer/current-transfer/current-transfer.component';
+import {PreviousTransfersComponent} from "./modules/transfer/driver-transfer/previous-transfers/previous-transfers.component";
+import {PreviousTransfersResolver} from "./modules/transfer/driver-transfer/previous-transfers/resolver/previous-transfers.resolver";
 
 const routes: Routes = [
   {
@@ -50,6 +52,15 @@ const routes: Routes = [
     canActivate: [AuthenticationGuard],
     resolve: {
       currentTransfer: CurrentTransferResolver
+    }
+  },
+  {
+    path: 'previous-transfers',
+    component: PreviousTransfersComponent,
+    pathMatch: 'full',
+    canActivate: [AuthenticationGuard],
+    resolve: {
+      previousTransfers: PreviousTransfersResolver
     }
   }
 ];

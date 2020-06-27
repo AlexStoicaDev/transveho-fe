@@ -38,6 +38,21 @@
         </li>
         <li
           class="nav-item cursor-pointer"
+          routerLinkActive="active"
+          routerLink="previous-transfers"
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="setSelectorDivPosition()"
+        >
+          <a class="nav-link">
+            <span class="material-icons my-icon">
+              transfer_within_a_station
+            </span>
+
+            Transferuri Precedente</a
+          >
+        </li>
+        <li
+          class="nav-item cursor-pointer"
           (click)="logout()"
         >
           <a class="nav-link"

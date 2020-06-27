@@ -1,0 +1,102 @@
+<div class="container-fluid pl-lg-5 pr-lg-5 mb-5">
+  <div class="row mb-5" *ngFor="let transfer of previousTransfers">
+       <div class="col-lg mt-2">
+        <selected-route
+          [fromLocation]="transfer.route.fromLocation"
+          [toLocation]="transfer.route.toLocation"
+        ></selected-route>
+
+        <mat-card class="mt-2">
+          <div class="row">
+            <div class="col">
+              <p class="color-light-gray">CLIENT</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6 col-sm-4">
+              <p class="selected-car-header mb-0">nume</p>
+              <p class="color-light-gray">
+                {{ transfer?.passenger?.lastName }}
+              </p>
+            </div>
+
+            <div class="col-6 col-sm-4">
+              <p class="selected-car-header mb-0">prenume</p>
+              <p class="color-light-gray">
+                {{ transfer?.passenger?.firstName }}
+              </p>
+            </div>
+
+            <div class="col-6 col-sm-4">
+              <p class="selected-car-header mb-0">pasageri</p>
+              <passenger-count
+                [numberOfAdults]="transfer?.passenger?.numberOfAdults"
+                [numberOfChildren]="transfer?.passenger?.numberOfChildren"
+                [numberOfInfants]="transfer?.passenger?.numberOfInfants"
+              ></passenger-count>
+            </div>
+
+            <div class="col-6 col-sm-4">
+              <p class="selected-car-header mb-0">telefon</p>
+              <p class="color-light-gray">
+                {{ transfer?.passenger?.phoneNumber }}
+              </p>
+            </div>
+
+            <!--        </div>-->
+            <!--        <div class="row">-->
+
+            <div class="col-6 col-sm-4">
+              <p class="selected-car-header mb-0">email</p>
+              <p class="color-light-gray">
+                {{ transfer?.passenger?.email }}
+              </p>
+            </div>
+
+            <div class="col-6 col-sm-4">
+              <p class="selected-car-header mb-0">metoda plata</p>
+              <p class="color-light-gray">
+                <!--              {{ passenger.paymentMethod }}-->
+                ONLINE
+              </p>
+            </div>
+
+            <div class="col-6 col-sm-4">
+              <p class="selected-car-header mb-0">a platit</p>
+              <p class="color-light-gray">
+                {{ transfer?.passenger?.paidForTransfer ? 'DA' : 'NU' }}
+              </p>
+            </div>
+
+            <!--        </div>-->
+            <!--        <div class="row">-->
+
+            <div class="col-6 col-sm-4">
+              <p class="selected-car-header mb-0">data transfer</p>
+              <p class="color-light-gray">
+                {{ transfer?.passenger?.pickUpDateTime | date: 'dd/MM/yyyy HH:mm' }}
+              </p>
+            </div>
+
+            <div class="col-sm-4">
+              <p class="selected-car-header mb-0">adresa destinatie</p>
+              <p class="color-light-gray">
+                {{ transfer?.passenger?.destinationAddress }}
+              </p>
+            </div>
+
+            <div class="col-sm-4">
+              <p class="selected-car-header mb-0">adresa preluare</p>
+              <p class="color-light-gray">
+                {{ transfer?.passenger?.pickUpAddress }}
+              </p>
+            </div>
+          </div>
+        </mat-card>
+
+
+        <selected-car class="mb-5" [selectedCar]="transfer.car"></selected-car>
+
+      </div>
+  </div>
+</div>
