@@ -1,9 +1,5 @@
 export enum PersonalStatus {
-  Available,
-  DayOff,
-  Holiday,
-  Medical,
-  Former
+  Former, Medical, Holiday, DayOff, OnRoute, Available
 }
 
 export enum SpokenLanguages {
@@ -55,13 +51,13 @@ export interface Personal {
    */
   role: PersonalRole;
   /**
-   * @member {DrivingLicenseCategory} [drivingLicenseCategory]
+   * @member {string} [drivingLicenseCategory]
    */
-  drivingLicenseCategory: DrivingLicenseCategory;
+  drivingLicenseCategory: string;
   /**
-   * @member {SpokenLanguages} [spokenLanguage]
+   * @member {string} [spokenLanguage]
    */
-  spokenLanguage: SpokenLanguages;
+  spokenLanguage: string;
   /**
    * @member {string} [lastName]
    */

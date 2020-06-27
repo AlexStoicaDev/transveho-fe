@@ -57,7 +57,7 @@ $color-light-green: map-get($main-colors, light-green);
 
 .passengers-accordion {
   &__panel {
-    //padding-top: 10px;
+    padding-top: 7px;
     &__passenger-name {
       font-weight: 500;
       // color:$transveho-medium-blue;
